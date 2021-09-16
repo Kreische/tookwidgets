@@ -1,0 +1,18 @@
+name: tookwidgets
+description: Project to manage common widgets for Took App
+version: 1.0.1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_bloc: ^7.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
