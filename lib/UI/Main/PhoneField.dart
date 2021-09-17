@@ -62,13 +62,14 @@ class _PhoneFieldState extends State<PhoneField> {
             textAlignVertical: TextAlignVertical.center,
             style: const TextStyle(),
             cursorColor: MyColors.mainColor,
-            onChanged: (v) => widget.onChanged(
-              PhoneNumber(
+            onChanged: (v) {
+              final phone = PhoneNumber(
                 countryIsoCode: _selectedCountry.dialCode.toString(),
                 countryCode: _selectedCountry.code,
                 number: v,
-              ),
-            ),
+              );
+              widget.onChanged(phone);
+            },
             decoration: InputDecoration(
               hintText: widget.hint,
               contentPadding: const EdgeInsets.symmetric(horizontal: 14),

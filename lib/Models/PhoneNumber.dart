@@ -9,7 +9,12 @@ class PhoneNumber {
   final String countryCode;
   final String number;
 
-  String get fullNumber => '+' + countryIsoCode + number;
+  String get _checkNumberZero {
+    if (number.startsWith('0')) return number.replaceFirst('0', '');
+    return number;
+  }
+
+  String get fullNumber => '+' + countryIsoCode + _checkNumberZero;
 }
 
 class CountriesPhoneData {
