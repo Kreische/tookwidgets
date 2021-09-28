@@ -12,6 +12,7 @@ dependencies:
   flutter_bloc: ^7.3.0
   image_picker: ^0.8.4+2
   provider: ^6.0.1
+  just_audio: ^0.9.12
 
 dev_dependencies:
   flutter_test:
