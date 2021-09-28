@@ -155,7 +155,41 @@ mixin Get {
 
 //
 
-  static Future<File?> pickImage(ImageSource source) async {
+  static Future<File?> imagePicker(BuildContext context) async {
+    File? file;
+    await showModalBottomSheet(
+      context: context,
+      builder: (context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const TextWidget(
+            'Pick an image source',
+            margin: EdgeInsets.all(20),
+            fontSize: 18,
+            color: Colors.grey,
+          ),
+          ListTile(
+            title: const TextWidget('Camera'),
+            onTap: () async {
+              file = await _pickImage(ImageSource.camera);
+              Navigator.pop(context, file);
+            },
+          ),
+          ListTile(
+            title: const TextWidget('Galery'),
+            onTap: () async {
+              file = await _pickImage(ImageSource.gallery);
+              Navigator.pop(context, file);
+            },
+          ),
+        ],
+      ),
+    );
+    return file;
+  }
+
+  static Future<File?> _pickImage(ImageSource source) async {
     final imagePicker = ImagePicker();
     final image = await imagePicker.pickImage(
       source: source,
