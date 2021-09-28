@@ -67,7 +67,7 @@ mixin Get {
     return res;
   }
 
-  static Future<String?> getText(BuildContext context, String initialText,
+  static Future<String?> getText(BuildContext context, String? initialText,
       {TextInputType? textInputType}) async {
     final TextEditingController _textController =
         TextEditingController(text: initialText);
