@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tookwidgets/Constants/AssetString.dart';
 import 'package:tookwidgets/Constants/Colors.dart';
 
-import 'TextWidget.dart';
+import '../Widgets/TextWidget.dart';
 
 mixin AppBarUtils {
   static AppBar customAppBar(
