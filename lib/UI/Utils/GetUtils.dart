@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tookwidgets/Constants/Colors.dart';
 import 'package:tookwidgets/UI/Widgets/TextWidget.dart';
 
-mixin GetUtils {
+mixin Get {
 //Navigator
   static void to(BuildContext context, Widget widget) {
     Navigator.of(context).push(
