@@ -7,7 +7,7 @@ mixin AlertUtils {
   static void alert(
     BuildContext context, {
     required String title,
-    required String content,
+    required String? content,
   }) {
     showDialog(
       context: context,
