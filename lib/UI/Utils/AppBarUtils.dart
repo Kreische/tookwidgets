@@ -43,4 +43,25 @@ mixin AppBarUtils {
       automaticallyImplyLeading: autoImplyLeading,
     );
   }
+
+  static AppBar forOnlineBTN(
+      {Widget? title,
+      Widget? leading,
+      List<Widget> actions = const [],
+      bool centerTitle = false}) {
+    return AppBar(
+      backgroundColor: MyColors.mainColor,
+      title: title,
+      leading: leading,
+      actions: actions,
+      elevation: 30,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(12),
+        ),
+      ),
+      toolbarHeight: 55,
+      centerTitle: centerTitle,
+    );
+  }
 }
