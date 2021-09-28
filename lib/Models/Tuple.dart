@@ -10,8 +10,8 @@ class Tuple<T1, T2> {
     );
   }
 
-  final T1 item1;
-  final T2 item2;
+  final T1? item1;
+  final T2? item2;
 }
 
 class Tuple3<T1, T2, T3> {
@@ -25,7 +25,7 @@ class Tuple3<T1, T2, T3> {
     );
   }
 
-  final T1 item1;
-  final T2 item2;
-  final T3 item3;
+  final T1? item1;
+  final T2? item2;
+  final T3? item3;
 }
