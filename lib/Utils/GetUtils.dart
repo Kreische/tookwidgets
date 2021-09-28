@@ -67,8 +67,12 @@ mixin Get {
     return res;
   }
 
-  static Future<String?> getText(BuildContext context, String? initialText,
-      {TextInputType? textInputType}) async {
+  static Future<String?> getText(
+    BuildContext context,
+    String? initialText, {
+    TextInputType? textInputType,
+    TextCapitalization? textCapitalization,
+  }) async {
     final TextEditingController _textController =
         TextEditingController(text: initialText);
     final text = await showDialog<String>(
@@ -99,6 +103,8 @@ mixin Get {
                   maxLines: null,
                   autofocus: true,
                   keyboardType: textInputType,
+                  textCapitalization:
+                      textCapitalization ?? TextCapitalization.sentences,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     fillColor: Colors.white,
