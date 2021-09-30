@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:tookwidgets/UI/Widgets/Dialogs.dart';
 
 mixin ConfigUtils {
-  Future checkIosTrackingTransperency(BuildContext context) async {
+  static Future checkIosTrackingTransperency(BuildContext context) async {
     if (Platform.isIOS) {
       final status = await AppTrackingTransparency.trackingAuthorizationStatus;
       if (status == TrackingStatus.authorized ||
