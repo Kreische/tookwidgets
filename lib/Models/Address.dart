@@ -79,6 +79,7 @@ class PersonalAddress {
       country: map['country'] as String?,
       state: map['state'] as String?,
       city: map['city'] as String?,
+      location: MongoLocation.fromMap(map['location']),
     );
   }
 
