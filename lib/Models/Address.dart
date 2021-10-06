@@ -121,8 +121,7 @@ class MongoLocation {
   });
 
   static MongoLocation? fromMap(map) {
-    if (map == null) return null;
-    if (map['type'].runtimeType is! String) return null;
+    if (map == null || (map as Map).isEmpty) return null;
     return MongoLocation(
       type: map['type'] as String?,
       coordinates: List<num>.from(map['coordinates'] as Iterable),
