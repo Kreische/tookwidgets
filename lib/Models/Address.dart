@@ -121,7 +121,6 @@ class MongoLocation {
   });
 
   static MongoLocation? fromMap(map) {
-    print(map);
     if (map == null) return null;
     if (map['type'].runtimeType is! String) return null;
     return MongoLocation(
