@@ -79,7 +79,7 @@ class PersonalAddress {
       country: map['country'] as String?,
       state: map['state'] as String?,
       city: map['city'] as String?,
-      location: MongoLocation.fromMap(map['location']),
+      location: MongoLocation?.fromMap(map['location']),
     );
   }
 
@@ -121,9 +121,11 @@ class MongoLocation {
   });
 
   static MongoLocation? fromMap(map) {
+    print(map);
     if (map == null) return null;
+    if (map['type'].runtimeType is! String) return null;
     return MongoLocation(
-      type: map['type'] as String,
+      type: map['type'] as String?,
       coordinates: List<num>.from(map['coordinates'] as Iterable),
     );
   }
