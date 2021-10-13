@@ -7,10 +7,10 @@ class LoadingUtils {
 
   static final LoadingUtils instance = LoadingUtils._();
 
-  bool _isLoading = false;
+  bool isLoading = false;
 
   void showLoading(BuildContext context, String? text) {
-    _isLoading = true;
+    isLoading = true;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -35,7 +35,7 @@ class LoadingUtils {
   }
 
   void removeLoading(BuildContext context) {
-    if (_isLoading) {
+    if (isLoading) {
       Navigator.pop(context);
     }
   }
