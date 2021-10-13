@@ -4,6 +4,7 @@ import 'package:tookwidgets/Constants/Colors.dart';
 import 'package:tookwidgets/Constants/CountriesPhoneData.dart';
 import 'package:tookwidgets/Models/PhoneNumber.dart';
 import 'package:tookwidgets/UI/Widgets/TextWidget.dart';
+import 'package:tookwidgets/Utils/Validators.dart';
 
 class PhoneField extends StatefulWidget {
   const PhoneField({
@@ -56,9 +57,10 @@ class _PhoneFieldState extends State<PhoneField> {
           width: 250,
           height: 50,
           decoration: boxDecoration,
-          child: TextField(
+          child: TextFormField(
             controller: _controller,
             keyboardType: TextInputType.phone,
+            validator: ValidatorUtils.validateMobile,
             textAlignVertical: TextAlignVertical.center,
             style: const TextStyle(),
             cursorColor: MyColors.mainColor,
