@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget extends StatelessWidget {
@@ -49,7 +50,7 @@ class TextWidget extends StatelessWidget {
             height: height,
             decoration: textDecoration,
           ),
-        ),
+        ).tr(),
       ),
     );
   }
