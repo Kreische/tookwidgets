@@ -15,6 +15,7 @@ class TextWidget extends StatelessWidget {
     this.wordSpacing,
     this.height,
     this.textDecoration,
+    this.translate = true,
   });
 
   final String? data;
@@ -29,6 +30,7 @@ class TextWidget extends StatelessWidget {
   final double? wordSpacing;
   final double? height;
   final TextDecoration? textDecoration;
+  final bool translate;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class TextWidget extends StatelessWidget {
       child: Container(
         margin: margin,
         child: Text(
-          data ?? '',
+          translate ? (data ?? '').tr() : (data ?? ''),
           maxLines: maxLines,
           textAlign: textAlign,
           overflow: maxLines == null ? null : TextOverflow.ellipsis,
@@ -50,7 +52,7 @@ class TextWidget extends StatelessWidget {
             height: height,
             decoration: textDecoration,
           ),
-        ).tr(),
+        ),
       ),
     );
   }
