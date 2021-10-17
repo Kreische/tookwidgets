@@ -31,7 +31,7 @@ class CustomAppBarWithTitleWidget extends StatelessWidget
           Opacity(
             opacity: 0.2,
             child: Image.asset(
-              AssetString.logoT,
+              PluginAssetString.logoT,
               package: 'tookwidgets',
             ),
           ),
@@ -78,7 +78,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           Opacity(
             opacity: 0.2,
             child: Image.asset(
-              AssetString.logoT,
+              PluginAssetString.logoT,
               package: 'tookwidgets',
             ),
           ),
