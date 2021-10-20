@@ -57,3 +57,29 @@ class TextWidget extends StatelessWidget {
     );
   }
 }
+
+class ThemedText extends StatelessWidget {
+  const ThemedText(
+    this.text, {
+    Key? key,
+    required this.style,
+    this.translate = true,
+  }) : super(key: key);
+
+  final String text;
+  final TextStyle style;
+  final bool translate;
+
+  @override
+  Widget build(BuildContext context) {
+    if (translate)
+      return Text(
+        text,
+        style: style,
+      ).tr();
+    return Text(
+      text,
+      style: style,
+    );
+  }
+}
