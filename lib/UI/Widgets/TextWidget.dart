@@ -67,7 +67,7 @@ class ThemedText extends StatelessWidget {
   }) : super(key: key);
 
   final String text;
-  final TextStyle style;
+  final TextStyle? style;
   final bool translate;
 
   @override
