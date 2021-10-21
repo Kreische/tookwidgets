@@ -58,6 +58,7 @@ class NameWidget extends StatelessWidget {
           fontWeight: fontWeight,
           color: color,
           maxLines: 1,
+          translate: false,
         ),
       );
 }
