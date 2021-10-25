@@ -19,6 +19,7 @@ dependencies:
   app_tracking_transparency: ^2.0.2+1
   app_settings: ^4.1.1
   easy_localization: ^3.0.0
+  device_info: ^2.0.2
 
 dev_dependencies:
   flutter_test:

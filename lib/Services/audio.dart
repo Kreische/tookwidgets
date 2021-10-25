@@ -14,11 +14,4 @@ class MyAudioPlayer {
       return;
     }
   }
-
-  Future play4Times(String asset) async {
-    await audioplayer.setAsset(asset).then((value) async {
-      await audioplayer.play();
-      print('played');
-    });
-  }
 }
