@@ -16,12 +16,12 @@ class MarkerIconsUtils {
 
   int get _markerIcon {
     final dpr = ui.window.devicePixelRatio;
-    return Platform.isIOS ? (dpr * 30).toInt() : (dpr * 40).toInt();
+    return Platform.isIOS ? (dpr * 40).toInt() : (dpr * 50).toInt();
   }
 
   int get _carMarkerIconSize {
     final dpr = ui.window.devicePixelRatio;
-    return Platform.isIOS ? (dpr * 20).toInt() : (dpr * 30).toInt();
+    return Platform.isIOS ? (dpr * 30).toInt() : (dpr * 40).toInt();
   }
 
   Future setIcons(MarkerIconsData data) async {
