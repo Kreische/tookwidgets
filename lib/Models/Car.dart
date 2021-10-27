@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:tookwidgets/Constants/AssetString.dart';
 import 'package:tookwidgets/Constants/PluginStringData.dart';
 import 'package:tookwidgets/Models/Enums/enums_functions.dart';
+import 'Tuple.dart';
 
 part './Enums/car_enums.dart';
 

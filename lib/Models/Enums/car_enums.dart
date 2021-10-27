@@ -37,40 +37,84 @@ extension CarCategoryExtension on CarCategory {
 extension CarColorExtension on CarColor {
   String get toMap => toString().split('.').last;
 
-  String get title {
+  Tuple<String, String> get param {
     switch (this) {
       case CarColor.white:
-        return 'White';
+        return Tuple(
+          CarAssetString.white,
+          'White',
+        );
       case CarColor.brown:
-        return 'Brown';
+        return Tuple(
+          CarAssetString.brown,
+          'Brown',
+        );
       case CarColor.red:
-        return 'Red';
+        return Tuple(
+          CarAssetString.red,
+          'Red',
+        );
       case CarColor.green:
-        return 'Green';
+        return Tuple(
+          CarAssetString.green,
+          'Green',
+        );
       case CarColor.black:
-        return 'Black';
+        return Tuple(
+          CarAssetString.black,
+          'Black',
+        );
       case CarColor.orange:
-        return 'Orange';
+        return Tuple(
+          CarAssetString.orange,
+          'Orange',
+        );
       case CarColor.purple:
-        return 'Purple';
+        return Tuple(
+          CarAssetString.purple,
+          'Purple',
+        );
       case CarColor.pink:
-        return 'Pink';
+        return Tuple(
+          CarAssetString.pink,
+          'Pink',
+        );
       case CarColor.silver:
-        return 'Silver';
+        return Tuple(
+          CarAssetString.silver,
+          'Silver',
+        );
       case CarColor.lightBlue:
-        return 'Ligh Blue';
+        return Tuple(
+          CarAssetString.lightBlue,
+          'Ligh Blue',
+        );
       case CarColor.darkBlue:
-        return 'Dark Blue';
+        return Tuple(
+          CarAssetString.darkBlue,
+          'Dark Blue',
+        );
       case CarColor.darkGrey:
-        return 'Dark Grey';
+        return Tuple(
+          CarAssetString.darkGrey,
+          'Dark Grey',
+        );
       case CarColor.lightGreen:
-        return 'Ligh Green';
+        return Tuple(
+          CarAssetString.lightGreen,
+          'Ligh Green',
+        );
       case CarColor.yellow:
-        return 'Yellow';
+        return Tuple(
+          CarAssetString.yellow,
+          'Yellow',
+        );
       default:
-        return 'White';
+        return Tuple(CarAssetString.white, 'White');
     }
   }
+
+  String get title => toString().split('.').last.capitalize;
 
   String get image {
     switch (this) {
@@ -106,4 +150,8 @@ extension CarColorExtension on CarColor {
         return CarAssetString.white;
     }
   }
+}
+
+extension StringExtension on String {
+  String get capitalize => '${this[0].toUpperCase()}${substring(1)}';
 }
