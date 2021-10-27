@@ -36,6 +36,13 @@ class MarkerIconsUtils {
         await _MIU.getBytesFromAsset(data.activeCustomer!, _markerIcon),
       );
     }
+
+    if (data.myCarColor != null) {
+      final asset = data.myCarColor!.image;
+      myCarIcon = BitmapDescriptor.fromBytes(
+        await _MIU.getBytesFromAsset(asset, Platform.isIOS ? 60 : 40),
+      );
+    }
   }
 }
 
