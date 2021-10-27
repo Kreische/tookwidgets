@@ -64,6 +64,13 @@ class Car {
     return '${category?.getString}';
   }
 
+  bool get incomplete =>
+      image == null ||
+      image!.isEmpty ||
+      make == null ||
+      model == null ||
+      registration == null;
+
   Car copyWith({
     String? image,
     String? make,
