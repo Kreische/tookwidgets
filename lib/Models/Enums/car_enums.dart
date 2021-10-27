@@ -1,4 +1,4 @@
-import 'package:tookwidgets/Constants/AssetString.dart';
+part of '../Car.dart';
 
 enum CarColor {
   white,
@@ -17,7 +17,26 @@ enum CarColor {
   lightGreen,
 }
 
+enum CarCategory { private, taxi }
+
+extension CarCategoryExtension on CarCategory {
+  String get toMap => toString().split('.').last;
+
+  String? get getString {
+    switch (this) {
+      case CarCategory.private:
+        return PluginStringData.private;
+      case CarCategory.taxi:
+        return PluginStringData.taxi;
+      default:
+        return PluginStringData.private;
+    }
+  }
+}
+
 extension CarColorExtension on CarColor {
+  String get toMap => toString().split('.').last;
+
   String get title {
     switch (this) {
       case CarColor.white:
