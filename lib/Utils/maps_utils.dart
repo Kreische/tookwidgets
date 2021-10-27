@@ -14,7 +14,15 @@ class MarkerIconsUtils {
 
   late BitmapDescriptor myCarIcon, customer, markerA, markerB, activeCustomer;
 
-  int get _markerIcon => Platform.isIOS ? 70 : 60;
+  int get _markerIcon {
+    final dpr = ui.window.devicePixelRatio;
+    return Platform.isIOS ? (dpr * 30).toInt() : (dpr * 40).toInt();
+  }
+
+  int get _carMarkerIconSize {
+    final dpr = ui.window.devicePixelRatio;
+    return Platform.isIOS ? (dpr * 20).toInt() : (dpr * 30).toInt();
+  }
 
   Future setIcons(MarkerIconsData data) async {
     markerA = BitmapDescriptor.fromBytes(
@@ -40,7 +48,7 @@ class MarkerIconsUtils {
     if (data.myCarColor != null) {
       final asset = data.myCarColor!.image;
       myCarIcon = BitmapDescriptor.fromBytes(
-        await _MIU.getBytesFromAsset(asset, Platform.isIOS ? 60 : 40),
+        await _MIU.getBytesFromAsset(asset, _carMarkerIconSize),
       );
     }
   }
