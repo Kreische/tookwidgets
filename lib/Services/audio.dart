@@ -1,4 +1,4 @@
-import 'package:just_audio/just_audio.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class MyAudioPlayer {
   MyAudioPlayer._singleton() {
@@ -9,7 +9,7 @@ class MyAudioPlayer {
 
   Future play(String string) async {
     try {
-      await audioplayer.setAsset(string).then((value) => audioplayer.play());
+      await audioplayer.play(string, isLocal: true, volume: 1);
     } catch (e) {
       return;
     }

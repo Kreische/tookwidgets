@@ -21,7 +21,7 @@ class MarkerIconsUtils {
 
   int get _carMarkerIconSize {
     final dpr = ui.window.devicePixelRatio;
-    return (dpr * 35).toInt();
+    return (dpr * 30).toInt();
   }
 
   Future setIcons(MarkerIconsData data) async {
