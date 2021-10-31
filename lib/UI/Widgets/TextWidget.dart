@@ -39,7 +39,7 @@ class TextWidget extends StatelessWidget {
       child: Container(
         margin: margin,
         child: Text(
-          translate ? (data ?? '').tr() : (data ?? ''),
+          translate ? (data ?? '').tr().replaceAll('({})', '') : (data ?? ''),
           maxLines: maxLines,
           textAlign: textAlign,
           overflow: maxLines == null ? null : TextOverflow.ellipsis,
