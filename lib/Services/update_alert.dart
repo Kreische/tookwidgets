@@ -11,5 +11,7 @@ class UpdateAlert {
   Future checkForUpdate() async {
     final available = upgrader.isUpdateAvailable();
     print('update is available:  + $available');
+
+    UpgradeAlert();
   }
 }

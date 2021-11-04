@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Address {
@@ -38,6 +40,20 @@ class Address {
   final LatLng latLng;
   final String? placeId;
   final String? stateAndCountry;
+
+  static String encodeList(List<Address> list) =>
+      json.encode(list.map((e) => e.toJson()).toList());
+
+  static List<Address?> decodeList(String map) {
+    return (json.decode(map) as Iterable<String>)
+        .map<Address?>((item) => Address.fromJson(item))
+        .toList();
+  }
+
+  static Address? fromJson(String source) =>
+      Address.fromApiMap(json.decode(source));
+
+  String toJson() => json.encode(toMap);
 }
 
 LatLng linkTolatLngFromMap(map) {
