@@ -20,6 +20,8 @@ dependencies:
   easy_localization: ^3.0.0
   device_info: ^2.0.2
   just_audio: ^0.9.15
+  in_app_update: ^2.0.0
+  package_info: ^2.0.2
 
 dev_dependencies:
   flutter_test:
