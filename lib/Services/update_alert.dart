@@ -1,15 +1,16 @@
 import 'package:in_app_update/in_app_update.dart';
+import 'package:upgrader/upgrader.dart';
 
 class UpdateAlert {
   UpdateAlert._singleton() {
-    inAppUpdate = InAppUpdate();
+    _upgrader = Upgrader();
   }
-
   static final UpdateAlert instance = UpdateAlert._singleton();
 
-  InAppUpdate inAppUpdate = InAppUpdate();
+  late Upgrader _upgrader;
 
   Future checkForUpdate() async {
-    final updateInfo = await InAppUpdate.checkForUpdate();
+    final available = _upgrader.isUpdateAvailable();
+    print('update is available:  + $available');
   }
 }
