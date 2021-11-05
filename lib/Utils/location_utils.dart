@@ -1,6 +1,6 @@
-import 'package:flutter_config/flutter_config.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tookwidgets/Config/config_variables.dart';
 import 'package:tookwidgets/Models/GeocodeAddress.dart';
 import 'package:tookwidgets/network/data_src/google_geocode.dart';
 
@@ -12,8 +12,7 @@ class LocationUtils {
   GeocodeAddress? _currentAddress;
   GeocodeAddress? get currentAddress => _currentAddress;
 
-  GoogleGeocoding geocoding =
-      GoogleGeocoding(FlutterConfig.get('GOOGLE_API_KEY') as String);
+  GoogleGeocoding geocoding = GoogleGeocoding(ConfigVariable.googleApiKey);
 
   Future<GeocodeAddress> run() async {
     if (_currentAddress != null) return _currentAddress!;
