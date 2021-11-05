@@ -6,6 +6,13 @@ import 'package:tookwidgets/Utils/location_utils.dart';
 class MapsDataSrc {
   final Dio dio = Dio();
 
+  Future getAddress(LatLng latlng) async {
+    final res = await dio.get(
+      MapsDataSrcLinks.getAddressBylatlan(latlng),
+    );
+    return res;
+  }
+
   Future getPlacePredictions(String input) async {
     final url = MapsDataSrcLinks.getPlacePredictions(input);
     final res = await dio.get(url);
