@@ -41,15 +41,6 @@ class Address {
   final String? placeId;
   final String? stateAndCountry;
 
-  static String encodeList(List<Address> list) =>
-      json.encode(list.map((e) => e.toJson()).toList());
-
-  static List<Address?> decodeList(String map) {
-    return (json.decode(map) as Iterable<String>)
-        .map<Address?>((item) => Address.fromJson(item))
-        .toList();
-  }
-
   static Address? fromJson(String source) =>
       Address.fromApiMap(json.decode(source));
 
