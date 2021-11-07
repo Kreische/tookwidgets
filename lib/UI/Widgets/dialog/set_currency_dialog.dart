@@ -21,6 +21,7 @@ class SetCurrencyDialog extends StatelessWidget {
             return CupertinoButton(
               onPressed: () => Navigator.pop(context, currencyData),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextWidget(currencyData.currency),
                   TextWidget(currencyData.currencyCode),
