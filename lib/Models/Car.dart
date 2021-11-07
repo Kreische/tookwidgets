@@ -21,12 +21,13 @@ class Car {
     this.category = CarCategory.private,
   });
 
-  factory Car.strictMap(map) {
+  static Car? fromMap(map) {
+    if (map == null) return null;
     return Car(
       image: map['image'] as String?,
       model: map['carModel'] as String?,
       make: map['make'] as String?,
-      type: map['type'] as String?, // getTypeFromMap(map['type'] as String),
+      type: map['type'] as String?,
       color: enumFromString<CarColor>(map['color'] as String?, CarColor.values),
       year: (map['year'] as int?) ?? 1990,
       doors: (map['doors'] as int?) ?? 2,
@@ -35,11 +36,6 @@ class Car {
       category: enumFromString<CarCategory>(
           map['category'] as String?, CarCategory.values),
     );
-  }
-
-  static Car? fromMap(map) {
-    if (map == null) return null;
-    return Car.strictMap(map);
   }
 
   final String? image;
