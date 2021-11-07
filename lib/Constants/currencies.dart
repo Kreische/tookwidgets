@@ -9,16 +9,34 @@ mixin SuppotedCurrencies {
       currencyCode: 'Rs',
     ),
     CurrencyData(
-      country: 'Brazilia',
+      country: 'Brazil',
       countryCode: 'br',
       currency: 'BR',
-      currencyCode: 'BR',
+      currencyCode: r'R$',
     ),
     CurrencyData(
       country: 'Australia',
       countryCode: 'au',
       currency: 'AUD',
       currencyCode: r'$',
+    ),
+    CurrencyData(
+      country: 'Japan',
+      countryCode: 'jp',
+      currency: 'Japanese yen',
+      currencyCode: '¥',
+    ),
+    CurrencyData(
+      country: 'Nigeria',
+      countryCode: 'au',
+      currency: 'JPY',
+      currencyCode: '₦',
+    ),
+    CurrencyData(
+      country: 'India',
+      countryCode: 'in',
+      currency: 'Indian Rupees',
+      currencyCode: '₹',
     ),
   ];
 }
