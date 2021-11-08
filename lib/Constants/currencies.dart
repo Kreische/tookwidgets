@@ -5,31 +5,31 @@ mixin SuppotedCurrencies {
     CurrencyData(
       country: 'Australia',
       countryCode: 'au',
-      currency: 'Australian dollar',
+      currency: 'Australian Dollar',
       currencyCode: r'$',
     ),
     CurrencyData(
       country: 'Brazil',
       countryCode: 'br',
-      currency: 'Brazilian real',
+      currency: 'Brazilian Real',
       currencyCode: r'R$',
-  ),
-  CurrencyData(
-  country: 'India',
-  countryCode: 'in',
-  currency: 'Indian Rupees',
-  currencyCode: '₹',
+    ),
+    CurrencyData(
+      country: 'India',
+      countryCode: 'in',
+      currency: 'Indian Rupees',
+      currencyCode: '₹',
     ),
     CurrencyData(
       country: 'Japan',
       countryCode: 'jp',
-      currency: 'Japanese yen',
+      currency: 'Japanese Yen',
       currencyCode: '¥',
     ),
     CurrencyData(
       country: 'Nigeria',
       countryCode: 'ng',
-      currency: 'Nigerian naira',
+      currency: 'Nigerian Naira',
       currencyCode: '₦',
     ),
     CurrencyData(
