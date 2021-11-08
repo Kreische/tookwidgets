@@ -5,19 +5,19 @@ mixin SuppotedCurrencies {
     CurrencyData(
       country: 'Pakistan',
       countryCode: 'pk',
-      currency: 'PKR',
+      currency: 'Pakistani Rupees',
       currencyCode: 'Rs',
     ),
     CurrencyData(
       country: 'Brazil',
       countryCode: 'br',
-      currency: 'BR',
+      currency: 'Brazilian real',
       currencyCode: r'R$',
     ),
     CurrencyData(
       country: 'Australia',
       countryCode: 'au',
-      currency: 'AUD',
+      currency: 'Australian dollar',
       currencyCode: r'$',
     ),
     CurrencyData(
@@ -29,7 +29,7 @@ mixin SuppotedCurrencies {
     CurrencyData(
       country: 'Nigeria',
       countryCode: 'au',
-      currency: 'JPY',
+      currency: 'Nigerian naira',
       currencyCode: '₦',
     ),
     CurrencyData(
