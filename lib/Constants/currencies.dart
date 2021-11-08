@@ -3,22 +3,22 @@ import 'package:tookwidgets/Models/currency.dart';
 mixin SuppotedCurrencies {
   static final list = [
     CurrencyData(
-      country: 'Pakistan',
-      countryCode: 'pk',
-      currency: 'Pakistani Rupees',
-      currencyCode: 'Rs',
+      country: 'Australia',
+      countryCode: 'au',
+      currency: 'Australian dollar',
+      currencyCode: r'$',
     ),
     CurrencyData(
       country: 'Brazil',
       countryCode: 'br',
       currency: 'Brazilian real',
       currencyCode: r'R$',
-    ),
-    CurrencyData(
-      country: 'Australia',
-      countryCode: 'au',
-      currency: 'Australian dollar',
-      currencyCode: r'$',
+  ),
+  CurrencyData(
+  country: 'India',
+  countryCode: 'in',
+  currency: 'Indian Rupees',
+  currencyCode: '₹',
     ),
     CurrencyData(
       country: 'Japan',
@@ -28,15 +28,15 @@ mixin SuppotedCurrencies {
     ),
     CurrencyData(
       country: 'Nigeria',
-      countryCode: 'au',
+      countryCode: 'ng',
       currency: 'Nigerian naira',
       currencyCode: '₦',
     ),
     CurrencyData(
-      country: 'India',
-      countryCode: 'in',
-      currency: 'Indian Rupees',
-      currencyCode: '₹',
+      country: 'Pakistan',
+      countryCode: 'pk',
+      currency: 'Pakistani Rupees',
+      currencyCode: 'Rs',
     ),
   ];
 }
