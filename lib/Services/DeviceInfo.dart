@@ -4,7 +4,7 @@ import 'package:device_info/device_info.dart';
 import 'package:tookwidgets/Models/DeviceInfo.dart';
 
 mixin DeviceInfoService {
-  static Future get() async {
+  static Future<DeviceInfo?> get() async {
     final infoService = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       final info = await infoService.androidInfo;
