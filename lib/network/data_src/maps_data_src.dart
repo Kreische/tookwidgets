@@ -50,5 +50,5 @@ mixin MapsDataSrcLinks {
   static String getDataFromPlaceID(String? placeID) =>
       'https://maps.googleapis.com/maps/api/place/details/json?place_id=$placeID&fields=formatted_address,geometry,place_id&key=$apiKey';
 
-  static final apiKey = ConfigVariable.googleApiKey;
+  static const apiKey = ConfigVariable.googleApiKey;
 }

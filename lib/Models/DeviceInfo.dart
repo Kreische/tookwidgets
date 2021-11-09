@@ -2,49 +2,67 @@ import 'package:device_info/device_info.dart';
 
 class DeviceInfo {
   DeviceInfo({
-    this.id,
-    this.type,
-    this.adroidVersion,
-    this.manufacturer,
-    this.model,
-    this.androidId,
+    required this.id,
+    required this.type,
+    required this.platformVersion,
+    required this.manufacturer,
+    required this.model,
+    required this.platformId,
   });
 
-  factory DeviceInfo.android(AndroidDeviceInfo build) {
+  factory DeviceInfo.android(AndroidDeviceInfo map) {
     return DeviceInfo(
-      id: build.id,
+      id: map.id,
       type: 'Android',
-      adroidVersion: build.version.release,
-      manufacturer: build.manufacturer,
-      model: build.model,
-      androidId: build.androidId,
+      platformVersion: map.version.baseOS,
+      manufacturer: map.manufacturer,
+      model: map.model,
+      platformId: map.androidId,
     );
   }
 
-  // factory DeviceInfo.ios(IosDeviceInfo data) {
-  //   return DeviceInfo(
-  //     id: data.identifierForVendor,
-  //     type: 'Android',
-  //     adroidVersion: build.version.release,
-  //     manufacturer: build.manufacturer,
-  //     model: build.model,
-  //     androidId: build.androidId,
-  //   );
-  // }
+  factory DeviceInfo.ios(IosDeviceInfo map) {
+    return DeviceInfo(
+      id: map.identifierForVendor,
+      type: 'iOS',
+      platformVersion: map.systemVersion,
+      manufacturer: map.systemName,
+      model: map.model,
+      platformId: map.utsname.version,
+    );
+  }
 
   final String? id;
   final String? type;
-  final String? adroidVersion;
+  final String? platformVersion;
   final String? manufacturer;
   final String? model;
-  final String? androidId;
+  final String? platformId;
+
+  DeviceInfo copyWith({
+    String? id,
+    String? type,
+    String? platformVersion,
+    String? manufacturer,
+    String? model,
+    String? platformId,
+  }) {
+    return DeviceInfo(
+      id: id ?? this.id,
+      type: type ?? this.type,
+      platformVersion: platformVersion ?? this.platformVersion,
+      manufacturer: manufacturer ?? this.manufacturer,
+      model: model ?? this.model,
+      platformId: platformId ?? this.platformId,
+    );
+  }
 
   Map<String, dynamic> get toMap => {
         'id': id,
         'type': type,
-        'adroidVersion': adroidVersion,
+        'platformVersion': platformVersion,
         'manufacturer': manufacturer,
         'model': model,
-        'androidId': androidId,
+        'platformId': platformId,
       };
 }
