@@ -8,13 +8,11 @@ mixin DeviceInfoService {
     final infoService = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       final info = await infoService.androidInfo;
-      final data = DeviceInfo.android(info);
-      print(data.toMap);
+      return DeviceInfo.android(info);
     }
     if (Platform.isIOS) {
       final info = await infoService.iosInfo;
-      final data = DeviceInfo.ios(info);
-      print(data.toMap);
+      return DeviceInfo.ios(info);
     }
   }
 }
