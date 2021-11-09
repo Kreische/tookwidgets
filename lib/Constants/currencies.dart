@@ -27,6 +27,12 @@ mixin SuppotedCurrencies {
       currencyCode: '¥',
     ),
     CurrencyData(
+      country: 'New Zealand',
+      countryCode: 'nz',
+      currency: 'New Zealand Dollar',
+      currencyCode: r'$',
+    ),
+    CurrencyData(
       country: 'Nigeria',
       countryCode: 'ng',
       currency: 'Nigerian Naira',
