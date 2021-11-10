@@ -7,9 +7,9 @@ import 'package:tookwidgets/Constants/PluginStringData.dart';
 import 'TextWidget.dart';
 
 class NoInternetConnectionBar extends StatefulWidget {
-  const NoInternetConnectionBar({Key? key, required this.onConnectionUpdate})
+  const NoInternetConnectionBar({Key? key, this.onConnectionUpdate})
       : super(key: key);
-  final Function(InternetConnectionStatus?) onConnectionUpdate;
+  final Function(InternetConnectionStatus?)? onConnectionUpdate;
 
   @override
   State<NoInternetConnectionBar> createState() =>
