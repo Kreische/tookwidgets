@@ -12,12 +12,12 @@ extension AppNameExt on AppName {
   String get id {
     switch (this) {
       case AppName.driver:
-        const passengerIOS = 'com.betesla.driver';
-        const passengerAndroid = 'com.took.driver';
-        return Platform.isAndroid ? passengerAndroid : passengerIOS;
+        const driverIOS = 'com.betesla.driver';
+        const driverAndroid = 'com.took.driver';
+        return Platform.isAndroid ? driverAndroid : driverIOS;
       case AppName.passenger:
         const passengerIOS = 'com.betesla.passenger';
-        const passengerAndroid = 'com.betesla.driver';
+        const passengerAndroid = 'com.betesla.passenger';
         return Platform.isAndroid ? passengerAndroid : passengerIOS;
       default:
         return '';

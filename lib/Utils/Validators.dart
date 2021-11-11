@@ -9,4 +9,10 @@ mixin ValidatorUtils {
     }
     return null;
   }
+
+  bool profileImageValidator(String value) {
+    const letterImage = 'https://lh3.googleusercontent.com/a/';
+    if (value.contains(letterImage)) return false;
+    return true;
+  }
 }
