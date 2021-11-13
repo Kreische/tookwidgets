@@ -25,6 +25,7 @@ dependencies:
   package_info: ^2.0.2
   new_version: ^0.2.3
   geolocator: ^7.7.1
+  cached_network_image: ^3.1.0+1
 
 dev_dependencies:
   flutter_test:
