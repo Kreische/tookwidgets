@@ -19,6 +19,7 @@ class CachedCircleAvatar extends StatelessWidget {
     return Container(
       width: radius * 2,
       height: radius * 2,
+      clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: backgroundColor,
