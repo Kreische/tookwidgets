@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:new_version/new_version.dart';
-import 'package:tookwidgets/Models/GeocodeAddress.dart';
+import 'package:tookwidgets/models/geocode_address.dart';
 
 import 'location_utils.dart';
 

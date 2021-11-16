@@ -1,4 +1,4 @@
-import 'package:tookwidgets/Models/currency.dart';
+import 'package:tookwidgets/models/currency.dart';
 
 mixin SuppotedCurrencies {
   static final list = [

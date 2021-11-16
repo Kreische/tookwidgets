@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tookwidgets/Constants/currencies.dart';
+import 'package:tookwidgets/plugin_consts/currencies.dart';
 
-import '../TextWidget.dart';
+import '../text_widget.dart';
 
 class SetCurrencyDialog extends StatelessWidget {
   const SetCurrencyDialog({Key? key}) : super(key: key);

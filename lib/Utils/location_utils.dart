@@ -1,8 +1,8 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tookwidgets/Config/config_variables.dart';
-import 'package:tookwidgets/Models/GeocodeAddress.dart';
+import 'package:tookwidgets/models/geocode_address.dart';
 import 'package:tookwidgets/network/data_src/google_geocode.dart';
+import 'package:tookwidgets/plugin_config/config_variables.dart';
 
 class LocationUtils {
   LocationUtils._singleton();

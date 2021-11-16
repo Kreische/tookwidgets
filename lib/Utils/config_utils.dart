@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter/material.dart';
-import 'package:tookwidgets/UI/Widgets/Dialogs.dart';
+import 'package:tookwidgets/ui/widget/dialog.dart';
 
 mixin ConfigUtils {
   static Future checkIosTrackingTransperency(BuildContext context) async {

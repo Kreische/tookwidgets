@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:tookwidgets/Constants/CountriesPhoneData.dart';
-import 'package:tookwidgets/Models/PhoneNumber.dart';
+import 'package:tookwidgets/models/phone_number.dart';
+import 'package:tookwidgets/plugin_consts/countries_phone_data.dart';
 
 part 'phonefield_state.dart';
 

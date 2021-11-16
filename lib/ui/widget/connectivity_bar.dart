@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:tookwidgets/plugin_consts/colors.dart';
 
-import 'package:tookwidgets/Constants/Colors.dart';
-import 'package:tookwidgets/Constants/PluginStringData.dart';
+import 'package:tookwidgets/plugin_consts/plugin_string_data.dart';
 
-import 'TextWidget.dart';
+import 'text_widget.dart';
 
 class ConnectivityBar extends StatefulWidget {
   const ConnectivityBar({Key? key, this.onConnectionUpdate}) : super(key: key);

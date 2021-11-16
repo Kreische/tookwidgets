@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tookwidgets/Constants/AssetString.dart';
-import 'package:tookwidgets/UI/Widgets/TextWidget.dart';
+import 'package:tookwidgets/plugin_consts/plugin_asset_strings.dart';
+import 'package:tookwidgets/ui/widget/text_widget.dart';
 
 class NameWidget extends StatelessWidget {
   const NameWidget(

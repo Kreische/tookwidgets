@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tookwidgets/Constants/Colors.dart';
-
-import 'TextWidget.dart';
+import 'package:tookwidgets/plugin_consts/colors.dart';
+import 'package:tookwidgets/ui/widget/text_widget.dart';
 
 class AlertActionBTN extends StatelessWidget {
   const AlertActionBTN({

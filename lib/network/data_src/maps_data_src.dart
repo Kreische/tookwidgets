@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tookwidgets/Config/config_variables.dart';
 import 'package:tookwidgets/Utils/location_utils.dart';
+import 'package:tookwidgets/plugin_config/config_variables.dart';
 
 class MapsDataSrc {
   final Dio dio = Dio();

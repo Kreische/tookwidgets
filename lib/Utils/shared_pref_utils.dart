@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tookwidgets/Models/currency.dart';
+import 'package:tookwidgets/models/currency.dart';
 
 mixin CommonPrefKey {
   static const currency = 'currency';

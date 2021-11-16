@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tookwidgets/Constants/AssetString.dart';
-import 'package:tookwidgets/Constants/Colors.dart';
+import 'package:tookwidgets/plugin_consts/plugin_asset_strings.dart';
+import 'package:tookwidgets/plugin_consts/colors.dart';
 
-import 'TextWidget.dart';
+import 'text_widget.dart';
 
 class CustomAppBarWithTitleWidget extends StatelessWidget
     implements PreferredSizeWidget {

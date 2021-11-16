@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'TextWidget.dart';
+import 'text_widget.dart';
 
 class RatingWidget extends StatelessWidget {
   const RatingWidget({

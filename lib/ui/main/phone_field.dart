@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tookwidgets/Constants/Colors.dart';
-import 'package:tookwidgets/Constants/CountriesPhoneData.dart';
-import 'package:tookwidgets/Models/PhoneNumber.dart';
-import 'package:tookwidgets/UI/Widgets/TextWidget.dart';
-import 'package:tookwidgets/Utils/Validators.dart';
+import 'package:tookwidgets/models/phone_number.dart' '';
+import 'package:tookwidgets/plugin_consts/colors.dart';
+import 'package:tookwidgets/plugin_consts/countries_phone_data.dart';
+import 'package:tookwidgets/ui/widget/text_widget.dart';
+import 'package:tookwidgets/utils/validators.dart';
 
 class PhoneField extends StatefulWidget {
   const PhoneField({

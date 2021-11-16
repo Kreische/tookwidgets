@@ -2,8 +2,8 @@ import 'package:app_settings/app_settings.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter/material.dart';
 
-import 'Buttons.dart';
-import 'TextWidget.dart';
+import 'buttons.dart';
+import 'text_widget.dart';
 
 class AppTrackingTransparencyDialog extends StatelessWidget {
   const AppTrackingTransparencyDialog({Key? key}) : super(key: key);

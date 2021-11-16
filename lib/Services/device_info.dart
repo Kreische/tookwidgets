@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info/device_info.dart';
-import 'package:tookwidgets/Models/DeviceInfo.dart';
+import 'package:tookwidgets/models/device_info.dart';
 
 mixin DeviceInfoService {
   static Future<DeviceInfo?> get() async {

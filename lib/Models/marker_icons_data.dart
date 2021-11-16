@@ -1,4 +1,4 @@
-import 'Car.dart';
+import 'package:tookwidgets/models/car.dart';
 
 class MarkerIconsData {
   MarkerIconsData({

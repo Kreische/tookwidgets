@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tookwidgets/Constants/Colors.dart';
-import 'package:tookwidgets/UI/Widgets/TextWidget.dart';
+import 'package:tookwidgets/plugin_consts/colors.dart';
+import 'package:tookwidgets/ui/widget/text_widget.dart';
 
 mixin Get {
 //Navigator
@@ -44,10 +44,7 @@ mixin Get {
     // );
 
     final sheet = CupertinoActionSheet(
-      message: TextWidget(
-        text,
-        fontSize: 18,
-      ),
+      message: TextWidget(text, fontSize: 18),
       actions: [
         CupertinoActionSheetAction(
           onPressed: () => Navigator.pop(context, true),
