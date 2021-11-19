@@ -27,8 +27,10 @@ class LocationUtils {
   Future<GeocodeAddress> getLatest() async {
     final res = await Geolocator.getCurrentPosition();
     final latlng = LatLng(res.latitude, res.longitude);
+    print(latlng.toJson());
     setCurrentLanLng(latlng);
     final a = await geocoding.findAddressesFromCoordinates(latlng);
+    print(a.length);
     _currentAddress = a.first;
     return a.first;
   }
