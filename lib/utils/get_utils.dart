@@ -7,28 +7,6 @@ import 'package:tookwidgets/plugin_consts/colors.dart';
 import 'package:tookwidgets/ui/widget/text_widget.dart';
 
 mixin Get {
-//Navigator
-  static void to(BuildContext context, Widget widget) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => widget),
-    );
-  }
-
-  static void off(BuildContext context, Widget widget) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => widget),
-    );
-  }
-
-  static void offAll(BuildContext context, Widget widget) {
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (_) => widget,
-      ),
-      (Route<dynamic> route) => false,
-    );
-  }
-
   // Get Info
   static Future<bool?> getBool(
     BuildContext context,
