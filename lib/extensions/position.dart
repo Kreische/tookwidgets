@@ -9,8 +9,10 @@ extension PositionExt on Position? {
         target: getLatlng,
         zoom: 15,
       );
+}
 
-  dynamic validate(data) {
+mixin PositionUtils {
+  static dynamic validate(data) {
     return {
       'latitude': (data['latitude']).toDouble(),
       'longitude': (data['longitude']).toDouble(),
