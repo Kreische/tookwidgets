@@ -1,4 +1,4 @@
-import 'package:tookwidgets/models/address.dart';
+
 
 class LocationIq {
   LocationIq({
@@ -12,23 +12,24 @@ class LocationIq {
     required this.address,
     required this.boundingbox,
   });
+
   late final String placeId;
   late final String licence;
   late final String osmType;
   late final String osmId;
-  late final String lat;
-  late final String lon;
+  late final num lat;
+  late final num lon;
   late final String displayName;
   late final AddressCode address;
   late final List<String> boundingbox;
 
-  LocationIq.fromJson(Map<dynamic, dynamic> json){
+  LocationIq.fromJson(Map<dynamic, dynamic> json) {
     placeId = json['place_id'] as String;
     licence = json['licence'] as String;
     osmType = json['osm_type'] as String;
     osmId = json['osm_id'] as String;
-    lat = json['lat'] as String;
-    lon = json['lon'] as String;
+    lat = json['lat'] as num;
+    lon = json['lon'] as num;
     displayName = json['display_name'] as String;
     address = AddressCode.fromJson(json['address'] as Map);
     boundingbox = json['boundingbox'] as List<String>;
@@ -47,6 +48,9 @@ class LocationIq {
     _data['boundingbox'] = boundingbox;
     return _data;
   }
+
+
+
 }
 
 class AddressCode {
@@ -56,12 +60,13 @@ class AddressCode {
     required this.country,
     required this.countryCode,
   });
+
   late final String county;
   late final String state;
   late final String country;
   late final String countryCode;
 
-  factory AddressCode.fromJson(Map<dynamic, dynamic> json){
+  factory AddressCode.fromJson(Map<dynamic, dynamic> json) {
     return AddressCode(
         county: json['county'] as String,
         state: json['state'] as String,
@@ -77,7 +82,4 @@ class AddressCode {
     _data['country_code'] = countryCode;
     return _data;
   }
-
-
-
 }
