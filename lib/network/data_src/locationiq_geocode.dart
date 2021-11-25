@@ -17,21 +17,19 @@ class LocationIqGeocode{
   final Map<String, Object>? headers;
   final bool preserveHeaderCase;
 
-  static const _host = 'https://us1.locationiq.com/v1/reverse.php?key=pk.969e7a7923964fa6b654194e0de8334f&lat=30.3753&lon=69.3451&format=json';
+  static const _host = 'https://us1.locationiq.com/v1/reverse.php';
 
-  findAddressesFromCoordinates(
+  Future findAddressesFromCoordinates(
       String lat, String long) async {
     final url = '$_host?key=$apiKey&lat=${lat}&lat=${long}&format=json';
-    return await send(url);
+     await send(url);
+     return;
   }
 
-  send(String url) async {
-    var request = await _dio.get(_host);
-    Map data = request.data as Map;
-    LocationIq.fromJson(data);
-
-
-
+  Future<LocationIq> send(String url) async {
+    final request = await _dio.get(_host);
+    final Map data = request.data as Map;
+    return LocationIq.fromJson(data);
 
   }
 
