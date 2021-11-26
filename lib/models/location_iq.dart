@@ -3,22 +3,16 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tookwidgets/models/address.dart';
 
 class LocationIq {
-
-
-
-
-
-
   LocationIq({
-    required this.placeId,
-    required this.licence,
-    required this.osmType,
-    required this.osmId,
+    this.placeId,
+    this.licence,
+    this.osmType,
+    this.osmId,
     required this.lat,
     required this.lon,
-    required this.displayName,
-    required this.address,
-    required this.boundingbox,
+    required this.display_name,
+    this.address,
+    this.boundingbox,
   });
 
   factory LocationIq.fromMap(map) {
@@ -29,23 +23,24 @@ class LocationIq {
       osmId: map['osmId'] as String,
       lat: map['lat'] as num,
       lon: map['lon'] as num,
-      displayName: map['displayName'] as String,
-      address: AddressCode.fromMap(map['address'] as String) ,
+      display_name: map['display_name'] as String,
+      address: AddressCode.fromMap(map['address'] as String),
       boundingbox: List<String>.from(map['boundingbox'] as List),
     );
   }
 
-  factory LocationIq.fromJson(String source) => LocationIq.fromMap(json.decode(source));
+  factory LocationIq.fromJson(String source) =>
+      LocationIq.fromMap(json.decode(source));
 
-  final String placeId;
-  final String licence;
-  final String osmType;
-  final String osmId;
+  final String? placeId;
+  final String? licence;
+  final String? osmType;
+  final String? osmId;
   final num lat;
   final num lon;
-  final String displayName;
-  final AddressCode address;
-  final List<String> boundingbox;
+  final String display_name;
+  final AddressCode? address;
+  final List<String>? boundingbox;
 
   LocationIq copyWith({
     String? placeId,
@@ -54,7 +49,7 @@ class LocationIq {
     String? osmId,
     num? lat,
     num? lon,
-    String? displayName,
+    String? display_name,
     AddressCode? address,
     List<String>? boundingbox,
   }) {
@@ -65,7 +60,7 @@ class LocationIq {
       osmId: osmId ?? this.osmId,
       lat: lat ?? this.lat,
       lon: lon ?? this.lon,
-      displayName: displayName ?? this.displayName,
+      display_name: display_name ?? this.display_name,
       address: address ?? this.address,
       boundingbox: boundingbox ?? this.boundingbox,
     );
@@ -79,26 +74,16 @@ class LocationIq {
       'osmId': osmId,
       'lat': lat,
       'lon': lon,
-      'displayName': displayName,
-      'address': address.toMap(),
+      'display_name': display_name,
+      'address': address!.toMap(),
       'boundingbox': boundingbox,
     };
   }
 
-
-
   String toJson() => json.encode(toMap());
-
-
-
-
 }
 
 class AddressCode {
-
-
-
-
   AddressCode({
     required this.county,
     required this.state,
@@ -115,15 +100,13 @@ class AddressCode {
     );
   }
 
-  factory AddressCode.fromJson(String source) => AddressCode.fromMap(json.decode(source));
+  factory AddressCode.fromJson(String source) =>
+      AddressCode.fromMap(json.decode(source));
 
   final String county;
   final String state;
   final String country;
   final String countryCode;
-
-
-
 
   AddressCode copyWith({
     String? county,
@@ -139,7 +122,6 @@ class AddressCode {
     );
   }
 
-
   Map<String, dynamic> toMap() {
     return {
       'county': county,
@@ -149,24 +131,16 @@ class AddressCode {
     };
   }
 
-
-
-
   String toJson() => json.encode(toMap());
-
-
-
-
 }
 
-
-extension IqLocationExt on LocationIq{
+extension IqLocationExt on LocationIq {
   Address get getAddress {
     return Address(
       placeId: placeId,
-      formatedAddress: displayName,
+      formatedAddress: display_name,
       latLng: LatLng(lat.toDouble(), lon.toDouble()),
-      stateAndCountry: address.state,
+      stateAndCountry: address!.state,
     );
   }
 }
