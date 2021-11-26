@@ -29,7 +29,7 @@ class LocationIqGeocode{
   Future<LocationIq> send(String url) async {
     final request = await _dio.get(_host);
     final Map data = request.data as Map;
-    return LocationIq.fromJson(data);
+    return LocationIq.fromMap(data);
 
   }
 

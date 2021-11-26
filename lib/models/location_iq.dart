@@ -1,6 +1,14 @@
-
+import 'dart:convert';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tookwidgets/models/address.dart';
 
 class LocationIq {
+
+
+
+
+
+
   LocationIq({
     required this.placeId,
     required this.licence,
@@ -13,47 +21,83 @@ class LocationIq {
     required this.boundingbox,
   });
 
-  late final String placeId;
-  late final String licence;
-  late final String osmType;
-  late final String osmId;
-  late final num lat;
-  late final num lon;
-  late final String displayName;
-  late final AddressCode address;
-  late final List<String> boundingbox;
 
-  LocationIq.fromJson(Map<dynamic, dynamic> json) {
-    placeId = json['place_id'] as String;
-    licence = json['licence'] as String;
-    osmType = json['osm_type'] as String;
-    osmId = json['osm_id'] as String;
-    lat = json['lat'] as num;
-    lon = json['lon'] as num;
-    displayName = json['display_name'] as String;
-    address = AddressCode.fromJson(json['address'] as Map);
-    boundingbox = json['boundingbox'] as List<String>;
+  factory LocationIq.fromJson(String source) => LocationIq.fromMap(json.decode(source));
+
+  final String placeId;
+  final String licence;
+  final String osmType;
+  final String osmId;
+  final num lat;
+  final num lon;
+  final String displayName;
+  final AddressCode address;
+  final List<String> boundingbox;
+
+  LocationIq copyWith({
+    String? placeId,
+    String? licence,
+    String? osmType,
+    String? osmId,
+    num? lat,
+    num? lon,
+    String? displayName,
+    AddressCode? address,
+    List<String>? boundingbox,
+  }) {
+    return LocationIq(
+      placeId: placeId ?? this.placeId,
+      licence: licence ?? this.licence,
+      osmType: osmType ?? this.osmType,
+      osmId: osmId ?? this.osmId,
+      lat: lat ?? this.lat,
+      lon: lon ?? this.lon,
+      displayName: displayName ?? this.displayName,
+      address: address ?? this.address,
+      boundingbox: boundingbox ?? this.boundingbox,
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['place_id'] = placeId;
-    _data['licence'] = licence;
-    _data['osm_type'] = osmType;
-    _data['osm_id'] = osmId;
-    _data['lat'] = lat;
-    _data['lon'] = lon;
-    _data['display_name'] = displayName;
-    _data['address'] = address.toJson();
-    _data['boundingbox'] = boundingbox;
-    return _data;
+  Map<String, dynamic> toMap() {
+    return {
+      'placeId': placeId,
+      'licence': licence,
+      'osmType': osmType,
+      'osmId': osmId,
+      'lat': lat,
+      'lon': lon,
+      'displayName': displayName,
+      'address': address.toMap(),
+      'boundingbox': boundingbox,
+    };
   }
+
+  factory LocationIq.fromMap(map) {
+    return LocationIq(
+      placeId: map['placeId'] as String,
+      licence: map['licence'] as String,
+      osmType: map['osmType'] as String,
+      osmId: map['osmId'] as String,
+      lat: map['lat'] as num,
+      lon: map['lon'] as num,
+      displayName: map['displayName'] as String,
+      address: AddressCode.fromMap(map['address'] as String) ,
+      boundingbox: List<String>.from(map['boundingbox'] as List),
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
 
 
 
 }
 
 class AddressCode {
+
+
+
+
   AddressCode({
     required this.county,
     required this.state,
@@ -61,25 +105,65 @@ class AddressCode {
     required this.countryCode,
   });
 
-  late final String county;
-  late final String state;
-  late final String country;
-  late final String countryCode;
+  factory AddressCode.fromJson(String source) => AddressCode.fromMap(json.decode(source));
 
-  factory AddressCode.fromJson(Map<dynamic, dynamic> json) {
+  final String county;
+  final String state;
+  final String country;
+  final String countryCode;
+
+
+
+
+  AddressCode copyWith({
+    String? county,
+    String? state,
+    String? country,
+    String? countryCode,
+  }) {
     return AddressCode(
-        county: json['county'] as String,
-        state: json['state'] as String,
-        country: json['country'] as String,
-        countryCode: json['country_code'] as String);
+      county: county ?? this.county,
+      state: state ?? this.state,
+      country: country ?? this.country,
+      countryCode: countryCode ?? this.countryCode,
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['county'] = county;
-    _data['state'] = state;
-    _data['country'] = country;
-    _data['country_code'] = countryCode;
-    return _data;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'county': county,
+      'state': state,
+      'country': country,
+      'countryCode': countryCode,
+    };
+  }
+
+  factory AddressCode.fromMap(map) {
+    return AddressCode(
+      county: map['county'] as String,
+      state: map['state'] as String,
+      country: map['country'] as String,
+      countryCode: map['countryCode'] as String,
+    );
+  }
+
+
+  String toJson() => json.encode(toMap());
+
+
+
+
+}
+
+
+extension IqLocationExt on LocationIq{
+  Address get getAddress {
+    return Address(
+      placeId: placeId,
+      formatedAddress: displayName,
+      latLng: LatLng(lat.toDouble(), lon.toDouble())!,
+      stateAndCountry: address.state,
+    );
   }
 }
