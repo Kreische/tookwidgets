@@ -96,7 +96,7 @@ class AddressCode {
       county: map['county'] as String,
       state: map['state'] as String,
       country: map['country'] as String,
-      countryCode: map['countryCode'] as String,
+      countryCode: map['country_code'] as String,
     );
   }
 
@@ -127,7 +127,7 @@ class AddressCode {
       'county': county,
       'state': state,
       'country': country,
-      'countryCode': countryCode,
+      'country_code': countryCode,
     };
   }
 
