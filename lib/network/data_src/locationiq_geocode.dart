@@ -21,7 +21,7 @@ class LocationIqGeocode{
 
   Future findAddressesFromCoordinates(
       String lat, String long) async {
-    final url = '$_host?key=$apiKey&lat=${lat}&lat=${long}&format=json';
+    final url = '$_host?key=$apiKey&lat=$lat&lat=$long&format=json';
      await send(url);
      return;
   }

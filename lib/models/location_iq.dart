@@ -21,6 +21,19 @@ class LocationIq {
     required this.boundingbox,
   });
 
+  factory LocationIq.fromMap(map) {
+    return LocationIq(
+      placeId: map['placeId'] as String,
+      licence: map['licence'] as String,
+      osmType: map['osmType'] as String,
+      osmId: map['osmId'] as String,
+      lat: map['lat'] as num,
+      lon: map['lon'] as num,
+      displayName: map['displayName'] as String,
+      address: AddressCode.fromMap(map['address'] as String) ,
+      boundingbox: List<String>.from(map['boundingbox'] as List),
+    );
+  }
 
   factory LocationIq.fromJson(String source) => LocationIq.fromMap(json.decode(source));
 
@@ -72,19 +85,7 @@ class LocationIq {
     };
   }
 
-  factory LocationIq.fromMap(map) {
-    return LocationIq(
-      placeId: map['placeId'] as String,
-      licence: map['licence'] as String,
-      osmType: map['osmType'] as String,
-      osmId: map['osmId'] as String,
-      lat: map['lat'] as num,
-      lon: map['lon'] as num,
-      displayName: map['displayName'] as String,
-      address: AddressCode.fromMap(map['address'] as String) ,
-      boundingbox: List<String>.from(map['boundingbox'] as List),
-    );
-  }
+
 
   String toJson() => json.encode(toMap());
 
@@ -104,6 +105,15 @@ class AddressCode {
     required this.country,
     required this.countryCode,
   });
+
+  factory AddressCode.fromMap(map) {
+    return AddressCode(
+      county: map['county'] as String,
+      state: map['state'] as String,
+      country: map['country'] as String,
+      countryCode: map['countryCode'] as String,
+    );
+  }
 
   factory AddressCode.fromJson(String source) => AddressCode.fromMap(json.decode(source));
 
@@ -139,14 +149,7 @@ class AddressCode {
     };
   }
 
-  factory AddressCode.fromMap(map) {
-    return AddressCode(
-      county: map['county'] as String,
-      state: map['state'] as String,
-      country: map['country'] as String,
-      countryCode: map['countryCode'] as String,
-    );
-  }
+
 
 
   String toJson() => json.encode(toMap());
@@ -162,7 +165,7 @@ extension IqLocationExt on LocationIq{
     return Address(
       placeId: placeId,
       formatedAddress: displayName,
-      latLng: LatLng(lat.toDouble(), lon.toDouble())!,
+      latLng: LatLng(lat.toDouble(), lon.toDouble()),
       stateAndCountry: address.state,
     );
   }
