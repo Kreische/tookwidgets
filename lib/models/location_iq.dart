@@ -10,7 +10,7 @@ class LocationIq {
     this.osmId,
     required this.lat,
     required this.lon,
-    required this.display_name,
+    required this.displayName,
     this.address,
     this.boundingbox,
   });
@@ -23,7 +23,7 @@ class LocationIq {
       osmId: map['osmId'] as String,
       lat: map['lat'] as num,
       lon: map['lon'] as num,
-      display_name: map['display_name'] as String,
+      displayName: map['display_name'] as String,
       address: AddressCode.fromMap(map['address'] as String),
       boundingbox: List<String>.from(map['boundingbox'] as List),
     );
@@ -38,7 +38,7 @@ class LocationIq {
   final String? osmId;
   final num lat;
   final num lon;
-  final String display_name;
+  final String displayName;
   final AddressCode? address;
   final List<String>? boundingbox;
 
@@ -49,7 +49,7 @@ class LocationIq {
     String? osmId,
     num? lat,
     num? lon,
-    String? display_name,
+    String? displayName,
     AddressCode? address,
     List<String>? boundingbox,
   }) {
@@ -60,7 +60,7 @@ class LocationIq {
       osmId: osmId ?? this.osmId,
       lat: lat ?? this.lat,
       lon: lon ?? this.lon,
-      display_name: display_name ?? this.display_name,
+      displayName: displayName ?? this.displayName,
       address: address ?? this.address,
       boundingbox: boundingbox ?? this.boundingbox,
     );
@@ -74,7 +74,7 @@ class LocationIq {
       'osmId': osmId,
       'lat': lat,
       'lon': lon,
-      'display_name': display_name,
+      'display_name': displayName,
       'address': address!.toMap(),
       'boundingbox': boundingbox,
     };
@@ -138,7 +138,7 @@ extension IqLocationExt on LocationIq {
   Address get getAddress {
     return Address(
       placeId: placeId,
-      formatedAddress: display_name,
+      formatedAddress: displayName,
       latLng: LatLng(lat.toDouble(), lon.toDouble()),
       stateAndCountry: address!.state,
     );
