@@ -7,6 +7,7 @@ class Address {
     required this.formatedAddress,
     required this.latLng,
     required this.stateAndCountry,
+    required this.countryCode,
   });
 
   factory Address.fromLinkMap(map) {
@@ -15,6 +16,7 @@ class Address {
       formatedAddress: map['formatted_address'] as String,
       latLng: linkTolatLngFromMap(map['geometry']),
       stateAndCountry: getStateAndCountryFromMap(map),
+      countryCode: map['country_code'] as String,
     );
   }
 
@@ -25,6 +27,7 @@ class Address {
       formatedAddress: map['formatedAddress'] as String,
       latLng: apiToLantLanFromMap(map['latLng']),
       stateAndCountry: map['stateAndCountry'] as String?,
+      countryCode: map['countryCode'] as String?,
     );
   }
 
@@ -33,12 +36,14 @@ class Address {
         'formatedAddress': formatedAddress,
         'latLng': latLngToApiMap(latLng),
         'stateAndCountry': stateAndCountry,
+        'countryCode': countryCode,
       };
 
   final String formatedAddress;
   final LatLng latLng;
   final String? placeId;
   final String? stateAndCountry;
+  final String? countryCode;
 
   static Address? fromJson(String source) =>
       Address.fromApiMap(json.decode(source));

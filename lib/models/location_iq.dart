@@ -75,7 +75,7 @@ class LocationIq {
       'lat': lat,
       'lon': lon,
       'display_name': displayName,
-      'address': address!.toMap(),
+      'address': address?.toMap(),
       'boundingbox': boundingbox,
     };
   }
@@ -85,25 +85,25 @@ class LocationIq {
 
 class AddressCode {
   AddressCode({
-    required this.state,
-    required this.country,
-    required this.countryCode,
+    this.state,
+    this.country,
+    this.countryCode,
   });
 
   factory AddressCode.fromMap(map) {
     return AddressCode(
-      state: map['state'] as String,
-      country: map['country'] as String,
-      countryCode: map['country_code'] as String,
+      state: map['state'] as String?,
+      country: map['country'] as String?,
+      countryCode: map['country_code'] as String?,
     );
   }
 
   factory AddressCode.fromJson(String source) =>
       AddressCode.fromMap(json.decode(source));
 
-  final String state;
-  final String country;
-  final String countryCode;
+  final String? state;
+  final String? country;
+  final String? countryCode;
 
   AddressCode copyWith({
     String? state,
@@ -135,6 +135,7 @@ extension IqLocationExt on LocationIq {
       formatedAddress: displayName,
       latLng: LatLng(double.parse('$lat'), double.parse('$lon')),
       stateAndCountry: address!.state,
+      countryCode: address?.countryCode,
     );
   }
 }

@@ -42,7 +42,7 @@ mixin MapsDataSrcLinks {
       'https://maps.googleapis.com/maps/api/geocode/json?latlng=${latlng.latitude},${latlng.longitude}&key=$apiKey';
 
   static String getPlacePredictions(String value) {
-    final location = LocationUtils.instance.currentAddress?.latlng;
+    final location = LocationUtils.instance.currentAddress?.latLng;
     final l = '${location?.latitude},${location?.longitude}';
     return 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$value&key=$apiKey&location=$l&radius=60000';
   }

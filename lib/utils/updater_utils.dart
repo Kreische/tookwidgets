@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:new_version/new_version.dart';
-import 'package:tookwidgets/models/geocode_address.dart';
+import 'package:tookwidgets/models/address.dart';
 
 import 'location_utils.dart';
 
@@ -27,7 +27,7 @@ extension AppNameExt on AppName {
 
 mixin UpdaterUtils {
   static Future checkForUpdate(BuildContext context, AppName name) async {
-    GeocodeAddress? address;
+    Address? address;
     if (Platform.isIOS) {
       address = await LocationUtils.instance.run();
     }

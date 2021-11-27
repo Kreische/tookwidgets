@@ -107,6 +107,7 @@ class GeocodeAddress {
       formatedAddress: addressLine!,
       latLng: latlng!,
       stateAndCountry: countryName,
+      countryCode: countryCode,
     );
   }
 }
