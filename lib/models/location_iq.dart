@@ -85,7 +85,6 @@ class LocationIq {
 
 class AddressCode {
   AddressCode({
-    required this.county,
     required this.state,
     required this.country,
     required this.countryCode,
@@ -93,7 +92,6 @@ class AddressCode {
 
   factory AddressCode.fromMap(map) {
     return AddressCode(
-      county: map['county'] as String,
       state: map['state'] as String,
       country: map['country'] as String,
       countryCode: map['country_code'] as String,
@@ -103,19 +101,16 @@ class AddressCode {
   factory AddressCode.fromJson(String source) =>
       AddressCode.fromMap(json.decode(source));
 
-  final String county;
   final String state;
   final String country;
   final String countryCode;
 
   AddressCode copyWith({
-    String? county,
     String? state,
     String? country,
     String? countryCode,
   }) {
     return AddressCode(
-      county: county ?? this.county,
       state: state ?? this.state,
       country: country ?? this.country,
       countryCode: countryCode ?? this.countryCode,
@@ -124,7 +119,6 @@ class AddressCode {
 
   Map<String, dynamic> toMap() {
     return {
-      'county': county,
       'state': state,
       'country': country,
       'country_code': countryCode,

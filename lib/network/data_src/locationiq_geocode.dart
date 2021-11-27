@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:tookwidgets/models/autocomplete.dart';
 import 'package:tookwidgets/models/location_iq.dart';
 
 class LocationIqGeocode {
@@ -27,11 +26,11 @@ class LocationIqGeocode {
     return LocationIq.fromMap(address);
   }
 
-  Future<List<AutoComplete>> listOfAddresses(String search) async {
+  Future<List<LocationIq>> listOfAddresses(String search) async {
     final url = '$_autoApi?key=$apiKey&q$search';
     final res = await _send(url);
-    final autoComplete = List<AutoComplete>.from(
-        res.map((e) => AutoComplete.fromMap(e)) as Iterable);
+    final autoComplete = List<LocationIq>.from(
+        res.map((e) => LocationIq.fromMap(e)) as Iterable);
     return autoComplete;
   }
 
