@@ -28,13 +28,14 @@ class LocationIqGeocode {
 
   Future<List<AutoComplete>> listOfAddresses(String search) async {
     final url = '$_host?key=$apiKey&q$search';
-    List addresses = await _send(url);
-    return addresses.map((e) => AutoComplete.fromMap(e)).toList();
+    final res = await _send(url);
+    final autoComplete = List<AutoComplete>.from(
+        res.map((e) => AutoComplete.fromMap(e)) as Iterable);
+    return autoComplete;
   }
 
   Future _send(String url) async {
     final request = await _dio.get(url);
-    final Map data = request.data as Map;
-    return data;
+    return request.data;
   }
 }
