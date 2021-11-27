@@ -18,6 +18,7 @@ class LocationIqGeocode {
   final bool preserveHeaderCase;
 
   static const _host = 'https://us1.locationiq.com/v1/reverse.php';
+  static const _autoApi = 'https://api.locationiq.com/v1/autocomplete.php';
 
   Future<LocationIq> findAddressesFromCoordinates(
       double lat, double long) async {
@@ -27,7 +28,7 @@ class LocationIqGeocode {
   }
 
   Future<List<AutoComplete>> listOfAddresses(String search) async {
-    final url = '$_host?key=$apiKey&q$search';
+    final url = '$_autoApi?key=$apiKey&q$search';
     final res = await _send(url);
     final autoComplete = List<AutoComplete>.from(
         res.map((e) => AutoComplete.fromMap(e)) as Iterable);

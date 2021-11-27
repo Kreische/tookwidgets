@@ -21,10 +21,10 @@ class LocationIq {
       licence: map['licence'] as String,
       osmType: map['osm_type'] as String,
       osmId: map['osm_id'] as String,
-      lat: map['lat'] as num,
-      lon: map['lon'] as num,
+      lat: map['lat'] as String,
+      lon: map['lon'] as String,
       displayName: map['display_name'] as String,
-      address: AddressCode.fromMap(map['address'] as AddressCode),
+      address: AddressCode.fromMap(map['address']),
       boundingbox: List<String>.from(map['boundingbox'] as List),
     );
   }
@@ -36,8 +36,8 @@ class LocationIq {
   final String? licence;
   final String? osmType;
   final String? osmId;
-  final num lat;
-  final num lon;
+  final String lat;
+  final String lon;
   final String displayName;
   final AddressCode? address;
   final List<String>? boundingbox;
@@ -47,8 +47,8 @@ class LocationIq {
     String? licence,
     String? osmType,
     String? osmId,
-    num? lat,
-    num? lon,
+    String? lat,
+    String? lon,
     String? displayName,
     AddressCode? address,
     List<String>? boundingbox,
@@ -139,7 +139,7 @@ extension IqLocationExt on LocationIq {
     return Address(
       placeId: placeId,
       formatedAddress: displayName,
-      latLng: LatLng(lat.toDouble(), lon.toDouble()),
+      latLng: LatLng(double.parse('$lat'), double.parse('$lon')),
       stateAndCountry: address!.state,
     );
   }
