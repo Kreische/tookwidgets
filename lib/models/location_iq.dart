@@ -17,10 +17,10 @@ class LocationIq {
 
   factory LocationIq.fromMap(map) {
     return LocationIq(
-      placeId: map['placeId'] as String,
+      placeId: map['place_id'] as String,
       licence: map['licence'] as String,
-      osmType: map['osmType'] as String,
-      osmId: map['osmId'] as String,
+      osmType: map['osm_type'] as String,
+      osmId: map['osm_id'] as String,
       lat: map['lat'] as num,
       lon: map['lon'] as num,
       displayName: map['display_name'] as String,
@@ -68,10 +68,10 @@ class LocationIq {
 
   Map<String, dynamic> toMap() {
     return {
-      'placeId': placeId,
+      'place_id': placeId,
       'licence': licence,
-      'osmType': osmType,
-      'osmId': osmId,
+      'osm_type': osmType,
+      'osm_id': osmId,
       'lat': lat,
       'lon': lon,
       'display_name': displayName,
