@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:tookwidgets/models/location_iq.dart';
+import 'package:tookwidgets/models/autocomplete.dart';
 
-class LocationIqGeocode {
-  LocationIqGeocode(
+class LocationIqAutoComplete {
+  LocationIqAutoComplete(
     this.apiKey, {
-    this.language,
     this.headers,
     this.preserveHeaderCase = false,
   });
@@ -12,17 +11,16 @@ class LocationIqGeocode {
   final Dio _dio = Dio();
 
   final String apiKey;
-  final String? language;
   final Map<String, Object>? headers;
   final bool preserveHeaderCase;
 
-  static const _host = 'https://us1.locationiq.com/v1/reverse.php';
+  static const _host = 'https://api.locationiq.com/v1/autocomplete.php';
 
-  Future<LocationIq> findAddressesFromCoordinates(
-      double lat, double long) async {
-    final url = '$_host?key=$apiKey&lat=$lat&lat=$long&format=json';
+  Future<List<AutoComplete>> listOfAddresses(String search) async {
+    final url = '$_host?key=$apiKey&q$search';
     final address = await send(url);
-    return LocationIq.fromMap(address);
+
+    return AutoComplete.fromMap(address) as List<AutoComplete>;
   }
 
   Future send(String url) async {

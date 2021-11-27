@@ -24,7 +24,7 @@ class LocationIq {
       lat: map['lat'] as num,
       lon: map['lon'] as num,
       displayName: map['display_name'] as String,
-      address: AddressCode.fromMap(map['address'] as String),
+      address: AddressCode.fromMap(map['address'] as AddressCode),
       boundingbox: List<String>.from(map['boundingbox'] as List),
     );
   }
