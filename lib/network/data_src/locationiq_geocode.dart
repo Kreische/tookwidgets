@@ -17,12 +17,12 @@ class LocationIqGeocode {
   final Map<String, Object>? headers;
   final bool preserveHeaderCase;
 
-  static const _host = 'https://us1.locationiq.com/v1/reverse.php?';
+  static const _host = 'https://us1.locationiq.com/v1/reverse.php';
   static const _autoApi = 'https://api.locationiq.com/v1/autocomplete.php';
 
   Future<LocationIq> findAddressesFromCoordinates(LatLng latlng) async {
     final url =
-        '$_host?key=$apiKey&lat=${latlng.latitude}&lat=${latlng.longitude}&format=json';
+        '$_host?key=$apiKey&lat=${latlng.latitude}&lon=${latlng.longitude}&format=json';
     final address = await _send(url);
     return LocationIq.fromMap(address);
   }
