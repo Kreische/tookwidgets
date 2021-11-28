@@ -24,32 +24,34 @@ class LocationUtils {
 
   Future<Address> run() async {
     if (_currentAddress != null) return _currentAddress!;
-    final res = getLatest();
+    final res = await getLatest();
     return res;
   }
 
   Future<Address> getLatest() async {
+    final res = await Geolocator.getCurrentPosition();
+    final latlng = LatLng(res.latitude, res.longitude);
+    setCurrentLanLng(latlng);
+    final address = await getAddressFronCoordinates(latlng);
+    return address;
+  }
+
+  Future<Address> getAddressFronCoordinates(LatLng coordinates) async {
     try {
-      final res = await getIqLocationAddress();
+      final res = await getIqLocationAddress(coordinates);
       return res;
     } catch (e) {
-      final googleAddress = await getAddressByGoogle();
+      final googleAddress = await getAddressByGoogle(coordinates);
       return googleAddress;
     }
   }
 
-  Future<Address> getAddressByGoogle() async {
-    final res = await Geolocator.getCurrentPosition();
-    final latlng = LatLng(res.latitude, res.longitude);
-    setCurrentLanLng(latlng);
+  Future<Address> getAddressByGoogle(LatLng latlng) async {
     final a = await geocoding.findAddressesFromCoordinates(latlng);
     return a.first.address;
   }
 
-  Future<Address> getIqLocationAddress() async {
-    final res = await Geolocator.getCurrentPosition();
-    final latlng = LatLng(res.latitude, res.longitude);
-    setCurrentLanLng(latlng);
+  Future<Address> getIqLocationAddress(LatLng latlng) async {
     final LocationIq a = await locationIq.findAddressesFromCoordinates(latlng);
     return a.getAddress;
   }
