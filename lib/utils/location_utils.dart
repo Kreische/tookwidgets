@@ -39,9 +39,12 @@ class LocationUtils {
   Future<Address> getAddressFronCoordinates(LatLng coordinates) async {
     try {
       final res = await getIqLocationAddress(coordinates);
+      print('IQ location');
       return res;
     } catch (e) {
+      print(e);
       final googleAddress = await getAddressByGoogle(coordinates);
+      print('GOogle');
       return googleAddress;
     }
   }
