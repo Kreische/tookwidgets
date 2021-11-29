@@ -4,7 +4,7 @@ import 'package:tookwidgets/models/address.dart';
 import 'package:tookwidgets/models/location_iq.dart';
 import 'package:tookwidgets/network/data_src/google_geocode.dart';
 import 'package:tookwidgets/network/data_src/locationiq_geocode.dart';
-import 'package:tookwidgets/plugin_config/config_variables.dart';
+import 'package:tookwidgets/plugin_config/plugin_config_variables.dart';
 
 class LocationUtils {
   LocationUtils._singleton();
@@ -18,9 +18,10 @@ class LocationUtils {
   Address? _currentAddress;
   Address? get currentAddress => _currentAddress;
 
-  GoogleGeocoding geocoding = GoogleGeocoding(ConfigVariable.googleApiKey);
+  GoogleGeocoding geocoding =
+      GoogleGeocoding(PluginConfigVariable.googleApiKey);
   LocationIqGeocode locationIq =
-      LocationIqGeocode(ConfigVariable.iqLocationKey);
+      LocationIqGeocode(PluginConfigVariable.iqLocationKey);
 
   Future<Address> run() async {
     if (_currentAddress != null) return _currentAddress!;

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tookwidgets/plugin_config/config_variables.dart';
+import 'package:tookwidgets/plugin_config/plugin_config_variables.dart';
 import 'package:tookwidgets/utils/location_utils.dart';
 
 class MapsDataSrc {
@@ -50,5 +50,5 @@ mixin MapsDataSrcLinks {
   static String getDataFromPlaceID(String? placeID) =>
       'https://maps.googleapis.com/maps/api/place/details/json?place_id=$placeID&fields=formatted_address,geometry,place_id&key=$apiKey';
 
-  static const apiKey = ConfigVariable.googleApiKey;
+  static const apiKey = PluginConfigVariable.googleApiKey;
 }
