@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tookwidgets/models/location_iq.dart';
 
-class LocationIqGeocode {
-  LocationIqGeocode(
+class IqLocationService {
+  IqLocationService(
     this.apiKey, {
     this.language,
     this.headers,

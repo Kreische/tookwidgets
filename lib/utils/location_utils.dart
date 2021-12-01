@@ -3,8 +3,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tookwidgets/models/address.dart';
 import 'package:tookwidgets/models/location_iq.dart';
 import 'package:tookwidgets/network/data_src/google_geocode.dart';
-import 'package:tookwidgets/network/data_src/locationiq_geocode.dart';
 import 'package:tookwidgets/plugin_config/plugin_config_variables.dart';
+import 'package:tookwidgets/services/iq_location_service.dart';
 
 class LocationUtils {
   LocationUtils._singleton();
@@ -20,8 +20,8 @@ class LocationUtils {
 
   GoogleGeocoding geocoding =
       GoogleGeocoding(PluginConfigVariable.googleApiKey);
-  LocationIqGeocode locationIq =
-      LocationIqGeocode(PluginConfigVariable.iqLocationKey);
+  IqLocationService locationIq =
+      IqLocationService(PluginConfigVariable.iqLocationKey);
 
   Future<Address> run() async {
     if (_currentAddress != null) return _currentAddress!;
