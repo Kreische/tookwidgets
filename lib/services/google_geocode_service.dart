@@ -25,9 +25,8 @@ class GoogleGeolocationService {
   Future<LatLng> getDataFromPlaceID(String? placeID) async {
     final res =
         await dio.get(_MapsDataSrcLinks.getGeometryFromPlaceID(placeID));
-    print(res);
     if (res.data['status'] as String == 'OK') {
-      final map = res.data['geometry'];
+      final map = res.data['result']['geometry'];
       return LatLng(
         map['location']['lat'] as double,
         map['location']['lng'] as double,
