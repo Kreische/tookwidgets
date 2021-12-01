@@ -8,6 +8,7 @@ class DeviceInfo {
     required this.manufacturer,
     required this.model,
     required this.platformId,
+    this.fcm,
   });
 
   factory DeviceInfo.android(AndroidDeviceInfo map) {
@@ -38,6 +39,7 @@ class DeviceInfo {
   final String? manufacturer;
   final String? model;
   final String? platformId;
+  final String? fcm;
 
   DeviceInfo copyWith({
     String? id,
@@ -46,6 +48,7 @@ class DeviceInfo {
     String? manufacturer,
     String? model,
     String? platformId,
+    String? fcm,
   }) {
     return DeviceInfo(
       id: id ?? this.id,
@@ -54,6 +57,7 @@ class DeviceInfo {
       manufacturer: manufacturer ?? this.manufacturer,
       model: model ?? this.model,
       platformId: platformId ?? this.platformId,
+      fcm: fcm ?? this.fcm,
     );
   }
 
@@ -64,5 +68,6 @@ class DeviceInfo {
         'manufacturer': manufacturer,
         'model': model,
         'platformId': platformId,
+        'fcm': fcm,
       };
 }
