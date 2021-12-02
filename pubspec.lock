@@ -36,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.6+1"
+  background_location:
+    dependency: "direct main"
+    description:
+      name: background_location
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.1"
   bloc:
     dependency: transitive
     description:
