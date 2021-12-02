@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tookwidgets/models/geocode_address.dart';
+import 'package:tookwidgets/models/google_services/geocode_address.dart';
 
 class GoogleGeocoding {
   GoogleGeocoding(
