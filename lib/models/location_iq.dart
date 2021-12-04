@@ -18,9 +18,9 @@ class LocationIq {
   factory LocationIq.fromMap(map) {
     return LocationIq(
       placeId: map['place_id'] as String,
-      licence: map['licence'] as String,
-      osmType: map['osm_type'] as String,
-      osmId: map['osm_id'] as String,
+      licence: map['licence'] as String?,
+      osmType: map['osm_type'] as String?,
+      osmId: map['osm_id'] as String?,
       lat: map['lat'] as String,
       lon: map['lon'] as String,
       displayName: map['display_name'] as String,
