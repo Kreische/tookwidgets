@@ -23,4 +23,12 @@ mixin AlertUtils {
       ),
     );
   }
+
+  static void snakBar(BuildContext context, {required String content}) {
+    final snackBar = SnackBar(
+      content: TextWidget(content),
+      behavior: SnackBarBehavior.floating,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }
