@@ -10,4 +10,5 @@ mixin MyColors {
   static const primaryExtDark = Color(0xFF192839);
   static const switchColor = Color(0xFFC47171);
   static const loginBackground = Color(0x4D000000);
+  static const blueGrey = Color(0xFFCFD1D9);
 }
