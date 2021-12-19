@@ -4,23 +4,46 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tookwidgets/plugin_consts/colors.dart';
+import 'package:tookwidgets/plugin_consts/plugin_string_data.dart';
+import 'package:tookwidgets/ui/widget/bottom_sheets/data_picker.dart';
 import 'package:tookwidgets/ui/widget/text_widget.dart';
 
 mixin Get {
+// Date time picker ;
+
+  static Future<DateTime?> getDateTime(
+    BuildContext context, {
+    double? height,
+    CupertinoDatePickerMode? mode,
+    DateTime? initialDateTime,
+    DateTime? minimumDateTime,
+    DateTime? maximumDateTime,
+    bool? use24HourClock,
+    Color? backgroundColor,
+  }) async {
+    final data = await showModalBottomSheet<DateTime?>(
+      context: context,
+      builder: (context) => DatePicker(
+        height: height,
+        mode: mode,
+        initialDateTime: initialDateTime,
+        minimumDateTime: minimumDateTime,
+        maximumDateTime: maximumDateTime,
+        use24HourClock: use24HourClock,
+        backgroundColor: backgroundColor,
+      ),
+    );
+    return data;
+  }
+
   // Get Info
   static Future<bool?> getBool(
     BuildContext context,
     String? text, {
     bool barrierDismissible = false,
-    String okButtonText = 'OK',
-    String cancelButtonText = 'Cancel',
+    String okButtonText = PluginStringData.ok,
+    String cancelButtonText = PluginStringData.cancel,
   }) async {
-    // final res = await showDialog<bool>(
-    //   context: context,
-    //   barrierDismissible: barrierDismissible,
-    //   builder: (context) => GetBoolDialog(text),
-    // );
-
     final sheet = CupertinoActionSheet(
       message: TextWidget(text, fontSize: 18),
       actions: [
@@ -95,7 +118,7 @@ mixin Get {
                     onPressed: () {
                       Navigator.pop(context, null);
                     },
-                    child: const TextWidget('Cancel'),
+                    child: const TextWidget(PluginStringData.cancel),
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -113,7 +136,7 @@ mixin Get {
                       ),
                     ),
                     child: const TextWidget(
-                      'OK',
+                      PluginStringData.ok,
                       margin: EdgeInsets.symmetric(horizontal: 15),
                       color: Colors.white,
                     ),
