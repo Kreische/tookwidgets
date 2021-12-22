@@ -1,5 +1,4 @@
-import 'package:tookwidgets/models/enums/ride_enums.dart';
-import 'package:tookwidgets/plugin_consts/plugin_string_data.dart';
+part of '../models/enums/ride_enums.dart';
 
 extension RideStatusExtension on RideStatus {
   String get getString {
