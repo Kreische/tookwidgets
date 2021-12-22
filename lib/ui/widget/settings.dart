@@ -5,17 +5,19 @@ class GeneralContainer extends StatelessWidget {
     Key? key,
     required this.child,
     this.color = Colors.white,
+    this.padding = const EdgeInsets.symmetric(
+      vertical: 15,
+      horizontal: 10,
+    ),
   }) : super(key: key);
   final Widget child;
   final Color color;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 15,
-        horizontal: 10,
-      ),
+      padding: padding,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
