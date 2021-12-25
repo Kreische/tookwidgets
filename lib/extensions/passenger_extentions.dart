@@ -1,5 +1,4 @@
-import 'package:tookwidgets/models/enums/passenger_enums.dart';
-import 'package:tookwidgets/plugin_consts/plugin_string_data.dart';
+part of '../models/enums/passenger_enums.dart';
 
 extension PassengerSocialExt on PassengerSocial {
   String get getString {
