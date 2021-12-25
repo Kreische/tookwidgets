@@ -13,4 +13,17 @@ extension MusicTypesExt on MusicTypes {
         return 'Classic';
     }
   }
+
+  MusicTypes get next {
+    switch (this) {
+      case MusicTypes.classic:
+        return MusicTypes.pop;
+      case MusicTypes.pop:
+        return MusicTypes.rock;
+      case MusicTypes.rock:
+        return MusicTypes.classic;
+      default:
+        return MusicTypes.classic;
+    }
+  }
 }
