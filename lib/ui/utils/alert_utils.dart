@@ -23,10 +23,18 @@ mixin AlertUtils {
     );
   }
 
-  static void snakBar(BuildContext context, {required String content}) {
+  static void snakBar(
+    BuildContext context, {
+    required String content,
+    Color? textColor = Colors.white,
+    Duration duration = const Duration(seconds: 3),
+    Color? backgroundColor,
+  }) {
     final snackBar = SnackBar(
-      content: TextWidget(content),
+      content: TextWidget(content, color: textColor),
       behavior: SnackBarBehavior.floating,
+      backgroundColor: backgroundColor,
+      duration: duration,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }

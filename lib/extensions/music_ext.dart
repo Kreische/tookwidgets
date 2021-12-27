@@ -9,6 +9,8 @@ extension MusicTypesExt on MusicTypes {
         return 'Pop';
       case MusicTypes.rock:
         return 'Rock';
+      case MusicTypes.noMusic:
+        return 'No Music';
       default:
         return 'Classic';
     }
@@ -21,6 +23,8 @@ extension MusicTypesExt on MusicTypes {
       case MusicTypes.pop:
         return MusicTypes.rock;
       case MusicTypes.rock:
+        return MusicTypes.classic;
+      case MusicTypes.noMusic:
         return MusicTypes.classic;
       default:
         return MusicTypes.classic;
