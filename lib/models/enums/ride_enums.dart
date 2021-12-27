@@ -4,6 +4,7 @@ part '../../extensions/ride_extenstions.dart';
 
 enum RideStatus {
   waiting,
+  confirmed,
   driverOnTheyWay,
   driverIsHere,
   onTheyWayToPointB,

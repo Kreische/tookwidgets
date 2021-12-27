@@ -4,6 +4,7 @@ mixin PluginStringData {
   static const noInternetError = 'No internet connection detected';
   //Ride Status
   static const awaitingDriverConfirmation = 'Awaiting driver confirmation';
+  static const bookingConfirmed = 'Booking confirmed';
   static const driverOnTheyWay = 'Your driver is on the way';
   static const yourDriverIsHere = 'Your driver is here';
   static const onTheyWayToPointB = 'On the way to destination';
