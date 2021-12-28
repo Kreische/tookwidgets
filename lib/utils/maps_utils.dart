@@ -24,6 +24,11 @@ class MarkerIconsUtils {
     return (dpr * 30).toInt();
   }
 
+  int get _activeCustomberIconSize {
+    final dpr = ui.window.devicePixelRatio;
+    return (dpr * 18).toInt();
+  }
+
   Future setIcons(MarkerIconsData data) async {
     markerA = BitmapDescriptor.fromBytes(
       await _MIU.getBytesFromAsset(data.mapPointA, _markerIcon),
@@ -41,7 +46,8 @@ class MarkerIconsUtils {
 
     if (data.activeCustomer != null) {
       activeCustomer = BitmapDescriptor.fromBytes(
-        await _MIU.getBytesFromAsset(data.activeCustomer!, _markerIcon),
+        await _MIU.getBytesFromAsset(
+            data.activeCustomer!, _activeCustomberIconSize),
       );
     }
 
