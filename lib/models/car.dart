@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:tookwidgets/models/enums/driver_enums.dart';
 import 'package:tookwidgets/models/enums/enums_functions.dart';
 import 'package:tookwidgets/models/tuple.dart';
 import 'package:tookwidgets/plugin_consts/plugin_asset_strings.dart';
@@ -17,6 +18,7 @@ class Car {
     this.passengerCapasity = 1,
     this.registration,
     this.category = CarCategory.private,
+    this.fuelType = CarFuelType.petrol,
   });
 
   static Car? fromMap(map) {
@@ -33,6 +35,11 @@ class Car {
       registration: map['registration'] as String?,
       category: enumFromString<CarCategory>(
           map['category'] as String?, CarCategory.values),
+      fuelType: map['fuelType'] == null
+          ? CarFuelType.petrol
+          : (enumFromString<CarFuelType>(
+                  map['fuelType'] as String, CarFuelType.values) ??
+              CarFuelType.petrol),
     );
   }
 
@@ -46,6 +53,7 @@ class Car {
   final int? passengerCapasity;
   final String? registration;
   final CarCategory? category;
+  final CarFuelType fuelType;
 
   String? get doorCount {
     if (doors == null || doors! >= 4) return null;
@@ -77,6 +85,7 @@ class Car {
     int? passengerCapasity,
     String? registration,
     CarCategory? category,
+    CarFuelType? fuelType,
   }) {
     return Car(
       image: image ?? this.image,
@@ -89,6 +98,7 @@ class Car {
       passengerCapasity: passengerCapasity ?? this.passengerCapasity,
       registration: registration ?? this.registration,
       category: category ?? this.category,
+      fuelType: fuelType ?? this.fuelType,
     );
   }
 
@@ -102,7 +112,8 @@ class Car {
         'doors': doors,
         'passengerCapasity': passengerCapasity,
         'registration': registration,
-        'category': category?.toMap,
+        'category': enumToString(category),
+        'fuelType': enumToString(fuelType)
       };
 
   String toJson() => json.encode(toMap);
@@ -128,8 +139,6 @@ enum CarColor {
 enum CarCategory { private, taxi }
 
 extension CarCategoryExtension on CarCategory {
-  String get toMap => toString().split('.').last;
-
   String? get getString {
     switch (this) {
       case CarCategory.private:
