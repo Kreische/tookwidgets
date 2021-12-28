@@ -26,7 +26,7 @@ class MarkerIconsUtils {
 
   int get _activeCustomberIconSize {
     final dpr = ui.window.devicePixelRatio;
-    return (dpr * 18).toInt();
+    return (dpr * 15).toInt();
   }
 
   Future setIcons(MarkerIconsData data) async {
