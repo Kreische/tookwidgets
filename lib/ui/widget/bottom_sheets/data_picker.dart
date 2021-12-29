@@ -62,6 +62,7 @@ class DatePicker extends StatelessWidget {
             mode: mode ?? CupertinoDatePickerMode.dateAndTime,
             minimumDate: minimumDateTime,
             maximumDate: maximumDateTime,
+            initialDateTime: initialDateTime,
             use24hFormat: use24HourClock ?? false,
             backgroundColor: backgroundColor,
             onDateTimeChanged: (v) {
