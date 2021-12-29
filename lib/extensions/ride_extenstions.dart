@@ -42,7 +42,7 @@ extension RideStatusExtension on RideStatus {
       case RideStatus.waiting:
         return PluginStringData.awaitingDriverConfirmation;
       case RideStatus.confirmed:
-        return PluginStringData.bookingConfirmed;
+        return PluginStringData.awaitingStart;
       case RideStatus.driverOnTheyWay:
         return PluginStringData.driverOnTheyWay;
       case RideStatus.driverIsHere:
