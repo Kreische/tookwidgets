@@ -124,7 +124,7 @@ class _PhoneFieldState extends State<PhoneField> {
         blurRadius: 5,
       ),
     ],
-    borderRadius: BorderRadius.circular(40),
+    borderRadius: BorderRadius.circular(24),
   );
 }
 
