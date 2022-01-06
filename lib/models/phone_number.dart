@@ -14,7 +14,7 @@ class PhoneNumber {
     return number;
   }
 
-  String get fullNumber => '+' + countryIsoCode + _checkNumberZero;
+  String get fullNumber => '+' + countryIsoCode + ' ' + _checkNumberZero;
 }
 
 class CountriesPhoneData {
