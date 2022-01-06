@@ -78,9 +78,10 @@ class _PhoneFieldState extends State<PhoneField> {
               hintText: widget.hint,
               contentPadding: const EdgeInsets.symmetric(horizontal: 14),
               border: InputBorder.none,
-              suffixIcon: Icon(
-                CupertinoIcons.clear_circled_solid,
-                color: MyColors.mainColor.withOpacity(0.8),
+              suffixIcon: IconButton(
+                onPressed: () => _controller.clear(),
+                icon: Icon(CupertinoIcons.clear_circled_solid,
+                    color: MyColors.mainColor.withOpacity(0.8)),
               ),
             ),
           ),
@@ -124,7 +125,7 @@ class _PhoneFieldState extends State<PhoneField> {
         blurRadius: 5,
       ),
     ],
-    borderRadius: BorderRadius.circular(24),
+    borderRadius: BorderRadius.circular(14),
   );
 }
 
