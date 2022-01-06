@@ -37,13 +37,14 @@ class _PhoneFieldState extends State<PhoneField> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         InkWell(
           onTap: _selectCountry,
           child: Container(
-            width: 75,
+            width: size.width * 0.20,
             height: 50,
             decoration: boxDecoration,
             alignment: Alignment.center,
@@ -52,9 +53,9 @@ class _PhoneFieldState extends State<PhoneField> {
             ),
           ),
         ),
+        SizedBox(width: size.width * 0.05),
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          width: 250,
+          width: size.width * 0.65,
           height: 50,
           decoration: boxDecoration,
           child: TextFormField(
@@ -71,13 +72,14 @@ class _PhoneFieldState extends State<PhoneField> {
                 number: v,
               );
               widget.onChanged(phone);
+              setState(() {});
             },
             decoration: InputDecoration(
               hintText: widget.hint,
               contentPadding: const EdgeInsets.symmetric(horizontal: 14),
               border: InputBorder.none,
               suffixIcon: Icon(
-                CupertinoIcons.phone,
+                CupertinoIcons.clear_circled_solid,
                 color: MyColors.mainColor.withOpacity(0.8),
               ),
             ),
