@@ -47,7 +47,7 @@ class DatePicker extends StatelessWidget {
               CupertinoButton(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: const TextWidget(
-                  PluginStringData.done,
+                  PluginStringData.confirm,
                   color: MyColors.mainColor,
                 ),
                 onPressed: () => Navigator.pop(context, selectedDateTime),

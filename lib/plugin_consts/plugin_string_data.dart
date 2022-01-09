@@ -18,5 +18,5 @@ mixin PluginStringData {
 
   static const ok = 'OK';
   static const cancel = 'Cancel';
-  static const done = 'Done';
+  static const confirm = 'Confirm';
 }
