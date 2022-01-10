@@ -2,17 +2,24 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tookwidgets/models/car.dart';
 import 'package:tookwidgets/models/marker_icons_data.dart';
+import 'package:tookwidgets/plugin_consts/colors.dart';
 
 class MarkerIconsUtils {
   MarkerIconsUtils._singlton();
 
   static final MarkerIconsUtils instance = MarkerIconsUtils._singlton();
 
-  late BitmapDescriptor myCarIcon, customer, markerA, markerB, activeCustomer;
+  late BitmapDescriptor myCarIcon,
+      customer,
+      markerA,
+      markerB,
+      activeCustomer,
+      marketPoint;
 
   int get _markerIcon {
     final dpr = ui.window.devicePixelRatio;
@@ -57,6 +64,61 @@ class MarkerIconsUtils {
         await _MIU.getBytesFromAsset(asset, _carMarkerIconSize),
       );
     }
+  }
+
+  Future<BitmapDescriptor> markerPoint(String markerPointText) async {
+    return BitmapDescriptor.fromBytes(
+      await create(markerPointText),
+    );
+  }
+
+  Future<Uint8List> create(String text) async {
+    final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
+    final Canvas canvas = Canvas(pictureRecorder);
+    final Paint paint = Paint()..color = MyColors.primaryDark;
+    const size = Size(90, 110);
+
+    final Path path0 = Path();
+    path0.moveTo(size.width * 0.5032000, size.height * 0.9910833);
+    path0.cubicTo(
+        size.width * -0.3159000,
+        size.height * 0.5493333,
+        size.width * 0.0196000,
+        size.height * 0.0087500,
+        size.width * 0.4985000,
+        size.height * 0.0031667);
+    path0.cubicTo(
+        size.width * 0.9935000,
+        size.height * 0.0084167,
+        size.width * 1.3092000,
+        size.height * 0.5734167,
+        size.width * 0.5032000,
+        size.height * 0.9910833);
+    path0.close();
+    path0.close();
+
+    canvas.drawPath(path0, paint);
+
+    final TextPainter painter = TextPainter(textDirection: TextDirection.ltr);
+    painter.text = TextSpan(
+      text: text,
+      style: TextStyle(
+          fontSize: size.height / 1.8,
+          color: Colors.white,
+          fontWeight: FontWeight.bold),
+    );
+    painter.layout();
+    painter.paint(
+      canvas,
+      Offset(size.width / 2 - painter.width / 2,
+          size.height / 2.2 - painter.height / 2),
+    );
+
+    final img = await pictureRecorder
+        .endRecording()
+        .toImage(size.width.toInt(), size.height.toInt());
+    final data = await img.toByteData(format: ui.ImageByteFormat.png);
+    return data!.buffer.asUint8List();
   }
 }
 
