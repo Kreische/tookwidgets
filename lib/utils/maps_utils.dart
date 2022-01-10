@@ -68,11 +68,11 @@ class MarkerIconsUtils {
 
   Future<BitmapDescriptor> markerPoint(String markerPointText) async {
     return BitmapDescriptor.fromBytes(
-      await create(markerPointText),
+      await _create(markerPointText),
     );
   }
 
-  Future<Uint8List> create(String text) async {
+  Future<Uint8List> _create(String text) async {
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
     final Canvas canvas = Canvas(pictureRecorder);
     final Paint paint = Paint()..color = MyColors.primaryDark;
