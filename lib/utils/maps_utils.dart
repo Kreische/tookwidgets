@@ -66,6 +66,31 @@ class MarkerIconsUtils {
     }
   }
 
+  Future<BitmapDescriptor> markerDot(
+      {Color color = MyColors.primaryDark}) async {
+    return BitmapDescriptor.fromBytes(
+      await _createDot(color),
+    );
+  }
+
+  Future<Uint8List> _createDot(Color color) async {
+    final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
+    final Canvas canvas = Canvas(pictureRecorder);
+    final Paint paint = Paint()..color = color;
+    final dpr = ui.window.devicePixelRatio;
+
+    final Size size = ui.Size(dpr * 18, dpr * 18);
+
+    canvas.drawCircle(
+        Offset(size.width / 2, size.height / 2), size.width / 2.0, paint);
+
+    final img = await pictureRecorder
+        .endRecording()
+        .toImage(size.width.toInt(), size.height.toInt());
+    final data = await img.toByteData(format: ui.ImageByteFormat.png);
+    return data!.buffer.asUint8List();
+  }
+
   Future<BitmapDescriptor> markerPoint(String markerPointText) async {
     return BitmapDescriptor.fromBytes(
       await _create(markerPointText),
@@ -76,7 +101,8 @@ class MarkerIconsUtils {
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
     final Canvas canvas = Canvas(pictureRecorder);
     final Paint paint = Paint()..color = MyColors.primaryDark;
-    const size = Size(90, 110);
+    final dpr = ui.window.devicePixelRatio;
+    final Size size = Size(dpr * 35, dpr * 45);
 
     final Path path0 = Path();
     path0.moveTo(size.width * 0.5032000, size.height * 0.9910833);
@@ -95,7 +121,6 @@ class MarkerIconsUtils {
         size.width * 0.5032000,
         size.height * 0.9910833);
     path0.close();
-    path0.close();
 
     canvas.drawPath(path0, paint);
 
@@ -103,15 +128,18 @@ class MarkerIconsUtils {
     painter.text = TextSpan(
       text: text,
       style: TextStyle(
-          fontSize: size.height / 1.8,
-          color: Colors.white,
-          fontWeight: FontWeight.bold),
+        fontSize: size.height / 1.8,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
     );
     painter.layout();
     painter.paint(
       canvas,
-      Offset(size.width / 2 - painter.width / 2,
-          size.height / 2.2 - painter.height / 2),
+      Offset(
+        size.width / 2 - painter.width / 2,
+        size.height / 2.2 - painter.height / 2,
+      ),
     );
 
     final img = await pictureRecorder
