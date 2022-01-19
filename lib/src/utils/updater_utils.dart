@@ -43,4 +43,21 @@ mixin UpdaterUtils {
     if (uptodate) return;
     version.showUpdateDialog(context: context, versionStatus: versionStatus);
   }
+
+  static Future<bool> isUpdatedAppVersion(AppName name) async {
+    Address? address;
+    if (Platform.isIOS) {
+      address = await LocationUtils.instance.run();
+    }
+    final version = NewVersion(
+      androidId: name.id,
+      iOSId: name.id,
+      iOSAppStoreCountry: address?.countryCode,
+    );
+
+    final versionStatus = await version.getVersionStatus();
+
+    final uptodate = versionStatus?.localVersion == versionStatus?.storeVersion;
+    return uptodate;
+  }
 }
