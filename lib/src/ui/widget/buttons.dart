@@ -11,17 +11,19 @@ class AlertActionBTN extends StatelessWidget {
     this.height = 45,
     this.color = MyColors.mainColor,
     this.text = 'Ok',
+    this.padding,
   }) : super(key: key);
   final Function() onPressed;
   final double width;
   final double height;
   final Color color;
   final String? text;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      padding: const EdgeInsets.all(0),
+      padding: padding,
       onPressed: onPressed,
       child: Container(
         width: width,
