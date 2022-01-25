@@ -25,7 +25,7 @@ extension MusicTypesExt on MusicTypes {
       case MusicTypes.rock:
         return MusicTypes.classic;
       case MusicTypes.noMusic:
-        return MusicTypes.classic;
+        return MusicTypes.noMusic;
       default:
         return MusicTypes.classic;
     }
