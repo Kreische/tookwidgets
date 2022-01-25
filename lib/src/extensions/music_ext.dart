@@ -23,11 +23,11 @@ extension MusicTypesExt on MusicTypes {
       case MusicTypes.pop:
         return MusicTypes.rock;
       case MusicTypes.rock:
-        return MusicTypes.classic;
-      case MusicTypes.noMusic:
         return MusicTypes.noMusic;
-      default:
+      case MusicTypes.noMusic:
         return MusicTypes.classic;
+      default:
+        return MusicTypes.noMusic;
     }
   }
 }
