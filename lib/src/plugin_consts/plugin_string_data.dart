@@ -24,6 +24,7 @@ mixin PluginStringData {
   static const acceptBankTransferPayments = 'Accept bank transfer payments';
   static const acceptCardPayments = 'Accept card payments';
 
+  static const inAppPayAmount = '{} Online pay';
   static const bankAmount = '{} Bank';
   static const cashAmount = '{} Cash';
   static const cardAmount = '{} Card';
