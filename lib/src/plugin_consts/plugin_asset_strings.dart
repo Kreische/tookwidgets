@@ -2,6 +2,10 @@ mixin PluginAssetString {
   static const logoT = 'assets/Icons/LogoT.png';
   static const pioneer = 'assets/Icons/pioneer.png';
   static const invalidImage = 'assets/Images/invalid_image.png';
+  static const cardMachine = 'assets/PaymentIcon/card_machine.png';
+  static const cashPayment = 'assets/PaymentIcon/cash.png';
+  static const passPayment = 'assets/Images/pass_payment.png';
+  static const bank = 'assets/Icons/bank.png';
 }
 
 mixin CarAssetString {

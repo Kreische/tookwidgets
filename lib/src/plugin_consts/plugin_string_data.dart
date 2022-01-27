@@ -19,4 +19,12 @@ mixin PluginStringData {
   static const ok = 'OK';
   static const cancel = 'Cancel';
   static const confirm = 'Confirm';
+
+  static const acceptCashpayments = 'Accept cash payments';
+  static const acceptBankTransferPayments = 'Accept bank transfer payments';
+  static const acceptCardPayments = 'Accept card payments';
+
+  static const bankAmount = '{} Bank';
+  static const cashAmount = '{} Cash';
+  static const cardAmount = '{} Card';
 }
