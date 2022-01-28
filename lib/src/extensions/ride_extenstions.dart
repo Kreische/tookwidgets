@@ -8,7 +8,7 @@ extension RideStatusExtension on RideStatus {
       case RideStatus.confirmed:
         return RideStatus.driverOnTheyWay;
       case RideStatus.driverOnTheyWay:
-        return RideStatus.onTheyWayToPointB;
+        return RideStatus.driverIsHere;
       case RideStatus.driverIsHere:
         return RideStatus.onTheyWayToPointB;
       case RideStatus.onTheyWayToPointB:
