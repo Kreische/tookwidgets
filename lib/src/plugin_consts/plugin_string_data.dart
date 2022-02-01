@@ -20,6 +20,7 @@ mixin PluginStringData {
   static const cancel = 'Cancel';
   static const confirm = 'Confirm';
 
+  static const acceptInAppPayment = 'Accept in app payment';
   static const acceptCashpayments = 'Accept cash payments';
   static const acceptBankTransferPayments = 'Accept bank transfer payments';
   static const acceptCardPayments = 'Accept card payments';

@@ -11,4 +11,10 @@ mixin MyColors {
   static const switchColor = Color(0xFFC47171);
   static const loginBackground = Color(0x4D000000);
   static const blueGrey = Color(0xFFCFD1D9);
+
+  static const mainGradient = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    colors: [Colors.black, MyColors.mainColor],
+  );
 }

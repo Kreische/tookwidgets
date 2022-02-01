@@ -24,7 +24,7 @@ extension PaymentExt on PaymentMethod {
   String get askAboutAcceptance {
     switch (this) {
       case PaymentMethod.inApp:
-        return 'Do you accept in app payment';
+        return PluginStringData.acceptInAppPayment;
       case PaymentMethod.cash:
         return PluginStringData.acceptCashpayments;
       case PaymentMethod.bankTransfer:
