@@ -34,3 +34,11 @@ enum VehicleType {
   motorbike,
 }
 enum VehicleCategory { private, taxi }
+
+enum VehicleBodyType {
+  sedan,
+  hatchback,
+  suv,
+  minivan,
+  van,
+}
