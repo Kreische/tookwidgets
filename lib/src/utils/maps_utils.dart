@@ -83,13 +83,9 @@ class MarkerIconsUtils {
   }
 
   Future setIcons(MarkerIconsData data) async {
-    markerA = BitmapDescriptor.fromBytes(
-      await _MIU.getBytesFromAsset(data.mapPointA, _markerIcon),
-    );
+    markerA = await MarkerIconsUtils.instance.markerPoint('A');
 
-    markerB = BitmapDescriptor.fromBytes(
-      await _MIU.getBytesFromAsset(data.mapPointB, _markerIcon),
-    );
+    markerB = await MarkerIconsUtils.instance.markerPoint('A');
 
     if (data.customer != null) {
       customer = BitmapDescriptor.fromBytes(
