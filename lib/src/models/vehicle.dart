@@ -21,25 +21,29 @@ class Vehicle {
 
   factory Vehicle.fromMap(map) {
     return Vehicle(
-      id: map['id'] as String?,
+      id: map['_id'] as String?,
       type: enumFromString<VehicleType>(
               map['type'] as String, VehicleType.values) ??
           VehicleType.car,
       make: map['make'] as String? ?? '',
       model: map['model'] as String? ?? '',
       registration: map['registration'] as String? ?? '',
-      bodyType: enumFromString<VehicleBodyType>(
-              map['bodyType'] as String, VehicleBodyType.values) ??
-          VehicleBodyType.van,
+      bodyType: map['bodyType'] != null
+          ? enumFromString<VehicleBodyType>(
+                  map['bodyType'] as String, VehicleBodyType.values) ??
+              VehicleBodyType.hatchback
+          : VehicleBodyType.hatchback,
       color: enumFromString<VehicleColor>(
               map['color'] as String, VehicleColor.values) ??
           VehicleColor.white,
       year: DateTime.parse(map['year'] as String).toLocal(),
       doors: map['doors'] as int? ?? 2,
       passengerCapacity: map['passengerCapacity'] as int? ?? 1,
-      category: enumFromString<VehicleCategory>(
-              map['category'] as String, VehicleCategory.values) ??
-          VehicleCategory.private,
+      category: map['category'] != null
+          ? enumFromString<VehicleCategory>(
+                  map['category'] as String, VehicleCategory.values) ??
+              VehicleCategory.private
+          : VehicleCategory.private,
       fuelType: enumFromString<VehicleFuelType>(
               map['fuelType'] as String, VehicleFuelType.values) ??
           VehicleFuelType.petrol,
@@ -97,7 +101,7 @@ class Vehicle {
   }
 
   Map<String, dynamic> get toMap => {
-        'id': id,
+        '_id': id,
         'type': enumToString(type),
         'make': make,
         'model': model,
