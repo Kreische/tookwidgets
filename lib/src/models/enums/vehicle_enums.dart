@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../../../took_widgets.dart';
 import '../../plugin_consts/plugin_asset_strings.dart';
 
@@ -35,10 +37,8 @@ enum VehicleType {
 }
 enum VehicleCategory { private, taxi }
 
-enum VehicleBodyType {
-  sedan,
-  hatchback,
-  suv,
-  minivan,
-  van,
+enum VehicleBodyType { sedan, hatchback, suv, minivan, van }
+
+extension VehicleExt on VehicleColor {
+  Color get color {}
 }
