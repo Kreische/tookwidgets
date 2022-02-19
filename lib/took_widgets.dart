@@ -3,7 +3,6 @@ export './src/extensions/location.dart';
 export './src/extensions/position.dart';
 export './src/extensions/position.dart';
 export './src/models/address.dart';
-export './src/models/car.dart';
 export './src/models/currency.dart';
 export './src/models/device_info.dart';
 export './src/models/enums/driver_enums.dart';

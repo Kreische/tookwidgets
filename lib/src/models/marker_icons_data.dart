@@ -1,4 +1,4 @@
-import 'package:tookwidgets/src/models/car.dart';
+import 'package:tookwidgets/src/models/enums/vehicle_enums.dart';
 
 class MarkerIconsData {
   MarkerIconsData({
@@ -6,12 +6,12 @@ class MarkerIconsData {
     required this.mapPointB,
     this.customer,
     this.activeCustomer,
-    this.myCarColor,
+    this.vehicleColor,
   });
 
   final String mapPointA;
   final String mapPointB;
   final String? customer;
   final String? activeCustomer;
-  final CarColor? myCarColor;
+  final VehicleColor? vehicleColor;
 }

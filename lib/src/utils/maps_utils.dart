@@ -5,7 +5,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tookwidgets/src/models/car.dart';
+import 'package:tookwidgets/src/models/enums/vehicle_enums.dart';
 import 'package:tookwidgets/src/models/marker_icons_data.dart';
 import 'package:tookwidgets/src/plugin_consts/colors.dart';
 
@@ -100,8 +100,8 @@ class MarkerIconsUtils {
       );
     }
 
-    if (data.myCarColor != null) {
-      final asset = data.myCarColor!.image;
+    if (data.vehicleColor != null) {
+      final asset = data.vehicleColor!.image;
       myCarIcon = BitmapDescriptor.fromBytes(
         await _MIU.getBytesFromAsset(asset, _carMarkerIconSize),
       );
@@ -212,35 +212,35 @@ class CarBitmapDescriptors {
       _darkGrey,
       _lightGreen;
 
-  BitmapDescriptor getImage(CarColor color) {
+  BitmapDescriptor getImage(VehicleColor color) {
     switch (color) {
-      case CarColor.white:
+      case VehicleColor.white:
         return _white;
-      case CarColor.brown:
+      case VehicleColor.brown:
         return _brown;
-      case CarColor.red:
+      case VehicleColor.red:
         return _red;
-      case CarColor.green:
+      case VehicleColor.green:
         return _green;
-      case CarColor.black:
+      case VehicleColor.black:
         return _black;
-      case CarColor.orange:
+      case VehicleColor.orange:
         return _orange;
-      case CarColor.purple:
+      case VehicleColor.purple:
         return _purple;
-      case CarColor.pink:
+      case VehicleColor.pink:
         return _pink;
-      case CarColor.silver:
+      case VehicleColor.silver:
         return _silver;
-      case CarColor.lightBlue:
+      case VehicleColor.lightBlue:
         return _lightBlue;
-      case CarColor.darkBlue:
+      case VehicleColor.darkBlue:
         return _darkBlue;
-      case CarColor.darkGrey:
+      case VehicleColor.darkGrey:
         return _darkGrey;
-      case CarColor.lightGreen:
+      case VehicleColor.lightGreen:
         return _lightGreen;
-      case CarColor.yellow:
+      case VehicleColor.yellow:
         return _yellow;
       default:
         return _white;
@@ -266,23 +266,24 @@ class CarBitmapDescriptors {
     ]);
   }
 
-  Future _setRed() async => _red = await _bit(CarColor.red);
-  Future _setWhite() async => _white = await _bit(CarColor.white);
-  Future _setGreen() async => _green = await _bit(CarColor.green);
-  Future _setYellow() async => _yellow = await _bit(CarColor.yellow);
-  Future _setBlack() async => _black = await _bit(CarColor.black);
-  Future _setOrange() async => _orange = await _bit(CarColor.orange);
-  Future _setBrown() async => _brown = await _bit(CarColor.brown);
-  Future _setPurple() async => _purple = await _bit(CarColor.purple);
-  Future _setPink() async => _pink = await _bit(CarColor.pink);
-  Future _setSilver() async => _silver = await _bit(CarColor.silver);
-  Future _setLightblue() async => _lightBlue = await _bit(CarColor.lightBlue);
-  Future _setDarkblue() async => _darkBlue = await _bit(CarColor.darkBlue);
-  Future _setDartGrey() async => _darkGrey = await _bit(CarColor.darkGrey);
+  Future _setRed() async => _red = await _bit(VehicleColor.red);
+  Future _setWhite() async => _white = await _bit(VehicleColor.white);
+  Future _setGreen() async => _green = await _bit(VehicleColor.green);
+  Future _setYellow() async => _yellow = await _bit(VehicleColor.yellow);
+  Future _setBlack() async => _black = await _bit(VehicleColor.black);
+  Future _setOrange() async => _orange = await _bit(VehicleColor.orange);
+  Future _setBrown() async => _brown = await _bit(VehicleColor.brown);
+  Future _setPurple() async => _purple = await _bit(VehicleColor.purple);
+  Future _setPink() async => _pink = await _bit(VehicleColor.pink);
+  Future _setSilver() async => _silver = await _bit(VehicleColor.silver);
+  Future _setLightblue() async =>
+      _lightBlue = await _bit(VehicleColor.lightBlue);
+  Future _setDarkblue() async => _darkBlue = await _bit(VehicleColor.darkBlue);
+  Future _setDartGrey() async => _darkGrey = await _bit(VehicleColor.darkGrey);
   Future _setLightGreen() async =>
-      _lightGreen = await _bit(CarColor.lightGreen);
+      _lightGreen = await _bit(VehicleColor.lightGreen);
 
-  Future<BitmapDescriptor> _bit(CarColor color) async =>
+  Future<BitmapDescriptor> _bit(VehicleColor color) async =>
       BitmapDescriptor.fromBytes(
         await _MIU.getBytesFromAsset(color.image, Platform.isIOS ? 60 : 40),
       );

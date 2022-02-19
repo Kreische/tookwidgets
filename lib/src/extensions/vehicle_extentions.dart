@@ -46,156 +46,16 @@ extension VehicleColorExtention on VehicleColor {
     final asset = 'assets/CarsIcon/$name.png';
     final colorName = vehicalColor.name.capitalize;
     return Tuple(asset, colorName);
-    // switch (this) {
-    //   case VehicleColor.white:
-    //     return Tuple(
-    //       CarAssetString.white,
-    //       'White', //text
-    //     );
-    //   case VehicleColor.brown:
-    //     return Tuple(
-    //       CarAssetString.brown,
-    //       'Brown',
-    //     );
-    //   case VehicleColor.red:
-    //     return Tuple(
-    //       CarAssetString.red,
-    //       'Red',
-    //     );
-    //   case VehicleColor.green:
-    //     return Tuple(
-    //       CarAssetString.green,
-    //       'Green',
-    //     );
-    //   case VehicleColor.black:
-    //     return Tuple(
-    //       CarAssetString.black,
-    //       'Black',
-    //     );
-    //   case VehicleColor.orange:
-    //     return Tuple(
-    //       CarAssetString.orange,
-    //       'Orange',
-    //     );
-    //   case VehicleColor.purple:
-    //     return Tuple(
-    //       CarAssetString.purple,
-    //       'Purple',
-    //     );
-    //   case VehicleColor.pink:
-    //     return Tuple(
-    //       CarAssetString.pink,
-    //       'Pink',
-    //     );
-    //   case VehicleColor.silver:
-    //     return Tuple(
-    //       CarAssetString.silver,
-    //       'Silver',
-    //     );
-    //   case VehicleColor.lightBlue:
-    //     return Tuple(
-    //       CarAssetString.lightBlue,
-    //       'Ligh Blue',
-    //     );
-    //   case VehicleColor.darkBlue:
-    //     return Tuple(
-    //       CarAssetString.darkBlue,
-    //       'Dark Blue',
-    //     );
-    //   case VehicleColor.darkGrey:
-    //     return Tuple(
-    //       CarAssetString.darkGrey,
-    //       'Dark Grey',
-    //     );
-    //   case VehicleColor.lightGreen:
-    //     return Tuple(
-    //       CarAssetString.lightGreen,
-    //       'Ligh Green',
-    //     );
-    //   case VehicleColor.yellow:
-    //     return Tuple(
-    //       CarAssetString.yellow,
-    //       'Yellow',
-    //     );
-    //   default:
-    //     return Tuple(CarAssetString.white, 'White');
-    // }
   }
 
   Tuple<String, String> getMotorbikeParam(VehicleColor vehicalColor) {
-    switch (this) {
-      case VehicleColor.white:
-        return Tuple(
-          MotorbikeAssetString.white,
-          'White', //text
-        );
-      case VehicleColor.brown:
-        return Tuple(
-          MotorbikeAssetString.brown,
-          'Brown',
-        );
-      case VehicleColor.red:
-        return Tuple(
-          MotorbikeAssetString.red,
-          'Red',
-        );
-      case VehicleColor.green:
-        return Tuple(
-          MotorbikeAssetString.green,
-          'Green',
-        );
-      case VehicleColor.black:
-        return Tuple(
-          MotorbikeAssetString.black,
-          'Black',
-        );
-      case VehicleColor.orange:
-        return Tuple(
-          MotorbikeAssetString.orange,
-          'Orange',
-        );
-      case VehicleColor.purple:
-        return Tuple(
-          MotorbikeAssetString.purple,
-          'Purple',
-        );
-      case VehicleColor.pink:
-        return Tuple(
-          MotorbikeAssetString.pink,
-          'Pink',
-        );
-      case VehicleColor.silver:
-        return Tuple(
-          MotorbikeAssetString.silver,
-          'Silver',
-        );
-      case VehicleColor.lightBlue:
-        return Tuple(
-          MotorbikeAssetString.lightBlue,
-          'Ligh Blue',
-        );
-      case VehicleColor.darkBlue:
-        return Tuple(
-          MotorbikeAssetString.darkBlue,
-          'Dark Blue',
-        );
-      case VehicleColor.darkGrey:
-        return Tuple(
-          MotorbikeAssetString.darkGrey,
-          'Dark Grey',
-        );
-      case VehicleColor.lightGreen:
-        return Tuple(
-          MotorbikeAssetString.lightGreen,
-          'Ligh Green',
-        );
-      case VehicleColor.yellow:
-        return Tuple(
-          MotorbikeAssetString.yellow,
-          'Yellow',
-        );
-      default:
-        return Tuple(MotorbikeAssetString.white, 'White');
-    }
+    final name = vehicalColor.name;
+    final asset = 'assets/motorbike_icon/$name.png';
+    final colorName = vehicalColor.name.capitalize;
+    return Tuple(asset, colorName);
   }
+}
+
+extension StringExtension on String {
+  String get capitalize => '${this[0].toUpperCase()}${substring(1)}';
 }
