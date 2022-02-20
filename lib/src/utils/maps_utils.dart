@@ -60,12 +60,7 @@ class MarkerIconsUtils {
 
   static final MarkerIconsUtils instance = MarkerIconsUtils._singlton();
 
-  late BitmapDescriptor myCarIcon,
-      customer,
-      markerA,
-      markerB,
-      activeCustomer,
-      marketPoint;
+  late BitmapDescriptor myCarIcon, customer, activeCustomer, marketPoint;
 
   int get _markerIcon {
     final dpr = ui.window.devicePixelRatio;
@@ -83,10 +78,6 @@ class MarkerIconsUtils {
   }
 
   Future setIcons(MarkerIconsData data) async {
-    markerA = await MarkerIconsUtils.instance.markerPoint('A');
-
-    markerB = await MarkerIconsUtils.instance.markerPoint('A');
-
     if (data.customer != null) {
       customer = BitmapDescriptor.fromBytes(
         await _MIU.getBytesFromAsset(data.customer!, _markerIcon),
@@ -110,36 +101,22 @@ class MarkerIconsUtils {
 
   Future<BitmapDescriptor> markerDot(
       {Color color = MyColors.primaryDark}) async {
-    return BitmapDescriptor.fromBytes(
-      await _createDot(color),
-    );
-  }
-
-  Future<Uint8List> _createDot(Color color) async {
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
     final Canvas canvas = Canvas(pictureRecorder);
     final Paint paint = Paint()..color = color;
     final dpr = ui.window.devicePixelRatio;
-
     final Size size = ui.Size(dpr * 18, dpr * 18);
-
     canvas.drawCircle(
         Offset(size.width / 2, size.height / 2), size.width / 2.0, paint);
-
     final img = await pictureRecorder
         .endRecording()
         .toImage(size.width.toInt(), size.height.toInt());
     final data = await img.toByteData(format: ui.ImageByteFormat.png);
-    return data!.buffer.asUint8List();
+    final bytes = data!.buffer.asUint8List();
+    return BitmapDescriptor.fromBytes(bytes);
   }
 
   Future<BitmapDescriptor> markerPoint(String markerPointText) async {
-    return BitmapDescriptor.fromBytes(
-      await _create(markerPointText),
-    );
-  }
-
-  Future<Uint8List> _create(String text) async {
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
     final Canvas canvas = Canvas(pictureRecorder);
     final Paint paint = Paint()..color = MyColors.primaryDark;
@@ -168,7 +145,7 @@ class MarkerIconsUtils {
 
     final TextPainter painter = TextPainter(textDirection: TextDirection.ltr);
     painter.text = TextSpan(
-      text: text,
+      text: markerPointText,
       style: TextStyle(
         fontSize: size.height / 1.8,
         color: Colors.white,
@@ -183,12 +160,12 @@ class MarkerIconsUtils {
         size.height / 2.2 - painter.height / 2,
       ),
     );
-
     final img = await pictureRecorder
         .endRecording()
         .toImage(size.width.toInt(), size.height.toInt());
     final data = await img.toByteData(format: ui.ImageByteFormat.png);
-    return data!.buffer.asUint8List();
+    final bytes = data!.buffer.asUint8List();
+    return BitmapDescriptor.fromBytes(bytes);
   }
 }
 
