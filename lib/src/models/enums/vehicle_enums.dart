@@ -32,8 +32,10 @@ enum VehicleFuelType {
 }
 
 enum VehicleType {
-  car,
+  biCycle,
+  rikshaw,
   motorbike,
+  car,
 }
 enum VehicleCategory { private, taxi }
 

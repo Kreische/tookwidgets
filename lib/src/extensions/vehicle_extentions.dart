@@ -15,17 +15,6 @@ extension VehicleCategoryExtension on VehicleCategory {
 
 extension VehicleTypeExtention on VehicleType {
   String get title => name.capitalize;
-
-  Tuple<String, String> get getDefautValue {
-    switch (this) {
-      case VehicleType.car:
-        return Tuple('Upload image', 'assets/Icons/car_icon.png');
-      case VehicleType.motorbike:
-        return Tuple('Upload image', 'assets/Images/img_motorcycle.png');
-      default:
-        return Tuple('Upload image', 'assets/Icons/car_icon.png');
-    }
-  }
 }
 
 extension VehicleColorExtention on VehicleColor {
@@ -42,20 +31,20 @@ extension VehicleColorExtention on VehicleColor {
         return Tuple(CarAssetString.white, 'White');
     }
   }
+}
 
-  Tuple<String, String> getCarParam(VehicleColor vehicalColor) {
-    final name = vehicalColor.name;
-    final asset = 'assets/CarsIcon/$name.png';
-    final colorName = vehicalColor.name.capitalize;
-    return Tuple(asset, colorName);
-  }
+Tuple<String, String> getCarParam(VehicleColor vehicalColor) {
+  final name = vehicalColor.name;
+  final asset = 'assets/CarsIcon/$name.png';
+  final colorName = vehicalColor.name.capitalize;
+  return Tuple(asset, colorName);
+}
 
-  Tuple<String, String> getMotorbikeParam(VehicleColor vehicalColor) {
-    final name = vehicalColor.name;
-    final asset = 'assets/motorbike_icon/$name.png';
-    final colorName = vehicalColor.name.capitalize;
-    return Tuple(asset, colorName);
-  }
+Tuple<String, String> getMotorbikeParam(VehicleColor vehicalColor) {
+  final name = vehicalColor.name;
+  final asset = 'assets/motorbike_icon/$name.png';
+  final colorName = vehicalColor.name.capitalize;
+  return Tuple(asset, colorName);
 }
 
 extension StringExtension on String {
