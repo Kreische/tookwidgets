@@ -9,6 +9,7 @@ class Vehicle {
     this.type = VehicleType.car,
     this.make,
     this.model,
+    this.image,
     this.registration,
     this.bodyType = VehicleBodyType.suv,
     this.color = VehicleColor.white,
@@ -27,6 +28,7 @@ class Vehicle {
           VehicleType.car,
       make: map['make'] as String? ?? '',
       model: map['model'] as String? ?? '',
+      image: map['image'] as String?,
       registration: map['registration'] as String? ?? '',
       bodyType: map['bodyType'] != null
           ? enumFromString<VehicleBodyType>(
@@ -57,6 +59,7 @@ class Vehicle {
   final VehicleType type;
   final String? make;
   final String? model;
+  final String? image;
   final String? registration;
   final VehicleBodyType bodyType;
   final VehicleColor color;
@@ -71,6 +74,7 @@ class Vehicle {
     VehicleType? type,
     String? make,
     String? model,
+    String? image,
     String? registration,
     VehicleBodyType? bodyType,
     VehicleColor? color,
@@ -85,6 +89,7 @@ class Vehicle {
       type: type ?? this.type,
       make: make ?? this.make,
       model: model ?? this.model,
+      image: image ?? this.image,
       registration: registration ?? this.registration,
       bodyType: bodyType ?? this.bodyType,
       color: color ?? this.color,
@@ -97,7 +102,7 @@ class Vehicle {
   }
 
   bool validate() {
-    return ![make, model, year].contains(null);
+    return ![image, registration, make, model, year].contains(null);
   }
 
   Map<String, dynamic> get toMap => {
@@ -105,6 +110,7 @@ class Vehicle {
         'type': enumToString(type),
         'make': make,
         'model': model,
+        'image': image,
         'registration': registration,
         'bodyType': enumToString(bodyType),
         'color': enumToString(color),

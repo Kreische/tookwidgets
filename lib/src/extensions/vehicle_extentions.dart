@@ -6,7 +6,7 @@ extension VehicleCategoryExtension on VehicleCategory {
       case VehicleCategory.private:
         return 'Private';
       case VehicleCategory.taxi:
-        return 'taxi';
+        return 'Taxi';
       default:
         return 'Private';
     }
@@ -14,6 +14,8 @@ extension VehicleCategoryExtension on VehicleCategory {
 }
 
 extension VehicleTypeExtention on VehicleType {
+  String get title => name.capitalize;
+
   Tuple<String, String> get getDefautValue {
     switch (this) {
       case VehicleType.car:

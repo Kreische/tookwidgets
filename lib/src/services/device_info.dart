@@ -14,5 +14,6 @@ mixin DeviceInfoService {
       final info = await infoService.iosInfo;
       return DeviceInfo.ios(info);
     }
+    return null;
   }
 }
