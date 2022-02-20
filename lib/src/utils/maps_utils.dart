@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tookwidgets/src/models/enums/vehicle_enums.dart';
-import 'package:tookwidgets/src/models/marker_icons_data.dart';
 import 'package:tookwidgets/src/plugin_consts/colors.dart';
 
 class MapUtils {
@@ -59,45 +58,6 @@ class MarkerIconsUtils {
   MarkerIconsUtils._singlton();
 
   static final MarkerIconsUtils instance = MarkerIconsUtils._singlton();
-
-  late BitmapDescriptor myCarIcon, customer, activeCustomer, marketPoint;
-
-  int get _markerIcon {
-    final dpr = ui.window.devicePixelRatio;
-    return (dpr * 35).toInt();
-  }
-
-  int get _carMarkerIconSize {
-    final dpr = ui.window.devicePixelRatio;
-    return (dpr * 30).toInt();
-  }
-
-  int get _activeCustomberIconSize {
-    final dpr = ui.window.devicePixelRatio;
-    return (dpr * 12).toInt();
-  }
-
-  Future setIcons(MarkerIconsData data) async {
-    if (data.customer != null) {
-      customer = BitmapDescriptor.fromBytes(
-        await _MIU.getBytesFromAsset(data.customer!, _markerIcon),
-      );
-    }
-
-    if (data.activeCustomer != null) {
-      activeCustomer = BitmapDescriptor.fromBytes(
-        await _MIU.getBytesFromAsset(
-            data.activeCustomer!, _activeCustomberIconSize),
-      );
-    }
-
-    if (data.vehicleColor != null) {
-      final asset = data.vehicleColor!.image;
-      myCarIcon = BitmapDescriptor.fromBytes(
-        await _MIU.getBytesFromAsset(asset, _carMarkerIconSize),
-      );
-    }
-  }
 
   Future<BitmapDescriptor> markerDot(
       {Color color = MyColors.primaryDark}) async {

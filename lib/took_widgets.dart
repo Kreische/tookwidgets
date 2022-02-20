@@ -16,7 +16,6 @@ export './src/models/google_services/google_directions.dart';
 export './src/models/google_services/google_place_prediction.dart';
 export './src/models/language.dart';
 export './src/models/location_iq.dart';
-export './src/models/marker_icons_data.dart';
 export './src/models/phone_number.dart';
 export './src/models/ride_message.dart';
 export './src/models/tuple.dart';
