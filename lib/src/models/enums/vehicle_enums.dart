@@ -31,12 +31,8 @@ enum VehicleFuelType {
   diesel
 }
 
-enum VehicleType {
-  biCycle,
-  rikshaw,
-  motorbike,
-  car,
-}
+enum VehicleType { bicycle, rikshaw, motorbike, car }
+
 enum VehicleCategory { private, taxi }
 
 enum VehicleBodyType { sedan, hatchback, suv, minivan, van }

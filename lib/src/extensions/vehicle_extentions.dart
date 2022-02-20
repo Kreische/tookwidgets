@@ -26,9 +26,8 @@ extension VehicleColorExtention on VehicleColor {
         return getCarParam(this);
       case VehicleType.motorbike:
         return getMotorbikeParam(this);
-
       default:
-        return Tuple(CarAssetString.white, 'White');
+        return getMotorbikeParam(this);
     }
   }
 }
