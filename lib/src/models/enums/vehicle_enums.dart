@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../took_widgets.dart';
-import '../../plugin_consts/plugin_asset_strings.dart';
 
 part '../../extensions/vehicle_extentions.dart';
 
@@ -73,38 +72,5 @@ extension VehicleExt on VehicleColor {
     }
   }
 
-  String get image {
-    switch (this) {
-      case VehicleColor.white:
-        return CarAssetString.white;
-      case VehicleColor.brown:
-        return CarAssetString.brown;
-      case VehicleColor.red:
-        return CarAssetString.red;
-      case VehicleColor.green:
-        return CarAssetString.green;
-      case VehicleColor.black:
-        return CarAssetString.black;
-      case VehicleColor.orange:
-        return CarAssetString.orange;
-      case VehicleColor.purple:
-        return CarAssetString.purple;
-      case VehicleColor.pink:
-        return CarAssetString.pink;
-      case VehicleColor.silver:
-        return CarAssetString.silver;
-      case VehicleColor.lightBlue:
-        return CarAssetString.lightBlue;
-      case VehicleColor.darkBlue:
-        return CarAssetString.darkBlue;
-      case VehicleColor.darkGrey:
-        return CarAssetString.darkGrey;
-      case VehicleColor.lightGreen:
-        return CarAssetString.lightGreen;
-      case VehicleColor.yellow:
-        return CarAssetString.yellow;
-      default:
-        return CarAssetString.white;
-    }
-  }
+  String get image => 'assets/CarsIcon/$name.png';
 }
