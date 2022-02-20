@@ -173,6 +173,7 @@ mixin Get {
               file = await _pickImage(ImageSource.camera);
               Navigator.pop(context, file);
             },
+            trailing: const Icon(CupertinoIcons.camera),
           ),
           ListTile(
             title: const TextWidget('Galery'),
@@ -180,7 +181,9 @@ mixin Get {
               file = await _pickImage(ImageSource.gallery);
               Navigator.pop(context, file);
             },
+            trailing: const Icon(CupertinoIcons.photo_on_rectangle),
           ),
+          SizedBox(height: MediaQuery.of(context).padding.bottom),
         ],
       ),
     );
