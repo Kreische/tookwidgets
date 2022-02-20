@@ -5,7 +5,6 @@ export './src/extensions/position.dart';
 export './src/models/address.dart';
 export './src/models/currency.dart';
 export './src/models/device_info.dart';
-export './src/models/enums/driver_enums.dart';
 export './src/models/enums/enums_functions.dart';
 export './src/models/enums/music.dart';
 export './src/models/enums/passenger_enums.dart';
