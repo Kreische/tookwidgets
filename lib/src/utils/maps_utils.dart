@@ -59,8 +59,11 @@ class MarkerIconsUtils {
 
   static final MarkerIconsUtils instance = MarkerIconsUtils._singlton();
 
+  BitmapDescriptor? _dot;
+
   Future<BitmapDescriptor> markerDot(
       {Color color = MyColors.primaryDark}) async {
+    if (color == MyColors.primaryDark && _dot != null) return _dot!;
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
     final Canvas canvas = Canvas(pictureRecorder);
     final Paint paint = Paint()..color = color;
@@ -73,7 +76,9 @@ class MarkerIconsUtils {
         .toImage(size.width.toInt(), size.height.toInt());
     final data = await img.toByteData(format: ui.ImageByteFormat.png);
     final bytes = data!.buffer.asUint8List();
-    return BitmapDescriptor.fromBytes(bytes);
+    final bitmap = BitmapDescriptor.fromBytes(bytes);
+    if (color == MyColors.primaryDark) _dot = bitmap;
+    return bitmap;
   }
 
   Future<BitmapDescriptor> markerPoint(String markerPointText) async {
