@@ -29,4 +29,9 @@ mixin PluginStringData {
   static const bankAmount = '{} Bank';
   static const cashAmount = '{} Cash';
   static const cardAmount = '{} Card';
+
+  static const inAppPayOfferCount = 'App ({})';
+  static const bankOfferCount = 'Bank ({})';
+  static const cashOfferCount = 'Cash ({})';
+  static const cardOfferCount = 'Card ({})';
 }

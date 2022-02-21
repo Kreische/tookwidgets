@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:tookwidgets/src/plugin_consts/plugin_asset_strings.dart';
 import 'package:tookwidgets/took_widgets.dart';
 
@@ -63,6 +64,21 @@ extension PaymentExt on PaymentMethod {
         return PluginStringData.cardAmount;
       default:
         return PluginStringData.cashAmount;
+    }
+  }
+
+  String titleWithOfferCount(int val) {
+    switch (this) {
+      case PaymentMethod.inApp:
+        return PluginStringData.inAppPayOfferCount.tr(args: [val.toString()]);
+      case PaymentMethod.cash:
+        return PluginStringData.cashOfferCount.tr(args: [val.toString()]);
+      case PaymentMethod.bankTransfer:
+        return PluginStringData.bankOfferCount.tr(args: [val.toString()]);
+      case PaymentMethod.cardMachine:
+        return PluginStringData.cardOfferCount.tr(args: [val.toString()]);
+      default:
+        return PluginStringData.cashOfferCount.tr(args: [val.toString()]);
     }
   }
 }
