@@ -101,8 +101,17 @@ class Vehicle {
     );
   }
 
+  String get name {
+    if ([VehicleType.car, VehicleType.motorbike, VehicleType.rikshaw]
+        .contains(type)) return '$make $model';
+    return 'Bicycle type';
+  }
+
   bool validate() {
-    return ![image, registration, make, model, year].contains(null);
+    if ([VehicleType.car, VehicleType.motorbike, VehicleType.rikshaw]
+        .contains(type))
+      return ![image, registration, make, model, year].contains(null);
+    return ![image].contains(null);
   }
 
   Map<String, dynamic> get toMap => {
