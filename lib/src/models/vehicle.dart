@@ -36,7 +36,9 @@ class Vehicle {
       color: enumFromString<VehicleColor>(
               map['color'] as String?, VehicleColor.values) ??
           VehicleColor.white,
-      year: DateTime.tryParse(map['year'] as String? ?? '')?.toLocal() ??
+      year: DateTime.tryParse(
+            map['year'] as String? ?? DateTime.now().toString(),
+          )?.toLocal() ??
           DateTime.now(),
       doors: map['doors'] as int? ?? 2,
       passengerCapacity: map['passengerCapacity'] as int? ?? 1,
