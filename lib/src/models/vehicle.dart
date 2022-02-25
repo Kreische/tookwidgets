@@ -24,27 +24,27 @@ class Vehicle {
     return Vehicle(
       id: map['_id'] as String?,
       type: enumFromString<VehicleType>(
-              map['type'] as String, VehicleType.values) ??
+              map['type'] as String?, VehicleType.values) ??
           VehicleType.car,
       make: map['make'] as String? ?? '',
       model: map['model'] as String? ?? '',
       image: map['image'] as String?,
       registration: map['registration'] as String? ?? '',
       bodyType: enumFromString<VehicleBodyType>(
-              map['bodyType'] as String, VehicleBodyType.values) ??
+              map['bodyType'] as String?, VehicleBodyType.values) ??
           VehicleBodyType.hatchback,
       color: enumFromString<VehicleColor>(
-              map['color'] as String, VehicleColor.values) ??
+              map['color'] as String?, VehicleColor.values) ??
           VehicleColor.white,
       year:
           DateTime.tryParse(map['year'] as String)?.toLocal() ?? DateTime.now(),
       doors: map['doors'] as int? ?? 2,
       passengerCapacity: map['passengerCapacity'] as int? ?? 1,
       category: enumFromString<VehicleCategory>(
-              map['category'] as String, VehicleCategory.values) ??
+              map['category'] as String?, VehicleCategory.values) ??
           VehicleCategory.private,
       fuelType: enumFromString<VehicleFuelType>(
-              map['fuelType'] as String, VehicleFuelType.values) ??
+              map['fuelType'] as String?, VehicleFuelType.values) ??
           VehicleFuelType.petrol,
     );
   }
