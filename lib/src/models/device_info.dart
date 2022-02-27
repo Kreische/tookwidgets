@@ -1,4 +1,4 @@
-import 'package:device_info/device_info.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class DeviceInfo {
   DeviceInfo({
@@ -14,7 +14,7 @@ class DeviceInfo {
   factory DeviceInfo.android(AndroidDeviceInfo map) {
     return DeviceInfo(
       id: map.id,
-      type: 'Android',
+      type: 'android',
       platformVersion: map.version.baseOS,
       manufacturer: map.manufacturer,
       model: map.model,
@@ -25,7 +25,7 @@ class DeviceInfo {
   factory DeviceInfo.ios(IosDeviceInfo map) {
     return DeviceInfo(
       id: map.identifierForVendor,
-      type: 'iOS',
+      type: 'ios',
       platformVersion: map.systemVersion,
       manufacturer: map.systemName,
       model: map.model,
@@ -34,7 +34,7 @@ class DeviceInfo {
   }
 
   final String? id;
-  final String? type;
+  final String type;
   final String? platformVersion;
   final String? manufacturer;
   final String? model;
