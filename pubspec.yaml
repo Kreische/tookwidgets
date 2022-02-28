@@ -9,6 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  firebase_messaging: ^11.2.6
   flutter_bloc: ^8.0.1
   image_picker: ^0.8.4+4
   provider: ^6.0.1

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:device_info_plus/device_info_plus.dart';
 
 class DeviceInfo {
@@ -7,6 +9,8 @@ class DeviceInfo {
     required this.platformVersion,
     required this.manufacturer,
     required this.model,
+    this.locale = 'en',
+    required this.timeZoneName,
     required this.platformId,
     this.fcm,
   });
@@ -19,6 +23,8 @@ class DeviceInfo {
       manufacturer: map.manufacturer,
       model: map.model,
       platformId: map.androidId,
+      timeZoneName: DateTime.now().timeZoneName,
+      locale: Platform.localeName.split('_').first,
     );
   }
 
@@ -30,6 +36,8 @@ class DeviceInfo {
       manufacturer: map.systemName,
       model: map.model,
       platformId: map.utsname.version,
+      timeZoneName: DateTime.now().timeZoneName,
+      locale: Platform.localeName.split('_').first,
     );
   }
 
@@ -39,6 +47,8 @@ class DeviceInfo {
   final String? manufacturer;
   final String? model;
   final String? platformId;
+  final String? timeZoneName;
+  final String locale;
   final String? fcm;
 
   DeviceInfo copyWith({
@@ -48,6 +58,8 @@ class DeviceInfo {
     String? manufacturer,
     String? model,
     String? platformId,
+    String? locale,
+    String? timeZoneName,
     String? fcm,
   }) {
     return DeviceInfo(
@@ -57,6 +69,8 @@ class DeviceInfo {
       manufacturer: manufacturer ?? this.manufacturer,
       model: model ?? this.model,
       platformId: platformId ?? this.platformId,
+      locale: locale ?? this.locale,
+      timeZoneName: timeZoneName ?? this.timeZoneName,
       fcm: fcm ?? this.fcm,
     );
   }
@@ -68,6 +82,8 @@ class DeviceInfo {
         'manufacturer': manufacturer,
         'model': model,
         'platformId': platformId,
+        'timeZoneName': timeZoneName,
+        'locale': locale,
         'fcm': fcm,
       };
 }
