@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_single_quotes
+
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
@@ -76,14 +78,14 @@ class DeviceInfo {
   }
 
   Map<String, dynamic> get toMap => {
-        'id': id,
-        'type': type,
-        'platformVersion': platformVersion,
-        'manufacturer': manufacturer,
-        'model': model,
-        'platformId': platformId,
-        'timeZoneName': timeZoneName,
-        'locale': locale,
-        'fcm': fcm,
+        "id": id,
+        "type": type,
+        "platformVersion": platformVersion,
+        "manufacturer": manufacturer,
+        "model": model,
+        "platformId": platformId,
+        "timeZoneName": timeZoneName,
+        "locale": locale,
+        "fcm": fcm,
       };
 }
