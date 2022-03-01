@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tookwidgets/src/models/enums/vehicle_enums.dart';
 import 'package:tookwidgets/src/plugin_consts/colors.dart';
@@ -109,6 +110,59 @@ class MarkerIconsUtils {
     final data = await img.toByteData(format: ui.ImageByteFormat.png);
     final bytes = data!.buffer.asUint8List();
     return BitmapDescriptor.fromBytes(bytes);
+  }
+
+  Future<BitmapDescriptor> getMarkerFromImageUrl(String url) async {
+    final File markerImageFile = await DefaultCacheManager().getSingleFile(url);
+    return _convertImageFileToBitmapDescriptor(markerImageFile);
+  }
+
+  Future<BitmapDescriptor> _convertImageFileToBitmapDescriptor(
+      File imageFile) async {
+    final dpr = ui.window.devicePixelRatio;
+    final Size size = ui.Size(dpr * 100, dpr * 100);
+
+    final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
+    final Canvas canvas = Canvas(pictureRecorder);
+
+    final Radius radius = Radius.circular(size.width / 2);
+
+    final Paint pointPaint = Paint()
+      ..color = MyColors.primaryDark.withAlpha(220);
+
+    final Paint borderPaint = Paint()..color = MyColors.primaryDark;
+
+    canvas.drawRRect(
+        RRect.fromRectAndCorners(
+          Rect.fromLTWH(0, 0, size.width - 44, size.height - 44),
+          topLeft: radius,
+          topRight: radius,
+          bottomLeft: radius,
+          bottomRight: radius,
+        ),
+        borderPaint);
+
+    canvas.drawCircle(Offset(size.width / 2.5, size.height - 20),
+        size.width / 12, pointPaint);
+
+    final Rect oval = Rect.fromLTWH(6, 6, size.width - 56, size.height - 56);
+
+    // Add path for oval image
+    canvas.clipPath(Path()..addOval(oval));
+
+    final Uint8List imageUint8List = await imageFile.readAsBytes();
+    final ui.Codec codec = await ui.instantiateImageCodec(imageUint8List);
+    final ui.FrameInfo imageFI = await codec.getNextFrame();
+
+    paintImage(
+        canvas: canvas, rect: oval, image: imageFI.image, fit: BoxFit.fitWidth);
+
+    final img = await pictureRecorder
+        .endRecording()
+        .toImage(size.width.toInt(), size.height.toInt());
+    final data = await img.toByteData(format: ui.ImageByteFormat.png);
+
+    return BitmapDescriptor.fromBytes(data!.buffer.asUint8List());
   }
 }
 
