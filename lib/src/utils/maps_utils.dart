@@ -120,7 +120,7 @@ class MarkerIconsUtils {
   Future<BitmapDescriptor> _convertImageFileToBitmapDescriptor(
       File imageFile) async {
     final dpr = ui.window.devicePixelRatio;
-    final Size size = ui.Size(dpr * 100, dpr * 100);
+    final Size size = ui.Size(dpr * 70, dpr * 70);
 
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
     final Canvas canvas = Canvas(pictureRecorder);
