@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 class TookException {
-  TookException({
-    required this.message,
+  TookException(
+    this.message, {
     this.extra,
   });
 
   factory TookException.fromMap(map) {
     return TookException(
-      message: (map['message'] ?? '') as String,
+      (map['message'] ?? '') as String,
       extra: map['extra'],
     );
   }
@@ -23,7 +23,7 @@ class TookException {
     extra,
   }) {
     return TookException(
-      message: message ?? this.message,
+      message ?? this.message,
       extra: extra ?? this.extra,
     );
   }
