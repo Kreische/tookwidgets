@@ -8,7 +8,7 @@ class AlertActionBTN extends StatelessWidget {
     Key? key,
     required this.onPressed,
     this.width = 115,
-    this.height = 45,
+    this.height = 40,
     this.color = MyColors.mainColor,
     this.text = 'Ok',
     this.padding,
