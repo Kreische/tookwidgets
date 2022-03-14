@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:tookwidgets/src/plugin_consts/plugin_string_data.dart';
+
 class TookException {
   TookException(
     this.message, {
@@ -15,7 +17,8 @@ class TookException {
 
   factory TookException.fromJson(String source) =>
       TookException.fromMap(json.decode(source));
-  final String message;
+
+  final String? message;
   final dynamic extra;
 
   TookException copyWith({
@@ -38,5 +41,5 @@ class TookException {
   String toJson() => json.encode(toMap());
 
   @override
-  String toString() => message;
+  String toString() => message ?? PluginStringData.somethingDoesntSeemsRight;
 }

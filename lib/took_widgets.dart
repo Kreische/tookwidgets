@@ -23,7 +23,6 @@ export './src/models/vehicle.dart';
 export './src/plugin_config/plugin_config_variables.dart';
 export './src/plugin_consts/colors.dart';
 export './src/plugin_consts/currencies.dart';
-export './src/plugin_consts/plugin_string_data.dart';
 export './src/services/audio.dart';
 export './src/services/device_info.dart';
 export './src/services/google_geocode_service.dart';

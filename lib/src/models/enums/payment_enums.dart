@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:tookwidgets/src/plugin_consts/plugin_asset_strings.dart';
+import 'package:tookwidgets/src/plugin_consts/plugin_string_data.dart';
 import 'package:tookwidgets/took_widgets.dart';
 
 enum PaymentMethod { inApp, cash, cardMachine, bankTransfer }
