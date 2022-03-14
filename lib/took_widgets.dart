@@ -50,3 +50,4 @@ export './src/utils/maps_utils.dart';
 export './src/utils/shared_pref_utils.dart';
 export './src/utils/updater_utils.dart';
 export './src/utils/validators.dart';
+export 'src/models/took_exception.dart';

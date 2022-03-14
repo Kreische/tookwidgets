@@ -1,28 +1,28 @@
 import 'dart:convert';
 
-class TookError {
-  TookError({
+class TookException {
+  TookException({
     required this.message,
     this.extra,
   });
 
-  factory TookError.fromMap(map) {
-    return TookError(
+  factory TookException.fromMap(map) {
+    return TookException(
       message: (map['message'] ?? '') as String,
       extra: map['extra'],
     );
   }
 
-  factory TookError.fromJson(String source) =>
-      TookError.fromMap(json.decode(source));
+  factory TookException.fromJson(String source) =>
+      TookException.fromMap(json.decode(source));
   final String message;
   final dynamic extra;
 
-  TookError copyWith({
+  TookException copyWith({
     String? message,
     extra,
   }) {
-    return TookError(
+    return TookException(
       message: message ?? this.message,
       extra: extra ?? this.extra,
     );
