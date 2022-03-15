@@ -133,8 +133,8 @@ class MongoLocation {
 
   static MongoLocation? fromMap(map) {
     if (map == null) return null;
-    if (map is String) return null;
     if (map is Map && map.isEmpty) return null;
+    if (map['coordinates'] == null) return null;
     return MongoLocation(
       type: map['type'] as String?,
       coordinates: List<num>.from(map['coordinates'] as Iterable),
