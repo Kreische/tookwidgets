@@ -157,6 +157,7 @@ mixin Get {
     File? file;
     await showModalBottomSheet(
       context: context,
+      backgroundColor: Colors.white,
       builder: (context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
