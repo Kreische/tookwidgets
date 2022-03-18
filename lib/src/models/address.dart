@@ -132,7 +132,7 @@ class MongoLocation {
   });
 
   static MongoLocation? fromMap(map) {
-    if (map == null) return null;
+    if (map == null || map is String) return null;
     if (map is Map && map.isEmpty) return null;
     if (map['coordinates'] == null) return null;
     return MongoLocation(
