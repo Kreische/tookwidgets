@@ -2,7 +2,13 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
-import 'package:tookwidgets/src/models/driverservices/rideshare_service.dart';
+import 'package:tookwidgets/took_widgets.dart';
+
+part 'rideshare_extras.dart';
+part 'rideshare_service_prices.dart';
+part 'rideshare_service.dart';
+part 'rideshare_services_opts.dart';
+part 'wifi_config.dart';
 
 @immutable
 class DriverServices {

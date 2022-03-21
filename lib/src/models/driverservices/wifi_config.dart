@@ -1,7 +1,4 @@
-import 'dart:convert';
-import 'dart:ui';
-
-import 'package:flutter/foundation.dart';
+part of 'driver_services.dart';
 
 @immutable
 class WifiConfig {

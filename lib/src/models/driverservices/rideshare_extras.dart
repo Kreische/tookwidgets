@@ -1,3 +1,5 @@
+part of 'driver_services.dart';
+
 enum RideshareOptsExtras {
   airCondition,
   handsSanitizer,

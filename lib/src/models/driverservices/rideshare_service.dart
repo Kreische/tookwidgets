@@ -1,8 +1,4 @@
-import 'dart:convert';
-import 'dart:ui';
-import 'package:flutter/foundation.dart';
-import 'package:tookwidgets/src/models/driverservices/rideshare_service_prices.dart';
-import 'package:tookwidgets/src/models/driverservices/rideshare_services_opts.dart';
+part of 'driver_services.dart';
 
 @immutable
 class RideshareService {
