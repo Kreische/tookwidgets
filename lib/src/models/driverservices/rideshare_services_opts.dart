@@ -3,13 +3,15 @@ part of 'driver_services.dart';
 @immutable
 class RideshareServiceOpts {
   const RideshareServiceOpts({
-    this.acceptImidiateRide = false,
+    this.acceptImidiateRide = true,
     this.autoConfirmImidiateRide = false,
-    this.acceptSheduleRide = false,
+    this.acceptSheduleRide = true,
     this.autoConfirmSheduleRide = false,
     this.bidForSheduleRideWhileOffline = false,
     this.setMyPricesAsVariables = false,
     this.chargeCustomerAtTheEnd = false,
+    this.acceptMaleCustomers = true,
+    this.acceptFemaleCustomers = true,
     this.wifiConfig = const WifiConfig(),
     this.extras = const [],
   });
@@ -26,6 +28,8 @@ class RideshareServiceOpts {
           (map['bidForSheduleRideWhileOffline'] ?? false) as bool,
       setMyPricesAsVariables: (map['setMyPricesAsVariables'] ?? false) as bool,
       chargeCustomerAtTheEnd: (map['chargeCustomerAtTheEnd'] ?? false) as bool,
+      acceptMaleCustomers: (map['acceptMaleCustomers'] ?? false) as bool,
+      acceptFemaleCustomers: (map['acceptFemaleCustomers'] ?? false) as bool,
       wifiConfig: WifiConfig.fromMap(map['wifiConfig']),
       extras: List<RideshareOptsExtras>.from((map['extras'] ?? []).map(
         (e) => enumFromString<RideshareOptsExtras>(
@@ -44,6 +48,8 @@ class RideshareServiceOpts {
   final bool bidForSheduleRideWhileOffline;
   final bool setMyPricesAsVariables;
   final bool chargeCustomerAtTheEnd;
+  final bool acceptMaleCustomers;
+  final bool acceptFemaleCustomers;
   final WifiConfig wifiConfig;
   final List<RideshareOptsExtras> extras;
 
@@ -84,6 +90,8 @@ class RideshareServiceOpts {
         'bidForSheduleRideWhileOffline': bidForSheduleRideWhileOffline,
         'setMyPricesAsVariables': setMyPricesAsVariables,
         'chargeCustomerAtTheEnd': chargeCustomerAtTheEnd,
+        'acceptFemaleCustomers': acceptFemaleCustomers,
+        'acceptMaleCustomers': acceptMaleCustomers,
         'wifiConfig': wifiConfig.toMap,
         'extras': extras.map((e) => enumToString(e)).toList(),
       };
@@ -103,6 +111,8 @@ class RideshareServiceOpts {
         other.setMyPricesAsVariables == setMyPricesAsVariables &&
         other.chargeCustomerAtTheEnd == chargeCustomerAtTheEnd &&
         other.wifiConfig == wifiConfig &&
+        other.acceptFemaleCustomers == acceptFemaleCustomers &&
+        other.acceptMaleCustomers == acceptMaleCustomers &&
         listEquals(other.extras, extras);
   }
 
@@ -116,6 +126,8 @@ class RideshareServiceOpts {
       bidForSheduleRideWhileOffline,
       setMyPricesAsVariables,
       chargeCustomerAtTheEnd,
+      acceptFemaleCustomers,
+      acceptMaleCustomers,
       wifiConfig,
       extras,
     ]);
