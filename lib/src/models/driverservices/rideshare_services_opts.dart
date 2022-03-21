@@ -61,6 +61,8 @@ class RideshareServiceOpts {
     bool? bidForSheduleRideWhileOffline,
     bool? setMyPricesAsVariables,
     bool? chargeCustomerAtTheEnd,
+    bool? acceptMaleCustomers,
+    bool? acceptFemaleCustomers,
     WifiConfig? wifiConfig,
     List<RideshareOptsExtras>? extras,
   }) {
@@ -77,6 +79,9 @@ class RideshareServiceOpts {
           setMyPricesAsVariables ?? this.setMyPricesAsVariables,
       chargeCustomerAtTheEnd:
           chargeCustomerAtTheEnd ?? this.chargeCustomerAtTheEnd,
+      acceptMaleCustomers: acceptMaleCustomers ?? this.acceptMaleCustomers,
+      acceptFemaleCustomers:
+          acceptFemaleCustomers ?? this.acceptFemaleCustomers,
       wifiConfig: wifiConfig ?? this.wifiConfig,
       extras: extras ?? this.extras,
     );
