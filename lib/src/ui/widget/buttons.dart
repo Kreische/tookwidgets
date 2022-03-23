@@ -3,42 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:tookwidgets/src/plugin_consts/colors.dart';
 import 'package:tookwidgets/src/ui/widget/text_widget.dart';
 
-class AlertActionBTN extends StatelessWidget {
-  const AlertActionBTN({
+class TookBTN extends StatelessWidget {
+  const TookBTN({
     Key? key,
     required this.onPressed,
-    this.width = 115,
-    this.height = 40,
+    this.size,
     this.color = MyColors.mainColor,
     this.text = 'Ok',
     this.padding,
   }) : super(key: key);
   final Function() onPressed;
-  final double width;
-  final double height;
+
   final Color color;
-  final String? text;
+  final String text;
   final EdgeInsetsGeometry? padding;
+  final Size? size;
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(
-      padding: padding,
+    return ElevatedButton(
       onPressed: onPressed,
-      child: Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40.0),
-          color: color,
+      style: ElevatedButton.styleFrom(
+        padding: padding,
+        primary: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
         ),
-        child: Center(
-          child: TextWidget(
-            text,
-            color: Colors.white,
-          ),
-        ),
+        fixedSize: size,
       ),
+      child: TextWidget(text, color: Colors.white),
     );
   }
 }

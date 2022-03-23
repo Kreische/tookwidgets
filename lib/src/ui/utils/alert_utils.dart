@@ -17,7 +17,7 @@ mixin AlertUtils {
         title: TextWidget(title),
         content: TextWidget(content),
         actions: [
-          AlertActionBTN(onPressed: () => Navigator.pop(context)),
+          TookBTN(onPressed: () => Navigator.pop(context)),
         ],
       ),
     );

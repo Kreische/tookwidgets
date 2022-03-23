@@ -21,7 +21,7 @@ class AppTrackingTransparencyDialog extends StatelessWidget {
         children: [
           const TextWidget(text, textAlign: TextAlign.center),
           const SizedBox(height: 20),
-          AlertActionBTN(
+          TookBTN(
             onPressed: () => _setTrackingPermission(context),
             text: 'Next',
           ),
