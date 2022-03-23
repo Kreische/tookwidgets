@@ -11,7 +11,7 @@ class Vehicle {
     this.model,
     this.image,
     this.registration,
-    this.bodyType = VehicleBodyType.suv,
+    this.bodyType,
     this.color = VehicleColor.white,
     this.year,
     this.doors = 2,
@@ -60,7 +60,7 @@ class Vehicle {
   final String? model;
   final String? image;
   final String? registration;
-  final VehicleBodyType bodyType;
+  final VehicleBodyType? bodyType;
   final VehicleColor color;
   final DateTime? year;
   final int doors;
