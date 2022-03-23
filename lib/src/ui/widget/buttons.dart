@@ -7,7 +7,7 @@ class TookBTN extends StatelessWidget {
   const TookBTN({
     Key? key,
     required this.onPressed,
-    this.size,
+    this.size = const Size(115, 40),
     this.color = MyColors.mainColor,
     this.text = 'Ok',
     this.padding,
@@ -17,7 +17,7 @@ class TookBTN extends StatelessWidget {
   final Color color;
   final String text;
   final EdgeInsetsGeometry? padding;
-  final Size? size;
+  final Size size;
 
   @override
   Widget build(BuildContext context) {
