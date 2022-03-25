@@ -7,7 +7,7 @@ class TookBTN extends StatelessWidget {
   const TookBTN({
     Key? key,
     required this.onPressed,
-    this.size = const Size(115, 40),
+    this.size,
     this.color = MyColors.mainColor,
     this.text = 'Ok',
     this.padding,
@@ -17,21 +17,27 @@ class TookBTN extends StatelessWidget {
   final Color color;
   final String text;
   final EdgeInsetsGeometry? padding;
-  final Size size;
+  final Size? size;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        padding: padding,
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
         primary: color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
         fixedSize: size,
+        minimumSize: const Size(115, 40),
       ),
-      child: TextWidget(text, color: Colors.white),
+      child: TextWidget(
+        text,
+        color: Colors.white,
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+      ),
     );
   }
 }
