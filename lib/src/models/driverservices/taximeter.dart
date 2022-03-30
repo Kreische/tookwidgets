@@ -1,5 +1,43 @@
 import 'dart:convert';
 
+class TaxiMeter {
+  const TaxiMeter({
+    this.isEnable = false,
+    this.tariff = const TaximeterTariffModel(),
+  });
+
+  factory TaxiMeter.fromMap(map) {
+    if (map == null) return const TaxiMeter();
+    return TaxiMeter(
+      isEnable: map['isEnable'] as bool? ?? false,
+      tariff: TaximeterTariffModel.fromMap(map['tariff']),
+    );
+  }
+
+  factory TaxiMeter.fromJson(String source) =>
+      TaxiMeter.fromMap(json.decode(source));
+
+  final bool isEnable;
+  final TaximeterTariffModel tariff;
+
+  TaxiMeter copyWith({
+    bool? isEnable,
+    TaximeterTariffModel? tariff,
+  }) {
+    return TaxiMeter(
+      isEnable: isEnable ?? this.isEnable,
+      tariff: tariff ?? this.tariff,
+    );
+  }
+
+  Map<String, dynamic> get toMap => {
+        'isEnable': isEnable,
+        'tariff': tariff.toMap,
+      };
+
+  String toJson() => json.encode(toMap);
+}
+
 enum TaximeterStatus { ForHire, Hired, Stopped }
 
 enum TaximeterTariff { tariff1, tariff2, tariff3 }
