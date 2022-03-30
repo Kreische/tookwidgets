@@ -14,12 +14,14 @@ part 'wifi_config.dart';
 class DriverServices {
   const DriverServices({
     this.rideshare = const RideshareService(),
+    this.taxiMeter = const TaxiMeter(),
   });
 
   factory DriverServices.fromMap(map) {
     if (map == null) return const DriverServices();
     return DriverServices(
       rideshare: RideshareService.fromMap(map['rideshare']),
+      taxiMeter: TaxiMeter.fromMap(map['taxiMeter']),
     );
   }
 
@@ -27,17 +29,21 @@ class DriverServices {
       DriverServices.fromMap(json.decode(source));
 
   final RideshareService rideshare;
+  final TaxiMeter taxiMeter;
 
   DriverServices copyWith({
     RideshareService? rideshare,
+    TaxiMeter? taxiMeter,
   }) {
     return DriverServices(
       rideshare: rideshare ?? this.rideshare,
+      taxiMeter: taxiMeter ?? this.taxiMeter,
     );
   }
 
   Map<String, dynamic> get toMap => {
         'rideshare': rideshare.toMap,
+        'taxiMeter': taxiMeter.toMap,
       };
 
   String toJson() => json.encode(toMap);
@@ -46,13 +52,16 @@ class DriverServices {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is DriverServices && other.rideshare == rideshare;
+    return other is DriverServices &&
+        other.rideshare == rideshare &&
+        other.taxiMeter == taxiMeter;
   }
 
   @override
   int get hashCode {
     return hashList([
       rideshare,
+      taxiMeter,
     ]);
   }
 }
