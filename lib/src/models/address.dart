@@ -84,7 +84,8 @@ class PersonalAddress {
     this.location,
   });
 
-  factory PersonalAddress.fromMap(map) {
+  static PersonalAddress? fromMap(map) {
+    if (map == null) return null;
     return PersonalAddress(
       address: map['address'] as String?,
       country: map['country'] as String?,
