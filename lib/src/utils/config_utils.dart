@@ -9,10 +9,10 @@ mixin ConfigUtils {
     if (Platform.isIOS) {
       final status = await AppTrackingTransparency.trackingAuthorizationStatus;
       if (status == TrackingStatus.authorized ||
-          status == TrackingStatus.notSupported) return true;
-      if (status == TrackingStatus.notDetermined ||
+          status == TrackingStatus.notSupported ||
           status == TrackingStatus.denied ||
-          status == TrackingStatus.restricted) {
+          status == TrackingStatus.restricted) return true;
+      if (status == TrackingStatus.notDetermined) {
         await showDialog<bool>(
           context: context,
           barrierDismissible: false,
