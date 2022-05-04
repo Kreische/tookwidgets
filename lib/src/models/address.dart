@@ -22,6 +22,7 @@ class Address {
 
   static Address? fromApiMap(map) {
     if (map == null) return null;
+    if (map == '') return null;
     return Address(
       placeId: map['placeId'] as String?,
       formatedAddress: map['formatedAddress'] as String,
@@ -86,6 +87,7 @@ class PersonalAddress {
 
   static PersonalAddress? fromMap(map) {
     if (map == null) return null;
+    if (map == '') return null;
     return PersonalAddress(
       address: map['address'] as String?,
       country: map['country'] as String?,

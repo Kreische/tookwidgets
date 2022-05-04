@@ -8,10 +8,12 @@ mixin ConfigUtils {
   static Future checkIosTrackingTransperency(BuildContext context) async {
     if (Platform.isIOS) {
       final status = await AppTrackingTransparency.trackingAuthorizationStatus;
-      if (status == TrackingStatus.authorized ||
-          status == TrackingStatus.notSupported ||
-          status == TrackingStatus.denied ||
-          status == TrackingStatus.restricted) return true;
+      if ([
+        TrackingStatus.authorized,
+        TrackingStatus.notSupported,
+        TrackingStatus.denied,
+        TrackingStatus.restricted
+      ].contains(status)) return true;
       if (status == TrackingStatus.notDetermined) {
         await showDialog<bool>(
           context: context,
