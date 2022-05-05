@@ -151,7 +151,7 @@ class MongoLocation {
         latitude: map['latitude'] as num? ?? 0,
         longitude: map['longitude'] as num? ?? 0,
         speed: map['speed'] as num? ?? 0,
-        updatedAt: DateTime.tryParse(map['updatedAt'] as String? ?? '') ??
+        updatedAt: DateTime.tryParse((map['updatedAt'] ?? '') as String) ??
             DateTime.now(),
       );
     } catch (e) {
@@ -197,5 +197,6 @@ class MongoLocation {
         'speed': speed,
       };
 
-  LatLng? get latlng => LatLng(latitude.toDouble(), longitude.toDouble());
+  LatLng? get latlng =>
+      LatLng(coordinates?[1] as double, coordinates?.first as double);
 }
