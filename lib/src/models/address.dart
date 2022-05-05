@@ -143,17 +143,21 @@ class MongoLocation {
     if (map == null || map is String) return null;
     if (map is Map && map.isEmpty) return null;
     if (map['coordinates'] == null) return null;
-    return MongoLocation(
-      type: map['type'] as String?,
-      coordinates: List<num>.from(map['coordinates'] as Iterable),
-      heading: map['heading'] as num? ?? 0,
-      latitude: map['latitude'] as num? ?? 0,
-      longitude: map['longitude'] as num? ?? 0,
-      speed: map['speed'] as num? ?? 0,
-      updatedAt: DateTime.tryParse(map['updatedAt'] as String? ??
-              DateTime.now().toLocal().toString()) ??
-          DateTime.now(),
-    );
+    try {
+      return MongoLocation(
+        type: map['type'] as String?,
+        coordinates: List<num>.from(map['coordinates'] as Iterable),
+        heading: map['heading'] as num? ?? 0,
+        latitude: map['latitude'] as num? ?? 0,
+        longitude: map['longitude'] as num? ?? 0,
+        speed: map['speed'] as num? ?? 0,
+        updatedAt: DateTime.tryParse(map['updatedAt'] as String? ??
+                DateTime.now().toLocal().toString()) ??
+            DateTime.now(),
+      );
+    } catch (e) {
+      return null;
+    }
   }
 
   final String? type;
