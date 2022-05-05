@@ -132,6 +132,11 @@ class MongoLocation {
   const MongoLocation({
     this.type = 'Point',
     this.coordinates,
+    this.updatedAt,
+    this.heading = 0,
+    this.latitude = 0,
+    this.longitude = 0,
+    this.speed = 0,
   });
 
   static MongoLocation? fromMap(map) {
@@ -141,27 +146,52 @@ class MongoLocation {
     return MongoLocation(
       type: map['type'] as String?,
       coordinates: List<num>.from(map['coordinates'] as Iterable),
+      heading: map['heading'] as num? ?? 0,
+      latitude: map['latitude'] as num? ?? 0,
+      longitude: map['longitude'] as num? ?? 0,
+      speed: map['speed'] as num? ?? 0,
+      updatedAt:
+          DateTime.tryParse(map['updatedAt'] as String) ?? DateTime.now(),
     );
   }
 
   final String? type;
   final List<num>? coordinates;
+  final DateTime? updatedAt;
+  final num heading;
+  final num latitude;
+  final num longitude;
+  final num speed;
 
   MongoLocation copyWith({
     String? type,
     List<num>? coordinates,
+    DateTime? updatedAt,
+    num? heading,
+    num? latitude,
+    num? longitude,
+    num? speed,
   }) {
     return MongoLocation(
       type: type ?? this.type,
       coordinates: coordinates ?? this.coordinates,
+      heading: heading ?? this.heading,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      speed: speed ?? this.speed,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 
   Map<String, dynamic> get toMap => {
         'type': 'Point',
         'coordinates': coordinates,
+        'updatedAt': updatedAt,
+        'heading': heading,
+        'latitude': latitude,
+        'longitude': longitude,
+        'speed': speed,
       };
 
-  LatLng? get latlng =>
-      LatLng(coordinates?[1] as double, coordinates?.first as double);
+  LatLng? get latlng => LatLng(latitude.toDouble(), longitude.toDouble());
 }
