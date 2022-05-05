@@ -150,8 +150,8 @@ class MongoLocation {
       latitude: map['latitude'] as num? ?? 0,
       longitude: map['longitude'] as num? ?? 0,
       speed: map['speed'] as num? ?? 0,
-      updatedAt:
-          DateTime.tryParse(map['updatedAt'] as String) ?? DateTime.now(),
+      updatedAt: DateTime.tryParse(map['updatedAt'] as String? ?? '') ??
+          DateTime.now(),
     );
   }
 
