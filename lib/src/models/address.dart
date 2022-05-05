@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Address {
@@ -145,14 +146,15 @@ class MongoLocation {
     if (map['coordinates'] == null) return null;
     try {
       return MongoLocation(
-        type: map['type'] as String?,
+        type: (map['type'] ?? 'Point') as String,
         coordinates: List<num>.from(map['coordinates'] as Iterable),
-        heading: map['heading'] as num? ?? 0,
-        latitude: map['latitude'] as num? ?? 0,
-        longitude: map['longitude'] as num? ?? 0,
-        speed: map['speed'] as num? ?? 0,
-        updatedAt: DateTime.tryParse((map['updatedAt'] ?? '') as String) ??
-            DateTime.now(),
+        updatedAt: map['updatedAt'] != null
+            ? DateTime.tryParse((map['updatedAt'] ?? '') as String)
+            : null,
+        heading: (map['heading'] ?? 0) as num,
+        latitude: (map['latitude'] ?? 0) as num,
+        longitude: (map['longitude'] ?? 0) as num,
+        speed: (map['speed'] ?? 0) as num,
       );
     } catch (e) {
       return null;
@@ -199,4 +201,9 @@ class MongoLocation {
 
   LatLng? get latlng =>
       LatLng(coordinates?[1] as double, coordinates?.first as double);
+
+  String toJson() => json.encode(toMap);
+
+  static MongoLocation? fromJson(String source) =>
+      MongoLocation.fromMap(json.decode(source));
 }
