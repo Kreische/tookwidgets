@@ -192,15 +192,17 @@ class MongoLocation {
   Map<String, dynamic> get toMap => {
         'type': 'Point',
         'coordinates': coordinates,
-        'updatedAt': updatedAt,
+        'updatedAt': updatedAt?.toIso8601String(),
         'heading': heading,
         'latitude': latitude,
         'longitude': longitude,
         'speed': speed,
       };
 
-  LatLng? get latlng =>
-      LatLng(coordinates?[1] as double, coordinates?.first as double);
+  LatLng? get latlng => LatLng(
+        coordinates![0].toDouble(),
+        coordinates![1].toDouble(),
+      );
 
   String toJson() => json.encode(toMap);
 
