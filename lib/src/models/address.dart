@@ -200,8 +200,8 @@ class MongoLocation {
       };
 
   LatLng? get latlng => LatLng(
-        coordinates![0].toDouble(),
         coordinates![1].toDouble(),
+        coordinates![0].toDouble(),
       );
 
   String toJson() => json.encode(toMap);
