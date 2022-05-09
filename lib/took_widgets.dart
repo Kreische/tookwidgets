@@ -39,6 +39,7 @@ export 'src/ui/widget/cache_circle_avatar.dart';
 export 'src/ui/widget/connectivity_bar.dart';
 export 'src/ui/widget/dialog.dart';
 export 'src/ui/widget/dialog/set_currency_dialog.dart';
+export 'src/ui/widget/dialog/set_currency_dialog.dart';
 export 'src/ui/widget/name_widget.dart';
 export 'src/ui/widget/settings.dart';
 export 'src/ui/widget/text_widget.dart';
