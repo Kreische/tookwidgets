@@ -49,7 +49,6 @@ export 'src/utils/get_utils.dart';
 export 'src/utils/json_utils.dart';
 export 'src/utils/location_utils.dart';
 export 'src/utils/maps_utils.dart';
-export 'src/utils/money_masked_controller.dart';
 export 'src/utils/shared_pref_utils.dart';
 export 'src/utils/updater_utils.dart';
 export 'src/utils/validators.dart';

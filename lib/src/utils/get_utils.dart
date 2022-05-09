@@ -71,7 +71,6 @@ mixin Get {
     String? initialText, {
     TextInputType? textInputType,
     TextCapitalization? textCapitalization,
-    ControllerType controllerType = ControllerType.text,
   }) async {
     final text = await showDialog<String>(
       context: context,
@@ -79,7 +78,6 @@ mixin Get {
         initialText: initialText ?? '',
         textInputType: textInputType,
         textCapitalization: textCapitalization,
-        controllerType: controllerType,
       ),
     );
     return text;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tookwidgets/src/plugin_consts/plugin_string_data.dart';
-import 'package:tookwidgets/src/utils/money_masked_controller.dart';
 import 'package:tookwidgets/took_widgets.dart';
 
 class GetTextDialog extends StatefulWidget {
@@ -8,15 +7,12 @@ class GetTextDialog extends StatefulWidget {
     Key? key,
     this.textInputType,
     this.textCapitalization,
-    this.controllerType = ControllerType.text,
     this.initialText = '',
   }) : super(key: key);
 
   final TextInputType? textInputType;
 
   final TextCapitalization? textCapitalization;
-
-  final ControllerType controllerType;
 
   final String initialText;
 
@@ -29,15 +25,8 @@ class _GetTextDialogState extends State<GetTextDialog> {
 
   @override
   void initState() {
-    if (widget.controllerType == ControllerType.currency) {
-      _textController = MoneyMaskedTextController(
-        decimalSeparator: '.',
-        thousandSeparator: ',',
-        initialValue: double.tryParse(widget.initialText) ?? 0,
-      );
-    } else {
-      _textController = TextEditingController(text: widget.initialText);
-    }
+    _textController = TextEditingController(text: widget.initialText);
+
     super.initState();
   }
 
@@ -117,5 +106,3 @@ class _GetTextDialogState extends State<GetTextDialog> {
     );
   }
 }
-
-enum ControllerType { text, currency }
