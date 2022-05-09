@@ -14,44 +14,44 @@ class MapUtils {
 
   static final MapUtils instance = MapUtils._singlton();
 
-  Future<void> updateCameraLocation(
-    LatLng source,
-    LatLng destination,
+  Future centerlizeonMap(
+    LatLng point1,
+    LatLng point2,
     GoogleMapController? mapController,
   ) async {
     if (mapController == null) return;
 
     LatLngBounds bounds;
 
-    if (source.latitude > destination.latitude &&
-        source.longitude > destination.longitude) {
-      bounds = LatLngBounds(southwest: destination, northeast: source);
-    } else if (source.longitude > destination.longitude) {
+    if (point1.latitude > point2.latitude &&
+        point1.longitude > point2.longitude) {
+      bounds = LatLngBounds(southwest: point2, northeast: point1);
+    } else if (point1.longitude > point2.longitude) {
       bounds = LatLngBounds(
-          southwest: LatLng(source.latitude, destination.longitude),
-          northeast: LatLng(destination.latitude, source.longitude));
-    } else if (source.latitude > destination.latitude) {
+          southwest: LatLng(point1.latitude, point2.longitude),
+          northeast: LatLng(point2.latitude, point1.longitude));
+    } else if (point1.latitude > point2.latitude) {
       bounds = LatLngBounds(
-          southwest: LatLng(destination.latitude, source.longitude),
-          northeast: LatLng(source.latitude, destination.longitude));
+          southwest: LatLng(point2.latitude, point1.longitude),
+          northeast: LatLng(point1.latitude, point2.longitude));
     } else {
-      bounds = LatLngBounds(southwest: source, northeast: destination);
+      bounds = LatLngBounds(southwest: point1, northeast: point2);
     }
 
     final CameraUpdate cameraUpdate = CameraUpdate.newLatLngBounds(bounds, 80);
 
     return _checkCameraLocation(cameraUpdate, mapController);
   }
+}
 
-  Future<void> _checkCameraLocation(
-      CameraUpdate cameraUpdate, GoogleMapController mapController) async {
-    await mapController.animateCamera(cameraUpdate);
-    final LatLngBounds l1 = await mapController.getVisibleRegion();
-    final LatLngBounds l2 = await mapController.getVisibleRegion();
+Future<void> _checkCameraLocation(
+    CameraUpdate cameraUpdate, GoogleMapController mapController) async {
+  await mapController.animateCamera(cameraUpdate);
+  final LatLngBounds l1 = await mapController.getVisibleRegion();
+  final LatLngBounds l2 = await mapController.getVisibleRegion();
 
-    if (l1.southwest.latitude == -90 || l2.southwest.latitude == -90) {
-      return _checkCameraLocation(cameraUpdate, mapController);
-    }
+  if (l1.southwest.latitude == -90 || l2.southwest.latitude == -90) {
+    return _checkCameraLocation(cameraUpdate, mapController);
   }
 }
 
@@ -114,11 +114,6 @@ class MarkerIconsUtils {
 
   Future<BitmapDescriptor> getMarkerFromImageUrl(String url) async {
     final File markerImageFile = await DefaultCacheManager().getSingleFile(url);
-    return _convertImageFileToBitmapDescriptor(markerImageFile);
-  }
-
-  Future<BitmapDescriptor> _convertImageFileToBitmapDescriptor(
-      File imageFile) async {
     final dpr = ui.window.devicePixelRatio;
     final Size size = ui.Size(dpr * 90, dpr * 90);
 
@@ -150,7 +145,7 @@ class MarkerIconsUtils {
     // Add path for oval image
     canvas.clipPath(Path()..addOval(oval));
 
-    final Uint8List imageUint8List = await imageFile.readAsBytes();
+    final Uint8List imageUint8List = await markerImageFile.readAsBytes();
     final ui.Codec codec = await ui.instantiateImageCodec(imageUint8List);
     final ui.FrameInfo imageFI = await codec.getNextFrame();
 
