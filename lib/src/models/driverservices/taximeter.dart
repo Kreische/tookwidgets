@@ -80,6 +80,7 @@ class TaximeterTariffModel {
   });
 
   factory TaximeterTariffModel.fromMap(map) {
+    if (map == null) return const TaximeterTariffModel();
     return TaximeterTariffModel(
       tariff1: TaximeterTariffPrices.fromMap(map['tariff1']),
       tariff2: TaximeterTariffPrices.fromMap(map['tariff2']),
