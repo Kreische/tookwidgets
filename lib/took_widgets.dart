@@ -1,4 +1,3 @@
-export 'src/extensions/location.dart';
 export 'src/extensions/position.dart';
 export 'src/extensions/position.dart';
 export 'src/models/address.dart';
