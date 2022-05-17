@@ -1,11 +1,14 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tookwidgets/src/utils/direction_utils.dart';
 
+import '../enums/display_units.dart';
+
 class Direction {
   const Direction({
     required this.bounds,
     required this.polylinePoints,
     required this.totalDistance,
+    required this.distanceInMeter,
     required this.totalDuration,
   });
 
@@ -39,12 +42,26 @@ class Direction {
       polylinePoints: DirectionUtils.decodeEncodedPolyline(
           data['overview_polyline']['points'] as String),
       totalDistance: (distanceInMeter! / 1000).toDouble(),
+      distanceInMeter: distanceInMeter,
       totalDuration: durationInMin,
     );
+  }
+
+  String displayDistance(DistanceMeasureUnit unit) {
+    switch (unit) {
+      case DistanceMeasureUnit.kilometer:
+        return '${(distanceInMeter / 1000).toStringAsFixed(2)}kms';
+      case DistanceMeasureUnit.mile:
+        final mi = distanceInMeter * 0.621371;
+        return '${mi.toStringAsFixed(2)}mi';
+      default:
+        return '${(distanceInMeter / 1000).toStringAsFixed(2)}kms';
+    }
   }
 
   final LatLngBounds bounds;
   final List<LatLng> polylinePoints;
   final double totalDistance;
+  final int distanceInMeter;
   final int? totalDuration;
 }
