@@ -11,23 +11,16 @@ class Address {
     required this.countryCode,
   });
 
-  factory Address.fromLinkMap(map) {
-    return Address(
-      placeId: map['place_id'] as String?,
-      formatedAddress: map['formatted_address'] as String,
-      latLng: linkTolatLngFromMap(map['geometry']),
-      stateAndCountry: getStateAndCountryFromMap(map),
-      countryCode: map['country_code'] as String,
-    );
-  }
-
-  static Address? fromApiMap(map) {
+  static Address? fromMap(map) {
     if (map == null) return null;
     if (map == '') return null;
     return Address(
       placeId: map['placeId'] as String?,
       formatedAddress: map['formatedAddress'] as String,
-      latLng: apiToLantLanFromMap(map['latLng']),
+      latLng: LatLng(
+        map['latLng']['latitude'] as double,
+        map['latLng']['longitude'] as double,
+      ),
       stateAndCountry: map['stateAndCountry'] as String?,
       countryCode: map['countryCode'] as String?,
     );
@@ -36,7 +29,10 @@ class Address {
   Map<String, dynamic> get toMap => {
         'placeId': placeId,
         'formatedAddress': formatedAddress,
-        'latLng': latLngToApiMap(latLng),
+        'latLng': {
+          'latitude': latLng.latitude,
+          'longitude': latLng.longitude,
+        },
         'stateAndCountry': stateAndCountry,
         'countryCode': countryCode,
       };
@@ -48,25 +44,10 @@ class Address {
   final String? countryCode;
 
   static Address? fromJson(String source) =>
-      Address.fromApiMap(json.decode(source));
+      Address.fromMap(json.decode(source));
 
   String toJson() => json.encode(toMap);
 }
-
-LatLng linkTolatLngFromMap(map) {
-  return LatLng(
-      map['location']['lat'] as double, map['location']['lng'] as double);
-}
-
-LatLng apiToLantLanFromMap(map) => LatLng(
-      map['latitude'] as double,
-      map['longitude'] as double,
-    );
-
-Map<String, dynamic> latLngToApiMap(LatLng latLng) => {
-      'latitude': latLng.latitude,
-      'longitude': latLng.longitude,
-    };
 
 String getStateAndCountryFromMap(map) {
   final formatedAddress = map['formatted_address'] as String;
