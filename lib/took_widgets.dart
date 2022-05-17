@@ -6,6 +6,7 @@ export 'src/models/device_info.dart';
 export 'src/models/driverservices/driver_services.dart';
 export 'src/models/driverservices/taximeter.dart';
 export 'src/models/enums/enums_functions.dart';
+export 'src/models/enums/gender_enum.dart';
 export 'src/models/enums/music.dart';
 export 'src/models/enums/passenger_enums.dart';
 export 'src/models/enums/payment_enums.dart';
