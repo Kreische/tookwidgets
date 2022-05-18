@@ -23,18 +23,27 @@ mixin AlertUtils {
     );
   }
 
-  static void snakBar(
-    BuildContext context, {
-    required String content,
-    Color? textColor = Colors.white,
-    Duration duration = const Duration(seconds: 3),
-    Color? backgroundColor,
-  }) {
+  static void snakBar(BuildContext context, {required String content}) {
     final snackBar = SnackBar(
-      content: TextWidget(content, color: textColor),
+      content: TextWidget(
+        content,
+        fontSize: 17,
+        fontWeight: FontWeight.w500,
+      ),
       behavior: SnackBarBehavior.floating,
-      backgroundColor: backgroundColor,
-      duration: duration,
+      backgroundColor: Colors.white,
+      duration: const Duration(seconds: 3),
+      margin: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 20,
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 16,
+      ),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
