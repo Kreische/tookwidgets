@@ -8,7 +8,7 @@ mixin AlertUtils {
   static void alert(
     BuildContext context, {
     required String title,
-    String content = "Oops! Something doesn't seem to be right!",
+    String? content = "Oops! Something doesn't seem to be right!",
     String actionBtnText = 'Ok',
   }) {
     if (Platform.isAndroid) {
