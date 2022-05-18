@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tookwidgets/src/ui/widget/buttons.dart';
-import 'package:tookwidgets/src/ui/widget/text_widget.dart';
 import 'package:tookwidgets/took_widgets.dart';
 
 mixin AlertUtils {
