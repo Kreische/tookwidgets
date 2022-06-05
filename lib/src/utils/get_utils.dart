@@ -7,6 +7,7 @@ import 'package:tookwidgets/src/plugin_consts/plugin_string_data.dart';
 import 'package:tookwidgets/src/ui/widget/bottom_sheets/data_picker.dart';
 import 'package:tookwidgets/src/ui/widget/text_widget.dart';
 
+import '../ui/widget/dialog/get_bool_dialog.dart';
 import '../ui/widget/dialog/get_text_dialog.dart';
 
 mixin Get {
@@ -41,28 +42,31 @@ mixin Get {
   static Future<bool?> getBool(
     BuildContext context,
     String? text, {
+    String title = 'Please confirm',
     bool barrierDismissible = false,
     String okButtonText = PluginStringData.ok,
     String cancelButtonText = PluginStringData.cancel,
   }) async {
-    final sheet = CupertinoActionSheet(
-      message: TextWidget(text, fontSize: 18),
-      actions: [
-        CupertinoActionSheetAction(
-          onPressed: () => Navigator.pop(context, true),
-          child: TextWidget(okButtonText, color: Colors.blue),
-        ),
-      ],
-      cancelButton: CupertinoActionSheetAction(
-        onPressed: () => Navigator.pop(context, false),
-        child: TextWidget(
-          cancelButtonText,
-          color: Colors.red,
-        ),
-      ),
-    );
-    final res = await showCupertinoModalPopup<bool>(
-        context: context, builder: (context) => sheet);
+    final res = await showDialog<bool>(
+        context: context,
+        builder: (context) {
+          if (Platform.isIOS)
+            return GetBoolDialogIos(
+              title: title,
+              content: text ?? 'Are you sure?',
+              okBtnText: okButtonText,
+              cancelBtnText: cancelButtonText,
+            );
+
+          return GetBoolDialogAndroid(
+            title: title,
+            content: text ?? 'Are you sure?',
+            okBtnText: okButtonText,
+            cancelBtnText: cancelButtonText,
+          );
+        });
+
+    if (res == null) return false;
     return res;
   }
 
