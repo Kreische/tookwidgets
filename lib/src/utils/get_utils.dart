@@ -42,7 +42,7 @@ mixin Get {
   static Future<bool> getBool(
     BuildContext context,
     String? text, {
-    String title = 'Please confirm',
+    String title = 'Please make sure',
     bool barrierDismissible = false,
     String okButtonText = PluginStringData.ok,
     String cancelButtonText = PluginStringData.cancel,
