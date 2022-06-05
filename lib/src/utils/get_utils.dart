@@ -39,7 +39,7 @@ mixin Get {
   }
 
   // Get Info
-  static Future<bool?> getBool(
+  static Future<bool> getBool(
     BuildContext context,
     String? text, {
     String title = 'Please confirm',
