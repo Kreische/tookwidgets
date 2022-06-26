@@ -10,6 +10,7 @@ class Direction {
     required this.totalDistance,
     required this.distanceInMeter,
     required this.totalDuration,
+    required this.encodedPolyline,
   });
 
   factory Direction.fromMap(map) {
@@ -44,6 +45,7 @@ class Direction {
       totalDistance: (distanceInMeter! / 1000).toDouble(),
       distanceInMeter: distanceInMeter,
       totalDuration: durationInMin,
+      encodedPolyline: data['overview_polyline']['points'] as String,
     );
   }
 
@@ -64,4 +66,5 @@ class Direction {
   final double totalDistance;
   final int distanceInMeter;
   final int? totalDuration;
+  final String encodedPolyline;
 }
