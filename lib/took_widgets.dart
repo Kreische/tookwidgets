@@ -33,6 +33,7 @@ export 'src/ui/widget/app_bar.dart';
 export 'src/ui/widget/buttons.dart';
 export 'src/ui/widget/cache_circle_avatar.dart';
 export 'src/ui/widget/connectivity_bar.dart';
+export 'src/ui/widget/custom_map_point.dart';
 export 'src/ui/widget/dialog/get_text_dialog.dart';
 export 'src/ui/widget/dialog/set_currency_dialog.dart';
 export 'src/ui/widget/name_widget.dart';
