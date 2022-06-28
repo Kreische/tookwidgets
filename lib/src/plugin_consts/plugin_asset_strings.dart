@@ -6,6 +6,8 @@ mixin PluginAssetString {
   static const cashPayment = 'assets/PaymentIcon/cash.png';
   static const passPayment = 'assets/Images/pass_payment.png';
   static const bank = 'assets/Icons/bank.png';
+
+  static const mapIcon = 'assets/Icons/map_icon.png';
 }
 
 mixin MotorbikeAssetString {
