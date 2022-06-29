@@ -208,7 +208,7 @@ class MarkerIconsUtils {
     final Canvas canvas = Canvas(pictureRecorder);
     final Paint paint = Paint()..color = MyColors.mainColor;
     final dpr = ui.window.devicePixelRatio;
-    final Size size = ui.Size(dpr * 12, dpr * 12);
+    final Size size = ui.Size(dpr * 9, dpr * 9);
     canvas.drawCircle(
       Offset(size.width / 2, size.height / 2),
       size.width / 2.0,
