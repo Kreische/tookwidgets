@@ -42,10 +42,43 @@ class MapUtils {
 
     return _checkCameraLocation(cameraUpdate, mapController);
   }
+
+  static List<LatLng> decodeEncodedPolyline(String encoded) {
+    final List<LatLng> poly = [];
+    int index = 0;
+    final int len = encoded.length;
+    int lat = 0, lng = 0;
+
+    while (index < len) {
+      int b, shift = 0, result = 0;
+      do {
+        b = encoded.codeUnitAt(index++) - 63;
+        result |= (b & 0x1f) << shift;
+        shift += 5;
+      } while (b >= 0x20);
+      final int dlat = (result & 1) != 0 ? ~(result >> 1) : (result >> 1);
+      lat += dlat;
+
+      shift = 0;
+      result = 0;
+      do {
+        b = encoded.codeUnitAt(index++) - 63;
+        result |= (b & 0x1f) << shift;
+        shift += 5;
+      } while (b >= 0x20);
+      final int dlng = (result & 1) != 0 ? ~(result >> 1) : (result >> 1);
+      lng += dlng;
+      final LatLng p = LatLng((lat / 1E5).toDouble(), (lng / 1E5).toDouble());
+      poly.add(p);
+    }
+    return poly;
+  }
 }
 
 Future<void> _checkCameraLocation(
-    CameraUpdate cameraUpdate, GoogleMapController mapController) async {
+  CameraUpdate cameraUpdate,
+  GoogleMapController mapController,
+) async {
   await mapController.animateCamera(cameraUpdate);
   final LatLngBounds l1 = await mapController.getVisibleRegion();
   final LatLngBounds l2 = await mapController.getVisibleRegion();
@@ -59,6 +92,8 @@ class MarkerIconsUtils {
   MarkerIconsUtils._singlton();
 
   static final MarkerIconsUtils instance = MarkerIconsUtils._singlton();
+
+  late BitmapDescriptor vehicle, dot;
 
   Future<BitmapDescriptor> markerPoint(String markerPointText) async {
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
@@ -159,103 +194,34 @@ class MarkerIconsUtils {
 
     return BitmapDescriptor.fromBytes(data!.buffer.asUint8List());
   }
-}
 
-class CarBitmapDescriptors {
-  CarBitmapDescriptors._();
+  Future setBitmaps() async {
+    final _car = BitmapDescriptor.fromBytes(
+      await _MIU.getBytesFromAsset(
+        VehicleColor.black.image,
+        Platform.isIOS ? 50 : 35,
+      ),
+    );
+    vehicle = _car;
 
-  static final CarBitmapDescriptors instance = CarBitmapDescriptors._();
-
-  late BitmapDescriptor _white,
-      _red,
-      _green,
-      _yellow,
-      _black,
-      _orange,
-      _brown,
-      _purple,
-      _pink,
-      _silver,
-      _lightBlue,
-      _darkBlue,
-      _darkGrey,
-      _lightGreen;
-
-  BitmapDescriptor getImage(VehicleColor color) {
-    switch (color) {
-      case VehicleColor.white:
-        return _white;
-      case VehicleColor.brown:
-        return _brown;
-      case VehicleColor.red:
-        return _red;
-      case VehicleColor.green:
-        return _green;
-      case VehicleColor.black:
-        return _black;
-      case VehicleColor.orange:
-        return _orange;
-      case VehicleColor.purple:
-        return _purple;
-      case VehicleColor.pink:
-        return _pink;
-      case VehicleColor.silver:
-        return _silver;
-      case VehicleColor.lightBlue:
-        return _lightBlue;
-      case VehicleColor.darkBlue:
-        return _darkBlue;
-      case VehicleColor.darkGrey:
-        return _darkGrey;
-      case VehicleColor.lightGreen:
-        return _lightGreen;
-      case VehicleColor.yellow:
-        return _yellow;
-      default:
-        return _white;
-    }
+    final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
+    final Canvas canvas = Canvas(pictureRecorder);
+    final Paint paint = Paint()..color = MyColors.mainColor;
+    final dpr = ui.window.devicePixelRatio;
+    final Size size = ui.Size(dpr * 12, dpr * 12);
+    canvas.drawCircle(
+      Offset(size.width / 2, size.height / 2),
+      size.width / 2.0,
+      paint,
+    );
+    final img = await pictureRecorder
+        .endRecording()
+        .toImage(size.width.toInt(), size.height.toInt());
+    final data = await img.toByteData(format: ui.ImageByteFormat.png);
+    final bytes = data!.buffer.asUint8List();
+    final bitmap = BitmapDescriptor.fromBytes(bytes);
+    dot = bitmap;
   }
-
-  Future setCarColor() async {
-    await Future.wait([
-      _setRed(),
-      _setWhite(),
-      _setGreen(),
-      _setYellow(),
-      _setBlack(),
-      _setOrange(),
-      _setBrown(),
-      _setPurple(),
-      _setPink(),
-      _setSilver(),
-      _setLightblue(),
-      _setDarkblue(),
-      _setDartGrey(),
-      _setLightGreen(),
-    ]);
-  }
-
-  Future _setRed() async => _red = await _bit(VehicleColor.red);
-  Future _setWhite() async => _white = await _bit(VehicleColor.white);
-  Future _setGreen() async => _green = await _bit(VehicleColor.green);
-  Future _setYellow() async => _yellow = await _bit(VehicleColor.yellow);
-  Future _setBlack() async => _black = await _bit(VehicleColor.black);
-  Future _setOrange() async => _orange = await _bit(VehicleColor.orange);
-  Future _setBrown() async => _brown = await _bit(VehicleColor.brown);
-  Future _setPurple() async => _purple = await _bit(VehicleColor.purple);
-  Future _setPink() async => _pink = await _bit(VehicleColor.pink);
-  Future _setSilver() async => _silver = await _bit(VehicleColor.silver);
-  Future _setLightblue() async =>
-      _lightBlue = await _bit(VehicleColor.lightBlue);
-  Future _setDarkblue() async => _darkBlue = await _bit(VehicleColor.darkBlue);
-  Future _setDartGrey() async => _darkGrey = await _bit(VehicleColor.darkGrey);
-  Future _setLightGreen() async =>
-      _lightGreen = await _bit(VehicleColor.lightGreen);
-
-  Future<BitmapDescriptor> _bit(VehicleColor color) async =>
-      BitmapDescriptor.fromBytes(
-        await _MIU.getBytesFromAsset(color.image, Platform.isIOS ? 60 : 40),
-      );
 }
 
 mixin _MIU {

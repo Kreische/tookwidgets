@@ -1,5 +1,5 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tookwidgets/src/utils/direction_utils.dart';
+import 'package:tookwidgets/src/utils/maps_utils.dart';
 
 import '../enums/display_units.dart';
 
@@ -40,7 +40,7 @@ class Direction {
 
     return Direction(
       bounds: bounds,
-      polylinePoints: DirectionUtils.decodeEncodedPolyline(
+      polylinePoints: MapUtils.decodeEncodedPolyline(
           data['overview_polyline']['points'] as String),
       totalDistance: (distanceInMeter! / 1000).toDouble(),
       distanceInMeter: distanceInMeter,

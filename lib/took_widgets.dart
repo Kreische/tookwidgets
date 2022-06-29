@@ -40,7 +40,6 @@ export 'src/ui/widget/name_widget.dart';
 export 'src/ui/widget/settings.dart';
 export 'src/ui/widget/text_widget.dart';
 export 'src/utils/clipping_path.dart';
-export 'src/utils/direction_utils.dart';
 export 'src/utils/get_utils.dart';
 export 'src/utils/json_utils.dart';
 export 'src/utils/maps_utils.dart';
