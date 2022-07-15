@@ -37,4 +37,12 @@ mixin PluginStringData {
   static const bankOfferCount = 'Bank ({})';
   static const cashOfferCount = 'Cash ({})';
   static const cardOfferCount = 'Card ({})';
+
+  static const monday = 'Monday';
+  static const tuesday = 'Tuesday';
+  static const wednesday = 'Wednesday';
+  static const thursday = 'Thursday';
+  static const friday = 'Friday';
+  static const saturday = 'Saturday';
+  static const sunday = 'Sunday';
 }
