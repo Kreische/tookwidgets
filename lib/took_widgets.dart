@@ -1,6 +1,7 @@
 export 'src/extensions/position.dart';
 export 'src/extensions/position.dart';
 export 'src/models/address.dart';
+export 'src/models/amount.dart';
 export 'src/models/currency.dart';
 export 'src/models/device_info.dart';
 export 'src/models/driverservices/driver_services.dart';
