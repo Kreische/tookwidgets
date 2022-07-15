@@ -8,10 +8,10 @@ import 'package:tookwidgets/src/models/working_days.dart';
 @immutable
 class Subscription {
   const Subscription({
-    required this.enabled,
-    required this.availableQuantity,
-    required this.price,
-    required this.workingDays,
+    this.enabled = false,
+    this.availableQuantity = 0,
+    this.price = const Amount(),
+    this.workingDays = const WorkingDays(),
   });
 
   factory Subscription.fromMap(map) {
