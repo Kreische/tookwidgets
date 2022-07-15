@@ -24,6 +24,7 @@ export 'src/models/ride_message.dart';
 export 'src/models/took_exception.dart';
 export 'src/models/tuple.dart';
 export 'src/models/vehicle.dart';
+export 'src/models/working_days.dart';
 export 'src/plugin_consts/colors.dart';
 export 'src/plugin_consts/currencies.dart';
 export 'src/services/audio.dart';
