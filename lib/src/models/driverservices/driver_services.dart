@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
-import 'package:tookwidgets/src/models/driverservices/subscription_service.dart';
 import 'package:tookwidgets/took_widgets.dart';
 
 part 'rideshare_extras.dart';
@@ -16,7 +15,7 @@ class DriverServices {
   const DriverServices({
     this.rideshare = const RideshareService(),
     this.taxiMeter = const TaxiMeter(),
-    this.subscription,
+    this.subscription = const Subscription(),
   });
 
   factory DriverServices.fromMap(map) {
@@ -24,9 +23,7 @@ class DriverServices {
     return DriverServices(
       rideshare: RideshareService.fromMap(map['rideshare']),
       taxiMeter: TaxiMeter.fromMap(map['taxiMeter']),
-      subscription: map['subscription'] == null
-          ? null
-          : Subscription.fromMap(map['subscription']),
+      subscription: Subscription.fromMap(map['subscription']),
     );
   }
 
@@ -35,7 +32,7 @@ class DriverServices {
 
   final RideshareService rideshare;
   final TaxiMeter taxiMeter;
-  final Subscription? subscription;
+  final Subscription subscription;
 
   DriverServices copyWith({
     RideshareService? rideshare,
@@ -52,7 +49,7 @@ class DriverServices {
   Map<String, dynamic> get toMap => {
         'rideshare': rideshare.toMap,
         'taxiMeter': taxiMeter.toMap,
-        'subscription': subscription?.toMap,
+        'subscription': subscription.toMap,
       };
 
   String toJson() => json.encode(toMap);

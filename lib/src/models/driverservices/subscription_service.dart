@@ -15,6 +15,7 @@ class Subscription {
   });
 
   factory Subscription.fromMap(map) {
+    if (map == null) return const Subscription();
     return Subscription(
       enabled: (map['enabled'] ?? false) as bool,
       availableQuantity: (map['availableQuantity']?.toInt() ?? 0) as int,
