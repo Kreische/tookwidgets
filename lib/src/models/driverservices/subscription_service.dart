@@ -118,15 +118,13 @@ class SubscriptionAvailability {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'workingDays': workingDays.toMap,
-      'startTime': startTime?.toUtc(),
-      'endTime': endTime?.toUtc(),
-    };
-  }
+  Map<String, dynamic> get toMap => {
+        'workingDays': workingDays.toMap,
+        'startTime': startTime?.toUtc(),
+        'endTime': endTime?.toUtc(),
+      };
 
-  String toJson() => json.encode(toMap());
+  String toJson() => json.encode(toMap);
 
   @override
   bool operator ==(Object other) {
