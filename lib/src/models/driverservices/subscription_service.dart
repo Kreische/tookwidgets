@@ -87,6 +87,7 @@ class SubscriptionAvailability {
   });
 
   factory SubscriptionAvailability.fromMap(map) {
+    if (map == null) return const SubscriptionAvailability();
     return SubscriptionAvailability(
       workingDays: WorkingDays.fromMap(map['workingDays']),
       startTime: map['startTime'] == null
