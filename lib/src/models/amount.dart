@@ -5,13 +5,13 @@ class Amount {
 
   factory Amount.fromMap(map) {
     return Amount(
-      amount: (map['amount']?.toInt() as int?) ?? 0,
+      amount: (map['amount']?.toInt() as num?) ?? 0,
       currency: (map['currency'] as String?) ?? 'usd',
     );
   }
   factory Amount.fromJson(String source) => Amount.fromMap(json.decode(source));
 
-  final int amount;
+  final num amount;
   final String currency;
 
   Map<String, dynamic> get toMap => {
