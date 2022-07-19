@@ -28,6 +28,16 @@ class Subscription {
   factory Subscription.fromJson(String source) =>
       Subscription.fromMap(json.decode(source));
 
+  static Subscription? nullableFromMap(map) {
+    if (map == null) return null;
+    return Subscription(
+      enabled: (map['enabled'] ?? false) as bool,
+      availableQuantity: (map['availableQuantity']?.toInt() ?? 0) as int,
+      price: Amount.fromMap(map['price']),
+      availability: SubscriptionAvailability.fromMap(map['availability']),
+    );
+  }
+
   final bool enabled;
   final int availableQuantity;
   final Amount price;
